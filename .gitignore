@@ -1,0 +1,6 @@
+# 작업용 폴더(배포 제외): 벤치 캡처에는 다른 사이트 화면이 들어 있음
+_bench/
+_build/
+_shots/
+_compare/
+_old_index_backup/
