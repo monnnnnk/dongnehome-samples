@@ -216,12 +216,50 @@ footer p{margin:12px auto 0;font-size:13px;color:var(--steel);max-width:36em;lin
   .vz .h .now{justify-content:flex-end}
   .vz .ad{grid-column:3;grid-row:1}
 }
-@media (prefers-reduced-motion:no-preference){
-  .hero-photo img{animation:fadein 1.5s cubic-bezier(.2,.6,.2,1) both}
-  @keyframes fadein{from{opacity:0}to{opacity:1}}
-  .js .rv{opacity:0;transform:translateY(12px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.6,.2,1)}
-  .js .rv.on{opacity:1;transform:none}
+/* ---------- motion: 살롱 = 절제된 마스크 등장 + 느린 확대 ----------
+   숨김 상태는 JS가 <html class="mo">를 붙인 뒤에만 적용 → JS 없으면 그대로 보임.
+   translate/scale/opacity만 움직임(마스크도 overflow 상자 + translate). 동작 줄이기 설정이면 .mo를 안 붙임. */
+:root{--e-mask:cubic-bezier(.19,1,.22,1);--e-out:cubic-bezier(.16,1,.3,1);--e-soft:cubic-bezier(.22,.61,.36,1)}
+.m-clip{display:block;overflow:hidden;position:relative}
+.m-clip>img{transition:scale 1.6s var(--e-out)}
+.m-ow{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.m-iw{display:block}
+.hero-photo{overflow:hidden}
+/* 첫 화면: 사진이 먼저 밝아지고 아주 천천히 1.05까지, 제목은 마스크 안에서 올라옴 */
+.mo .hero-photo img{opacity:0;scale:1;transition:opacity 1.6s var(--e-soft),scale 14s cubic-bezier(.3,.1,.3,1)}
+.mo-go .hero-photo img{opacity:1;scale:1.05}
+.mo .top{opacity:0;translate:0 -10px;transition:opacity 1s var(--e-soft) 1.1s,translate 1.2s var(--e-out) 1.1s}
+.mo-go .top{opacity:1;translate:none}
+.mo .eyebrow{opacity:0;transition:opacity 1.2s var(--e-soft) .35s}
+.mo-go .eyebrow{opacity:1}
+.mo .hero h1 .m-iw{translate:0 105%;transition:translate 1.3s var(--e-mask) calc(.5s + var(--i,0)*.12s)}
+.mo-go .hero h1 .m-iw{translate:none}
+.mo .hero-services,.mo .hero-ctas,.mo .sample{opacity:0;translate:0 12px;transition:opacity 1.1s var(--e-soft) calc(.95s + var(--i,0)*.12s),translate 1.3s var(--e-out) calc(.95s + var(--i,0)*.12s)}
+.mo-go .hero-services,.mo-go .hero-ctas,.mo-go .sample{opacity:1;translate:none}
+/* 스크롤 등장: 글은 짧게 떠오르고, 제목과 사진은 마스크로 */
+.mo [data-r]{opacity:0;translate:0 14px;transition:opacity 1.1s var(--e-soft) calc(var(--i,0)*.09s),translate 1.3s var(--e-out) calc(var(--i,0)*.09s)}
+.mo [data-r="c"]{translate:none;scale:.94;transition:opacity 1.2s var(--e-soft),scale 1.6s var(--e-out)}
+.mo [data-r].is-in{opacity:1;translate:none;scale:none}
+.mo [data-m] .m-iw{translate:0 102%;transition:translate 1.3s var(--e-mask) calc(var(--i,0)*.09s)}
+.mo [data-m].is-in .m-iw{translate:none}
+.mo [data-p]>.m-clip{translate:0 100%;transition:translate 1.25s var(--e-mask) calc(var(--i,0)*.12s)}
+.mo [data-p]>.m-clip>img{translate:0 -100%;scale:1.08;transition:translate 1.25s var(--e-mask) calc(var(--i,0)*.12s),scale 2.2s var(--e-out) calc(var(--i,0)*.12s)}
+.mo [data-p].is-in>.m-clip,.mo [data-p].is-in>.m-clip>img{translate:none}
+.mo [data-p].is-in>.m-clip>img{scale:1}
+/* 띠: 마우스를 올리면 잠시 멈춤 */
+@media (hover:hover){ .ticker:hover .ticker-track{animation-play-state:paused} }
+/* 사진 호버, 링크 밑줄 (마우스 있는 데스크톱만) */
+@media (hover:hover) and (min-width:900px){
+  figure:hover>.m-clip>img,.mo [data-p].is-in:hover>.m-clip>img{scale:1.05;transition:scale 1.6s var(--e-out)}
+  .tl{position:relative;text-decoration:none}
+  .tl::before,.tl::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:1px;background:currentColor;transition:transform .7s var(--e-out)}
+  .tl::before{transform-origin:right center}
+  .tl::after{transform-origin:left center;transform:scaleX(0)}
+  .tl:hover::before{transform:scaleX(0)}
+  .tl:hover::after{transform:scaleX(1);transition-delay:.2s}
 }
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-stopped{overflow:clip}
 </style>
 </head>
 <body>
@@ -383,11 +421,42 @@ footer p{margin:12px auto 0;font-size:13px;color:var(--steel);max-width:36em;lin
   else { var nd=(d===6||d===0||d===1)?'화요일':'내일'; t='지금은 닫혀 있습니다 · '+nd+' 10:00에 엽니다'; }
   el.textContent=t; if(open) el.classList.add('open');
   var rows=document.querySelectorAll('#hours li[data-d]'); (work?rows[0]:rows[1]).classList.add('today');
-  if(window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window){
-    document.documentElement.classList.add('js');
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
-  }
+})();
+(function(){
+  // 모션: 동작 줄이기 설정이거나 IntersectionObserver가 없으면 아무것도 숨기지 않는다
+  var d=document.documentElement;
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var $=function(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))};
+  function wrap(el){var o=document.createElement('span'),i=document.createElement('span');o.className='m-ow';i.className='m-iw';
+    while(el.firstChild) i.appendChild(el.firstChild); o.appendChild(i); el.appendChild(o); return o}
+  // 히어로 제목: 줄 단위 마스크 (글자 + 이탤릭 영문)
+  var h1=document.querySelector('.hero h1');
+  if(h1){var em=h1.querySelector('em'); var a=document.createElement('span'); a.className='m-ow';
+    var ai=document.createElement('span'); ai.className='m-iw'; while(h1.firstChild&&h1.firstChild!==em) ai.appendChild(h1.firstChild); a.appendChild(ai);
+    var b=document.createElement('span'); b.className='m-ow'; var bi=document.createElement('span'); bi.className='m-iw'; bi.style.setProperty('--i',1);
+    if(em) bi.appendChild(em); b.appendChild(bi); h1.appendChild(a); h1.appendChild(b);}
+  // 사진은 클립 상자로 감싼다
+  $('.room>img,.wk figure>img,.consult>img').forEach(function(img){var c=document.createElement('span'); c.className='m-clip'; img.parentNode.insertBefore(c,img); c.appendChild(img)});
+  d.classList.add('mo');
+  $('.hero-services,.hero-ctas,.sample').forEach(function(n,k){n.style.setProperty('--i',k)});
+  function mark(q,attr,val,stag,cap){$(q).forEach(function(n,k){n.setAttribute(attr,val||'');if(stag)n.style.setProperty('--i',Math.min(k,cap||6))})}
+  mark('.mission-top,.mission .body,.principles .lab,.designer .lab,.designer p,.designer .pills,.services .head .lab,.services .head p,.note,.work .head .lab,.work .head p,.booking .lab,.bk,.visit .head .lab','data-r');
+  mark('.stats li','data-r','',1); mark('.grid li','data-r','',1,7); mark('.price li','data-r','',1); mark('.steps li','data-r','',1); mark('.vz>div','data-r','',1);
+  mark('.wk figcaption','data-r');
+  mark('.designer-fig','data-r','c');
+  $('.mission h2,.designer h2,.services h2,.work h2,.booking h2,.visit h2').forEach(function(h){wrap(h); h.setAttribute('data-m','')});
+  mark('.room,.consult','data-p'); $('.wk .big,.wk .s1,.wk .s2').forEach(function(f,k){f.setAttribute('data-p','');f.style.setProperty('--i',k)});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
+  $('[data-r],[data-m],[data-p]').forEach(function(n){io.observe(n)});
+  // 첫 화면: 히어로 사진이 준비되면 시작 (최대 0.9초 대기)
+  var gone=0, go=function(){if(!gone&&(gone=1))requestAnimationFrame(function(){requestAnimationFrame(function(){void d.offsetWidth; d.classList.add('mo-go')})})};   // 숨김 상태를 먼저 계산시킨 뒤 시작
+  var hi=document.querySelector('.hero-photo img'); if(hi&&!hi.complete){hi.addEventListener('load',go);hi.addEventListener('error',go)} else go();
+  setTimeout(go,900);
+  // 데스크톱(마우스)만: 가벼운 스무스 스크롤 (MIT, v7/vendor/LICENSES.md)
+  if(!matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches) return;
+  var ls=document.createElement('script'); ls.src='vendor/lenis.min.js'; ls.async=true;
+  ls.onload=function(){try{new Lenis({autoRaf:true,lerp:.09,anchors:true})}catch(err){}}; document.body.appendChild(ls);
 })();
 </script>
 </body>
