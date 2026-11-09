@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>소담별 커피 — 망원동 핸드드립 로스터리 (데모 프로젝트)</title>
+<meta name="description" content="망원동의 여섯 자리 핸드드립 로스터리, 소담별 커피. 데모 프로젝트입니다.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Serif+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/05_cup.jpg" media="(max-width: 899px)">
+<link rel="preload" as="image" href="img/01_window.jpg" media="(min-width: 900px)">
+<style>
+:root{
+  --paper:#ECE7DE;      /* plaster wall in the set */
+  --ink:#24211D;
+  --mute:#524B42;       /* 7.0:1 on paper */
+  --body:#2E2A25;
+  --walnut:#5E4632;     /* the one tone, from the window table */
+  --rule:rgba(36,33,29,.18);
+  --espresso:#2A1F17;   /* deep walnut, same hue as the table */
+  --ivory:#EFE8DC;      /* 13.2:1 on espresso */
+  --ivory-2:#CDBFAC;    /* 8.9:1 on espresso */
+  --kr:"Noto Serif KR", "Nanum Myeongjo", serif;
+  --en:"Cormorant Garamond", "Noto Serif KR", serif;
+  --pad:24px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--kr);font-weight:300;
+  font-size:15px;line-height:1.9;letter-spacing:.02em;word-break:keep-all;overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:1px solid var(--walnut);outline-offset:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;min-height:44px;display:inline-flex;align-items:center;background:var(--paper);padding:8px 12px;z-index:9}
+
+/* ---------- header (from B) ---------- */
+.mast{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 var(--pad)}
+.mark{text-decoration:none;display:flex;align-items:baseline;gap:12px;min-height:44px;align-items:center}
+.mark b{font-weight:600;font-size:17px;letter-spacing:.42em;color:var(--ink)}
+.mark span{display:none;font-family:var(--en);font-weight:500;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute)}
+.nav{display:flex;gap:4px;margin:0;padding:0;list-style:none}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;font-size:13px;letter-spacing:.24em;text-decoration:none}
+.nav a:hover{color:var(--walnut)}
+.demo{font-family:var(--kr);font-size:11px;letter-spacing:.2em;color:var(--mute);border:1px solid var(--rule);padding:3px 8px 4px;white-space:nowrap}
+
+/* ---------- 1. hero (from B) ---------- */
+.hero{display:flex;flex-direction:column}
+.hero-side{display:contents}
+.mast{order:0}.hero figure{order:1}.hero-copy{order:2}
+.hero figure{margin:0;position:relative}
+.hero picture img{width:100%;height:68svh;min-height:460px;object-fit:cover;object-position:50% 60%}
+.hero figcaption{position:absolute;right:10px;bottom:14px;writing-mode:vertical-rl;font-size:11px;letter-spacing:.32em;color:#F2EEE6;
+  text-shadow:0 0 6px rgba(0,0,0,.35)}
+.hero-copy{padding:44px var(--pad) 72px}
+.eyebrow{font-family:var(--en);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin:0 0 28px}
+.hero h1{margin:0;font-weight:200;font-size:30px;line-height:1.62;letter-spacing:.12em}
+.hero .lede{margin:28px 0 0;color:var(--body);font-weight:400;font-size:15px;letter-spacing:.06em;max-width:22em}
+.facts{margin:40px 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.facts li{font-weight:400;display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px;letter-spacing:.08em}
+.facts li span:first-child{color:var(--mute)}
+.quiet{display:inline-flex;align-items:center;min-height:44px;margin-top:28px;font-size:13px;letter-spacing:.26em;text-decoration:none;color:var(--walnut);
+  border-bottom:1px solid currentColor;padding:0 2px}
+.quiet:hover{color:var(--ink)}
+
+/* ---------- 2. coffee (from B) ---------- */
+.coffee{padding:24px 0 96px;display:flex;flex-direction:column}
+.coffee .lead{display:contents}
+.sec-no{order:0}.coffee h2{order:1}.pour{order:2}.coffee .body{order:3}.beans-list{order:4}.beans-fig{order:5}
+.sec-no{font-family:var(--en);font-style:italic;font-size:15px;letter-spacing:.1em;color:var(--walnut);margin:0 var(--pad) 20px}
+.coffee h2{margin:0 var(--pad);font-weight:200;font-size:24px;line-height:1.7;letter-spacing:.12em}
+.coffee .body{margin:24px var(--pad) 0;max-width:30em;color:var(--body);font-weight:400;font-size:16px}
+.pour{margin:40px 64px 8px 0}
+.pour img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.cap{display:block;margin-top:10px;padding-left:var(--pad);font-size:11px;letter-spacing:.22em;color:var(--mute)}
+.beans-list{margin:48px var(--pad) 0;padding:0;list-style:none}
+.beans-list li{display:grid;grid-template-columns:1fr auto;column-gap:16px;padding:18px 0;border-top:1px solid var(--rule)}
+.beans-list li:last-child{border-bottom:1px solid var(--rule)}
+.beans-list b{font-weight:400;font-size:15px;letter-spacing:.1em}
+.beans-list em{grid-column:1;font-style:normal;font-weight:400;font-size:13px;color:var(--mute);letter-spacing:.04em}
+.beans-list .p{grid-row:1;grid-column:2;font-family:var(--en);font-size:17px;letter-spacing:.06em}
+.beans-fig{margin:56px 0 0 96px}
+.beans-fig img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.beans-fig .cap{padding-left:0}
+
+/* ---------- desktop: B hero + coffee ---------- */
+@media (min-width:900px){
+  :root{--pad:56px}
+  .mark{flex-direction:column;align-items:flex-start;gap:2px}
+  .mark span{display:block}
+  .mast{padding:0;height:104px}
+  .hero-copy{order:0;padding:0 0 64px;margin-top:auto}
+  .hero h1{font-size:40px;line-height:1.66;letter-spacing:.14em}
+  .hero figcaption{right:22px;bottom:28px;font-size:12px}
+  .hero picture img{height:100%;min-height:0}
+
+  /* A: kept for parity, unused with body.hero-b */
+  .hero-a .hero{position:relative;display:block;height:max(760px,100svh)}
+  .hero-a .hero figure{position:absolute;inset:0}
+  .hero-a .hero picture img{object-position:50% 50%}
+  .hero-a .hero-side{position:relative;z-index:1;display:flex;flex-direction:column;width:520px;height:100%;padding-left:var(--pad)}
+  .hero-a .facts,.hero-a .facts li{border-color:rgba(36,33,29,.28)}
+
+  /* B: narrower text column, photo bleeds right/top/bottom */
+  .hero-b .hero{display:grid;grid-template-columns:repeat(12,1fr);min-height:max(760px,100svh)}
+  .hero-b .hero-side{grid-column:1/span 3;display:flex;flex-direction:column;padding:0 32px 0 var(--pad)}
+  .hero-b .hero figure{grid-column:4/span 9;grid-row:1}
+  .hero-b .hero picture img{object-position:30% 50%}
+
+  /* 2: photos locked to the text grid */
+  .coffee{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto 1fr;padding:160px 0 0}
+  .coffee .lead{display:block;grid-column:2/span 4;grid-row:1}
+  .sec-no,.coffee h2,.coffee .body,.beans-list{margin-left:0;margin-right:0}
+  .sec-no{margin-top:0;line-height:1}
+  .coffee h2{font-size:30px;letter-spacing:.14em}
+  .coffee .lead .beans-list{max-width:none}
+  .pour{grid-column:7/-1;grid-row:1/span 2;margin:0;display:flex;flex-direction:column}
+  .pour img{flex:1 1 0;aspect-ratio:auto;height:0;min-height:0;object-position:40% 55%}
+  .beans-fig{grid-column:2/span 4;grid-row:2;margin:96px 0 0;align-self:end}
+  .pour .cap,.beans-fig .cap{padding-left:0;height:44px;margin:0;display:flex;align-items:center}
+}
+@media (min-width:1600px){ .hero h1{font-size:44px} }
+
+/* ---------- 3. menu (from index.html r4) ---------- */
+.menu{padding:0 0 104px;background:var(--espresso);color:var(--ivory)}
+.menu .sec-no{color:#D8C2A2}
+.menu-photo{margin:0;position:relative}
+.menu-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:56% 60%}
+.menu-body{padding:56px var(--pad) 0}
+.menu-body h2,.visit h2{margin:0;font-weight:200;font-size:24px;line-height:1.7;letter-spacing:.12em}
+.menu-body .sec-no,.visit .sec-no{margin:0 0 20px}
+.sheet{margin:40px 0 0}
+.sheet h3{margin:0 0 4px;font-weight:500;font-size:15px;letter-spacing:.24em;color:var(--ivory-2)}
+.sheet ul{margin:0 0 40px;padding:0;list-style:none}
+.sheet li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(239,232,220,.2);font-size:16px;font-weight:500;letter-spacing:.08em}
+.sheet li small{display:block;font-size:15px;font-weight:400;color:var(--ivory-2);letter-spacing:.04em;margin-top:2px}
+.sheet .p{font-family:var(--en);font-weight:500;font-size:19px;letter-spacing:.06em;white-space:nowrap}
+.fine{margin:0;font-size:14px;font-weight:400;color:var(--mute);letter-spacing:.04em;max-width:34em}
+.menu .fine{color:var(--ivory-2)}
+
+/* ---------- 4. visit (from index.html r4) ---------- */
+.visit{padding:0 0 88px}
+.visit-photo{margin:0}
+.visit-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 60%}
+.visit-body{padding:56px var(--pad) 0}
+.status{margin:28px 0 0;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--walnut);min-height:1.9em}
+.hours{margin:20px 0 0;padding:0;border-top:1px solid var(--rule)}
+.hours div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);font-weight:400;font-size:15px;letter-spacing:.08em;color:var(--body)}
+.hours dt{color:var(--body)}.hours dd{margin:0}
+.hours div.today dt,.hours div.today dd{color:var(--ink);font-weight:500}
+.addr{margin:40px 0 0;font-style:normal;font-size:16px;font-weight:500;letter-spacing:.06em;color:var(--ink)}
+.addr span{display:block;font-size:15px;font-weight:400;color:var(--body);letter-spacing:.04em;margin-top:4px}
+.links{display:flex;flex-wrap:wrap;column-gap:28px;margin:14px 0 0;padding:0;list-style:none}
+.links a,.call a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:500;letter-spacing:.16em;color:var(--ink);
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:9px;text-decoration-color:rgba(28,25,22,.45)}
+.links a:hover,.call a:hover{text-decoration-color:currentColor}
+.call{margin:40px 0 0;padding:24px 0 0;border-top:1px solid var(--rule)}
+.call p{margin:0;font-weight:400;font-size:15px;letter-spacing:.06em;color:var(--body)}
+.call .num{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-family:var(--en);font-size:22px;letter-spacing:.1em;text-decoration:none}
+.call .fine{margin-top:12px}
+
+/* ---------- footer ---------- */
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:28px var(--pad) 32px;border-top:1px solid var(--rule);font-size:12px;font-weight:400;letter-spacing:.14em;color:var(--mute)}
+.foot b{font-weight:600;letter-spacing:.42em;color:var(--ink)}
+.foot a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-underline-offset:6px}
+
+@media (min-width:900px){
+  .menu{margin-top:168px;padding:0}
+  .menu-photo img{aspect-ratio:auto;height:min(72svh,680px);object-position:50% 55%}
+  .menu-body{display:grid;grid-template-columns:repeat(12,1fr);padding:96px 0 120px}
+  .menu-body .head{grid-column:2/span 4}
+  .menu-body h2,.visit h2{font-size:30px;letter-spacing:.14em}
+  .sheet{grid-column:7/span 5;margin:0;display:grid;grid-template-columns:1fr 1fr;column-gap:64px}
+  .sheet .fine{grid-column:1/-1}
+  .visit{display:grid;grid-template-columns:repeat(12,1fr);padding:0}
+  .visit-photo{grid-column:1/span 6;grid-row:1;position:relative}
+  .visit-photo img{position:absolute;inset:0;height:100%;aspect-ratio:auto}
+  .visit-body{grid-column:8/span 4;padding:168px 0 168px}
+}
+.js-motion .reveal{opacity:0;transform:translateY(14px);transition:opacity 1s cubic-bezier(.2,.6,.2,1),transform 1s cubic-bezier(.2,.6,.2,1)}
+.js-motion .reveal.in{opacity:1;transform:none}
+
+/* restrained entrance */
+@media (prefers-reduced-motion:no-preference){
+  .hero picture img{animation:settle 1.6s cubic-bezier(.2,.6,.2,1) both}
+  .hero-copy{animation:rise 1.2s .3s cubic-bezier(.2,.6,.2,1) both}
+  @keyframes settle{from{opacity:0;transform:scale(1.025)}to{opacity:1;transform:none}}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body class="hero-b">
+<a class="skip" href="#main">본문 바로가기</a>
+<main id="main">
+  <section class="hero" aria-label="소담별 커피">
+    <div class="hero-side">
+      <header class="mast">
+        <a class="mark" href="./" aria-label="소담별 커피 처음으로"><b>소담별</b><span>Sodambyeol Coffee</span></a>
+        <div class="nav-wrap">
+          <span class="demo">데모 프로젝트</span>
+        </div>
+      </header>
+      <div class="hero-copy">
+        <p class="eyebrow">Mangwon · Hand drip roastery</p>
+        <h1>창가 한 자리에서<br>한 잔씩 내립니다</h1>
+        <p class="lede">망원동 골목의 작은 로스터리. 여섯 자리와 넓은 창가 테이블, 그리고 천천히 내리는 핸드드립이 전부입니다.</p>
+        <ul class="facts">
+          <li><span>여는 시간</span><span>화–일 10:00 – 18:00</span></li>
+          <li><span>쉬는 날</span><span>매주 월요일</span></li>
+        </ul>
+        <a class="quiet" href="#coffee">이번 주 원두 보기</a>
+      </div>
+    </div>
+    <figure>
+      <picture>
+        <source media="(min-width: 900px)" srcset="img/01_window.jpg">
+        <img src="img/05_cup.jpg" width="1400" height="1866" alt="회벽과 나무 창가 테이블, 그 위의 커피 한 잔">
+      </picture>
+      <figcaption>창가 테이블, 오전 열 시</figcaption>
+    </figure>
+  </section>
+
+  <section class="coffee" id="coffee" aria-labelledby="coffee-h">
+    <div class="lead">
+      <p class="sec-no">No. 01 — 커피</p>
+      <h2 id="coffee-h">화요일마다<br>조금씩만 볶습니다</h2>
+      <p class="body">한 번에 볶는 양은 사흘 치. 원두는 세 가지만 두고, 계절이 바뀌면 바꿉니다. 주문을 받으면 그때 갈아 한 잔씩 손으로 내립니다.</p>
+      <ul class="beans-list" aria-label="이번 주 원두">
+        <li><b>에티오피아 구지</b><em>살구, 홍차, 맑은 산미</em><span class="p">6,500</span></li>
+        <li><b>콜롬비아 우일라</b><em>밀크초콜릿, 붉은 사과</em><span class="p">6,000</span></li>
+        <li><b>소담 블렌드</b><em>구운 견과, 묵직한 단맛</em><span class="p">5,000</span></li>
+      </ul>
+    </div>
+    <figure class="pour">
+      <img src="img/stock_pour.jpg" width="1400" height="1866" loading="lazy" alt="주전자로 흰 드리퍼에 물을 천천히 붓는 손">
+      <span class="cap">한 잔에 약 사 분</span>
+    </figure>
+    <figure class="beans-fig">
+      <img src="img/stock_beans.jpg" width="1600" height="1200" loading="lazy" alt="돌 바닥 위 나무 스쿱에 담긴 원두와 흩어진 원두 몇 알">
+      <span class="cap">한 잔에 원두 15그램</span>
+    </figure>
+  </section>
+
+  <section class="menu" id="menu" aria-labelledby="menu-h">
+    <figure class="menu-photo reveal">
+      <img src="img/stock_serve.jpg" width="2560" height="1440" loading="lazy" alt="커피 머신 옆 바에서 회색 잔을 건네는 손">
+    </figure>
+    <div class="menu-body">
+      <div class="head">
+        <p class="sec-no">No. 02 — 메뉴</p>
+        <h2 id="menu-h">메뉴는<br>짧게 두었습니다</h2>
+      </div>
+      <div class="sheet">
+        <div>
+          <h3>커피</h3>
+          <ul>
+            <li><span>핸드드립<small>이번 주 원두 중에서</small></span><span class="p">5,000 –</span></li>
+            <li><span>아이스 핸드드립<small>급랭으로 한 잔씩</small></span><span class="p">5,500 –</span></li>
+            <li><span>드립 라테</span><span class="p">6,000</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>곁들임 · 원두</h3>
+          <ul>
+            <li><span>버터 파운드케이크</span><span class="p">4,000</span></li>
+            <li><span>무화과 스콘</span><span class="p">4,500</span></li>
+            <li><span>원두 200g<small>홀빈 또는 분쇄</small></span><span class="p">16,000 –</span></li>
+          </ul>
+        </div>
+        <p class="fine">가격은 데모용 예시입니다. 디저트는 오후에 떨어지는 날이 많습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit" aria-labelledby="visit-h">
+    <figure class="visit-photo">
+      <img src="img/stock_door.jpg" width="1728" height="2304" loading="lazy" alt="담쟁이가 덮인 작은 건물 창 아래 긴 나무 벤치">
+    </figure>
+    <div class="visit-body">
+      <p class="sec-no">No. 03 — 오시는 길</p>
+      <h2 id="visit-h">망원시장에서<br>골목 하나 안쪽</h2>
+      <p class="status" id="status" aria-live="polite">화–일 10:00 – 18:00</p>
+      <dl class="hours" id="hours">
+        <div data-days="2,3,4,5,6,0"><dt>화 – 일</dt><dd>10:00 – 18:00</dd></div>
+        <div data-days="1"><dt>월</dt><dd>쉽니다</dd></div>
+        <div><dt>마지막 주문</dt><dd>17:30</dd></div>
+      </dl>
+      <address class="addr">서울 마포구 망원동, 망원시장 북쪽 골목<span>망원역 2번 출구에서 걸어서 약 8분 · 데모 주소</span></address>
+      <ul class="links">
+        <li><a href="https://map.naver.com/p/search/%EB%A7%9D%EC%9B%90%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">네이버 지도에서 열기</a></li>
+        <li><a href="https://map.kakao.com/?q=%EB%A7%9D%EC%9B%90%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">카카오맵에서 열기</a></li>
+      </ul>
+      <div class="call">
+        <p>자리·원두 문의는 전화나 문자로 받습니다.</p>
+        <a class="num" href="tel:+8220000000">02 · 000 · 0000</a>
+        <ul class="links"><li><a href="tel:+8220000000">전화하기</a></li><li><a href="sms:+8220000000">문자 보내기</a></li></ul>
+        <p class="fine">데모 프로젝트라 실제 번호로 연결되지 않습니다.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <span><b>소담별</b> 커피 · 망원동</span>
+  <span>데모 프로젝트 — 실제 매장이 아닌 시안입니다 · 가상 매장 샘플, 사진은 무료 스톡 이미지와 일부 AI 생성</span>
+  <a href="#main">맨 위로</a>
+</footer>
+<script>
+(function(){
+  // open-now, Asia/Seoul
+  var el=document.getElementById('status'); if(!el) return;
+  var f=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+  var names=['일','월','화','수','목','금','토'], map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+  function now(){var p={};f.formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return {d:map[p.weekday],m:(+p.hour)*60+(+p.minute)}}
+  function render(){
+    var t=now(), open=t.d!==1&&t.m>=600&&t.m<1080, msg;
+    if(open){msg='지금 열려 있습니다 · 오늘 18:00까지'}
+    else{
+      var d=t.d, today=(d!==1&&t.m<600);
+      if(today){msg='지금은 닫혀 있습니다 · 오늘 10:00에 엽니다'}
+      else{var n=(d+1)%7; if(n===1) n=2; var lbl=(n===(d+1)%7)?'내일':names[n]+'요일'; msg='지금은 닫혀 있습니다 · '+lbl+' 10:00에 엽니다'}
+    }
+    el.textContent=msg;
+    document.querySelectorAll('#hours [data-days]').forEach(function(r){r.classList.toggle('today',r.dataset.days.split(',').indexOf(String(t.d))>-1)});
+  }
+  render(); setInterval(render,60000);
+})();
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('js-motion');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(n){io.observe(n)});
+})();
+</script>
+
+</body>
+</html>
