@@ -26,3 +26,8 @@
 ## r9 (2026-11-10) 메인에서 내린 파일
 메인을 판매 페이지로 줄이면서 아래 파일은 화면에서 빠졌어요. 파일은 남겨 두지만 배포 목록에서는 뺍니다:
 골목 사진(alley_d/m.jpg), 창가 사진(window_d/m.jpg), 라멘 휴대폰 다크 캡처(ramen_phone_dark.jpg), 디테일 크롭(detail_*.jpg), 손그림 화살표, 샘플 영상(samples_reel_r7.mp4·poster).
+
+## r10 (2026-11-10)
+메인 레이아웃은 apple.com/kr 의 간격·글자 크기 비율을 재서 우리 CSS로 다시 썼어요 (Apple 로고·사진·문구·코드·글꼴은 쓰지 않음). 글꼴은 Pretendard 400/600만 써요.
+메인에서 내린 파일 (남겨 두지만 배포 목록에서 뺌): tokens.css(메인은 안 씀), NotoSerifKR-300.r8.woff2, Pretendard-500.r7.woff2, sound/music.mp3·click.mp3, img/r7/*_s.jpg·*_sm.jpg.
+r10 보강: assets/img/r10/*.jpg 는 우리 샘플(cafe·salon·ramen)과 메인 문의 부분을 390px 화면에서 직접 캡처한 것 (_compare/r10/cap_r10_assets.py). 사진 출처는 각 샘플의 PHOTO_CREDITS.md 를 따릅니다.
