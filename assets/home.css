@@ -20,7 +20,7 @@
 @media (max-width:1068px){:root{--w:692px;--w-wide:692px}}
 @media (max-width:734px){:root{--w:87.5vw;--w-wide:87.5vw;--sec-y:56px}}
 @media (prefers-color-scheme:dark){
-  :root{--bg:#000000; --alt:#161617; --dark:#1D1D1F; --ink:#F5F5F7; --ink-2:#A1A1A6; --line:#424245; --link:#2997FF; --bezel:#6E6E73; --bezel-on-dark:#6E6E73; --btn:#333336; --btn-ink:#F5F5F7}
+  :root{--bg:#000000; --alt:#161617; --dark:#1D1D1F; --ink:#F5F5F7; --ink-2:#A1A1A6; --line:#424245; --link:#2997FF; --bezel:#98989D; --bezel-on-dark:#98989D; --btn:#333336; --btn-ink:#F5F5F7}
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -228,3 +228,22 @@ a{color:inherit}
   .cv-wide{left:24px;top:16px;width:520px;border-radius:10px}
   .car-nav{margin-top:14px}
 }
+
+/* r10.1: 요약 행을 단끼리 맞춤 (subgrid) — 위 머리말 5행, 아래 요약 4행 */
+@supports (grid-template-rows:subgrid){
+  .cmp-top{grid-template-rows:repeat(5,auto)}
+  .cmp-bot{grid-template-rows:repeat(4,auto)}
+  .cmp-top>li{grid-row:span 5;display:grid;grid-template-rows:subgrid}
+  .cmp-bot>li{grid-row:span 4;display:grid;grid-template-rows:subgrid}
+  .cmp-col>*{align-self:start}
+}
+.cmp-cols>li[hidden]{display:none}
+/* r10.1: 첫 카드는 화면이 짧아서 크게 놓고 오른쪽·아래로 잘리게 (다른 카드처럼 가득 차게) */
+.card-vis-big{justify-content:flex-start}
+.card-vis-big .phone{position:absolute;left:32px;top:0;width:520px;padding:12px;border-radius:64px}
+.card-vis-big .phone img{border-radius:52px}
+@media (max-width:734px){
+  .card-vis-big .phone{left:24px;width:380px;padding:9px;border-radius:48px}
+  .card-vis-big .phone img{border-radius:39px}
+}
+.cmp-col{min-width:0}.cmp-vis{min-width:0}.cmp-vis .phone{flex-shrink:1;min-width:0}

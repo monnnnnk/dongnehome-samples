@@ -31,3 +31,4 @@
 메인 레이아웃은 apple.com/kr 의 간격·글자 크기 비율을 재서 우리 CSS로 다시 썼어요 (Apple 로고·사진·문구·코드·글꼴은 쓰지 않음). 글꼴은 Pretendard 400/600만 써요.
 메인에서 내린 파일 (남겨 두지만 배포 목록에서 뺌): tokens.css(메인은 안 씀), NotoSerifKR-300.r8.woff2, Pretendard-500.r7.woff2, sound/music.mp3·click.mp3, img/r7/*_s.jpg·*_sm.jpg.
 r10 보강: assets/img/r10/*.jpg 는 우리 샘플(cafe·salon·ramen)과 메인 문의 부분을 390px 화면에서 직접 캡처한 것 (_compare/r10/cap_r10_assets.py). 사진 출처는 각 샘플의 PHOTO_CREDITS.md 를 따릅니다.
+r10.1: assets/img/r10/main_end_m.jpg = 메인 페이지(390px)에서 문의 위 섹션을 캡처할 때만 숨기고 머리말·문의·푸터를 한 번에 찍은 것 (이어 붙이기·내용 추가 없음).
