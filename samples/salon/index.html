@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>결 헤어 GYEOL HAIR — 1인 살롱</title>
+<meta name="description" content="한 사람이 상담부터 마무리까지 맡는 1인 살롱, 결 헤어. 시술과 가격, 예약, 영업시간과 오시는 길.">
+<link rel="preload" href="fonts/Hahmlet-ExtraBold.subset.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Hahmlet © 2020 The Hahmlet Project Authors · Wanted Sans © 2024 The Wanted Sans Project Authors — SIL OFL 1.1, subset woff2 (fonts/OFL_*.txt) */
+@font-face{font-family:"Hahm";src:url(fonts/Hahmlet-ExtraBold.subset.woff2) format("woff2");font-weight:800;font-display:block}
+@font-face{font-family:"Hahm";src:url(fonts/Hahmlet-Medium.subset.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Wanted";src:url(fonts/WantedSans-Medium.subset.woff2) format("woff2");font-weight:500;font-display:swap}
+:root{--b:#6B1730;--b2:#521124;--st:#F2EEE9;--wh:#FFFFFF;--ink:#191516;--body:#2A2426;--line:#D9D1CB;--gold:#8A6A2F;--nav:80px;--pad:48px}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
+body{background:var(--wh);color:var(--body);font-family:"Wanted",sans-serif;font-weight:500;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--b);outline-offset:3px}
+.serif{font-family:"Hahm",serif}
+.num{font-family:"Hahm",serif;font-weight:500;font-size:16px;letter-spacing:.24em;text-transform:uppercase;color:var(--b)}
+h2{font-family:"Hahm",serif;font-weight:800;font-size:72px;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-top:20px}
+section{padding:130px var(--pad)}
+.wrap{max-width:1344px;margin:0 auto}
+.wrap>*,form>*{min-width:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 30px;font-size:16px;letter-spacing:.06em;border:0;cursor:pointer;transition:background .2s,color .2s}
+.btn.b{background:var(--b);color:var(--wh)}
+.btn.b:hover{background:var(--b2)}
+.btn.l{box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);background:transparent}
+.btn.l:hover{background:var(--ink);color:var(--wh)}
+.btn.w{background:var(--wh);color:var(--b)}
+
+.nav{position:fixed;z-index:9;top:0;left:0;right:0;height:var(--nav);display:flex;justify-content:space-between;align-items:center;padding:0 var(--pad);background:var(--wh);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 1px 0 var(--line)}
+.logo{display:flex;align-items:baseline;gap:14px;min-height:44px;align-items:center}
+.logo b{font-family:"Hahm",serif;font-weight:800;font-size:36px;color:var(--b);line-height:1}
+.logo span{font-family:"Hahm",serif;font-weight:500;font-size:16px;letter-spacing:.3em;color:var(--ink)}
+.links{display:flex;align-items:center;gap:4px}
+.links a{display:flex;align-items:center;min-height:44px;padding:0 16px;font-size:16px;color:var(--ink)}
+.links a:hover{color:var(--b)}
+.links a.btn{margin-left:12px;color:var(--wh);padding:0 24px;min-height:48px}
+
+.hero{display:grid;grid-template-columns:4fr 8fr;min-height:100svh;padding-top:var(--nav)}
+.htext{display:flex;flex-direction:column;justify-content:space-between;padding:56px var(--pad) 48px}
+.htext h1{font-family:"Hahm",serif;font-weight:800;color:var(--b);font-size:220px;line-height:.9;letter-spacing:-.04em}
+.htext h1 small{display:block;font-weight:500;font-size:17px;letter-spacing:.34em;color:var(--ink);margin-top:26px}
+.htext p.t{font-family:"Hahm",serif;font-weight:500;font-size:30px;line-height:1.45;color:var(--ink)}
+.htext .meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;font-size:16px}
+.htext .meta b{display:block;font-weight:500;color:var(--b);font-size:16px;letter-spacing:.16em}
+.hero picture,.hero picture img{width:100%;height:100%}
+.hero picture img{object-fit:cover;object-position:94% 50%}
+
+.about{background:var(--st)}
+.about .wrap{display:grid;grid-template-columns:7fr 5fr;gap:96px;align-items:center}
+.about p.lead{font-family:"Hahm",serif;font-weight:500;font-size:24px;line-height:1.7;color:var(--ink);margin-top:36px;max-width:24em}
+.steps{list-style:none;counter-reset:s;margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.steps li{counter-increment:s;border-top:2px solid var(--b);padding-top:16px;font-size:16px}
+.steps li::before{content:"0" counter(s);display:block;font-family:"Hahm",serif;font-weight:800;font-size:30px;color:var(--b);margin-bottom:6px}
+.steps b{display:block;font-weight:500;color:var(--ink);font-size:18px}
+.about figure img{width:100%}
+
+.svc .head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap}
+.filter{display:flex;gap:0;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.filter button{min-height:50px;padding:0 24px;border:0;background:transparent;font-size:16px;cursor:pointer;color:var(--ink)}
+.filter button[aria-pressed="true"]{background:var(--ink);color:var(--wh)}
+.slist{list-style:none;margin-top:56px;border-top:1.5px solid var(--ink)}
+.slist li{display:grid;grid-template-columns:90px 1.2fr 1fr 180px;gap:32px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line)}
+.slist .k{font-family:"Hahm",serif;font-weight:500;font-size:16px;letter-spacing:.2em;color:var(--b)}
+.slist h3{font-family:"Hahm",serif;font-weight:800;font-size:32px;line-height:1.25;color:var(--ink)}
+.slist p{font-size:16px}
+.slist .p{font-family:"Hahm",serif;font-weight:500;font-size:26px;color:var(--ink);text-align:right;white-space:nowrap}
+.slist .p small{display:block;font-family:"Wanted",sans-serif;font-size:16px;color:var(--body);letter-spacing:0}
+.snote{margin-top:24px;font-size:16px}
+
+.objs{padding-top:0}
+.objs .wrap{display:grid;grid-template-columns:5fr 7fr;gap:28px;align-items:end}
+.objs figcaption{font-size:16px;margin-top:14px;color:var(--body)}
+.objs figcaption b{font-family:"Hahm",serif;font-weight:500;color:var(--b);letter-spacing:.2em;margin-right:12px;font-size:16px}
+
+.book{background:var(--b);color:var(--wh)}
+.book .num{color:var(--wh)}
+.book h2{color:var(--wh)}
+.book .wrap{display:grid;grid-template-columns:5fr 7fr;gap:96px;align-items:start}
+.book p.lead{margin-top:28px;max-width:24em}
+.book .alt{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.book .btn.l{box-shadow:inset 0 0 0 1.5px var(--wh);color:var(--wh)}
+.book .btn.l:hover{background:var(--wh);color:var(--b)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;background:var(--wh);color:var(--body);padding:44px}
+.f{display:flex;flex-direction:column;gap:8px}
+.f.full{grid-column:1/-1}
+.f label,.f legend{font-size:16px;color:var(--ink)}
+.f input:not([type=radio]),.f select,.f textarea{width:100%;min-height:54px;padding:12px 16px;border:0;border-bottom:1.5px solid var(--ink);background:var(--st);font-size:17px;appearance:none;border-radius:0}
+.f textarea{min-height:96px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-bottom-color:var(--b);box-shadow:0 2px 0 var(--b)}
+.f select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 24px) 50%,calc(100% - 18px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:44px}
+.f [aria-invalid="true"]{border-bottom-color:#A1281C;background:#FBECEC}
+.err{font-size:16px;line-height:1.5;color:#8E1B1B;min-height:1.5em}
+fieldset.f{border:0}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slots label{position:relative}
+.slots input{position:absolute;opacity:0;pointer-events:none}
+.slots span{display:flex;align-items:center;justify-content:center;min-height:50px;box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;font-size:16px}
+.slots input:checked+span{background:var(--b);color:var(--wh);box-shadow:none}
+.slots input:disabled+span{color:#4A4345;background:var(--st);text-decoration:line-through;cursor:not-allowed}
+.slots input:focus-visible+span{outline:3px solid var(--b);outline-offset:2px}
+.slots .hint{grid-column:1/-1;font-size:16px}
+.submit{grid-column:1/-1;display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:10px}
+.est{font-size:16px}
+.done{grid-column:1/-1;padding:22px 26px;background:var(--st);color:var(--ink);border-left:4px solid var(--b)}
+.done b{display:block;font-family:"Hahm",serif;font-weight:800;font-size:24px;color:var(--b);margin-bottom:4px}
+
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:96px}
+.hours{list-style:none;margin-top:40px;border-top:1.5px solid var(--ink)}
+.hours li{display:flex;justify-content:space-between;padding:14px 4px;border-bottom:1px solid var(--line);font-size:17px}
+.hours li.today{color:var(--b)}
+.hours li.today b::after{content:"  오늘";font-size:16px;letter-spacing:.1em}
+.hours b{font-family:"Hahm",serif;font-weight:800}
+.addr{font-family:"Hahm",serif;font-weight:500;font-size:26px;line-height:1.5;color:var(--ink);margin-top:40px}
+.vnote{margin-top:14px;font-size:16px}
+.maplinks{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+
+footer{background:var(--wh);padding:0 var(--pad) 32px;overflow:hidden}
+.fbig{display:flex;align-items:end;justify-content:space-between;gap:24px;border-top:1.5px solid var(--ink);padding-top:28px}
+.fbig b{font-family:"Hahm",serif;font-weight:800;color:var(--b);font-size:clamp(140px,24vw,340px);line-height:.85;letter-spacing:-.04em}
+.fbig span{font-family:"Hahm",serif;font-weight:500;font-size:17px;letter-spacing:.3em;color:var(--ink);padding-bottom:22px}
+.fb{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px;font-size:16px}
+.fb a{display:inline-flex;align-items:center;min-height:44px}
+
+@media (max-width:1100px){
+  h2{font-size:56px}.htext h1{font-size:160px}
+  .about .wrap,.book .wrap,.visit .wrap{grid-template-columns:1fr;gap:56px}
+  .slist li{grid-template-columns:70px 1fr 160px}.slist li p{grid-column:2/3}
+}
+@media (max-width:640px){
+  :root{--nav:64px;--pad:20px}
+  body{font-size:16px}
+  .logo b{font-size:30px}.logo span{font-size:16px;letter-spacing:.22em}
+  .links a.hide-m{display:none}
+  .links a.btn{margin-left:0;padding:0 18px}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero picture{order:-1}
+  .hero picture img{height:calc(100svh - var(--nav) - 250px);min-height:400px;object-position:50% 40%}
+  .htext{padding:24px var(--pad) 56px;gap:18px}
+  .htext h1{font-size:64px;display:flex;align-items:baseline;gap:14px}
+  .htext h1 small{font-size:16px;margin-top:0;letter-spacing:.2em}
+  .htext p.t{font-size:22px}
+  section{padding:88px var(--pad)}
+  h2{font-size:40px}
+  .about p.lead{font-size:19px}
+  .steps{grid-template-columns:1fr;gap:20px}
+  .filter{width:100%}.filter button{flex:1;padding:0 8px}
+  .slist li{grid-template-columns:1fr auto;gap:4px 16px;padding:24px 0}
+  .slist .k{grid-column:1/-1}
+  .slist h3{font-size:25px}
+  .slist li p{grid-column:1/-1;order:3}
+  .slist .p{font-size:21px}
+  .objs .wrap{grid-template-columns:1fr;gap:40px}
+  form{grid-template-columns:1fr;padding:26px 18px}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .btn{width:100%}.links a.btn{width:auto}
+  .addr{font-size:21px}
+  .fbig{flex-direction:column;align-items:start}
+  .fbig span{padding-bottom:0}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="top">
+  <a class="logo" href="#top" aria-label="결 헤어 처음으로"><b>결</b><span>GYEOL HAIR</span></a>
+  <nav class="links" aria-label="주요 메뉴">
+    <a class="hide-m" href="#about">살롱</a><a class="hide-m" href="#services">시술·가격</a><a class="hide-m" href="#visit">오시는 길</a>
+    <a class="btn b" href="#book">예약하기</a>
+  </nav>
+</header>
+<main>
+<div class="hero">
+  <div class="htext">
+    <h1>결<small>GYEOL HAIR · 1인 살롱</small></h1>
+    <div>
+      <p class="t">상담부터 마무리까지,<br>한 사람이 맡습니다.</p>
+      <div class="meta"><span><b>OPEN</b>화–토 10:00 – 19:00</span><span><b>CLOSED</b>일·월</span><span><b>DAILY</b>하루 여섯 분</span></div>
+    </div>
+  </div>
+  <picture>
+    <source media="(max-width:640px)" srcset="img/front_mobile.jpg" width="1080" height="1920">
+    <img src="img/front_desktop.jpg" width="2048" height="1152" alt="밝은 석재 벽의 살롱 앞. 버건디 문틀과 버건디 명판에 결, 큰 창 안으로 둥근 거울과 갈색 가죽 의자 하나가 보인다">
+  </picture>
+</div>
+
+<section class="about" id="about" aria-labelledby="h-about">
+ <div class="wrap">
+  <div>
+    <p class="num">I — Salon</p>
+    <h2 id="h-about">의자는 하나,<br>거울도 하나.</h2>
+    <p class="lead">예약한 시간에는 그 한 분만 머리를 합니다. 머리카락의 결과 자라는 방향을 먼저 보고, 손질이 쉬운 길이를 함께 정합니다.</p>
+    <ol class="steps">
+      <li><b>상담</b>사진이 있으면 보여 주세요. 평소 손질 시간도 여쭙니다.</li>
+      <li><b>시술</b>처음부터 끝까지 같은 사람이 합니다.</li>
+      <li><b>마무리</b>집에서 말리는 법을 거울 앞에서 알려 드립니다.</li>
+    </ol>
+  </div>
+  <figure><img src="img/mirror.jpg" width="864" height="1152" alt="둥근 거울 위에 금빛으로 쓰인 결 글자와 그 아래 갈색 가죽 의자" loading="lazy"></figure>
+ </div>
+</section>
+
+<section class="svc" id="services" aria-labelledby="h-svc">
+ <div class="wrap">
+  <div class="head">
+    <div><p class="num">II — Services</p><h2 id="h-svc">시술과 가격</h2></div>
+    <div class="filter" role="group" aria-label="시술 분류">
+      <button type="button" aria-pressed="true" data-f="all">전체</button>
+      <button type="button" aria-pressed="false" data-f="cut">커트</button>
+      <button type="button" aria-pressed="false" data-f="chem">펌·염색</button>
+      <button type="button" aria-pressed="false" data-f="care">케어</button>
+    </div>
+  </div>
+  <ul class="slist" id="slist" aria-live="polite">
+    <li data-c="cut"><span class="k">CUT</span><h3>커트</h3><p>샴푸와 드라이 포함. 길이와 숱을 함께 정리합니다.</p><span class="p">45,000<small>약 60분</small></span></li>
+    <li data-c="cut"><span class="k">TRIM</span><h3>앞머리·기장 정리</h3><p>지난 커트 후 두 달 안이면 짧게 손봅니다.</p><span class="p">15,000<small>약 20분</small></span></li>
+    <li data-c="chem"><span class="k">PERM</span><h3>펌</h3><p>모발 상태에 따라 약을 고릅니다. 길이에 따라 달라집니다.</p><span class="p">150,000~<small>약 150분</small></span></li>
+    <li data-c="chem"><span class="k">COLOR</span><h3>염색</h3><p>뿌리 염색은 80,000원부터입니다.</p><span class="p">110,000~<small>약 120분</small></span></li>
+    <li data-c="care"><span class="k">CARE</span><h3>두피·모발 클리닉</h3><p>두피 각질 정리와 모발 보습. 단독 또는 시술과 함께.</p><span class="p">60,000<small>약 40분</small></span></li>
+  </ul>
+  <p class="snote">가격 단위는 원입니다. 펌과 염색은 상담 후 정확한 금액을 먼저 말씀드립니다.</p>
+ </div>
+</section>
+
+<section class="objs" aria-label="살롱의 물건들">
+ <div class="wrap">
+  <figure><img src="img/products.jpg" width="864" height="1152" alt="결 로고가 찍힌 버건디 쇼핑백과 샴푸, 헤어 오일 병" loading="lazy"><figcaption><b>TAKE HOME</b>살롱에서 쓰는 샴푸와 오일을 그대로 사 가실 수 있습니다.</figcaption></figure>
+  <figure><img src="img/towels.jpg" width="1152" height="864" alt="결 로고가 수놓인 버건디 수건과 흰 수건, 예약 카드, 가위와 빗" loading="lazy"><figcaption><b>RESERVATION</b>다음 예약은 카드에 적어 드립니다.</figcaption></figure>
+ </div>
+</section>
+
+<section class="book" id="book" aria-labelledby="h-book">
+ <div class="wrap">
+  <div>
+    <p class="num">III — Booking</p>
+    <h2 id="h-book">원하는 시간을<br>골라 주세요.</h2>
+    <p class="lead">시술과 날짜를 고르면 비어 있는 시작 시간이 보입니다. 예약을 남기시면 한 시간 안에 문자로 확정해 드립니다. 시술이 19:00 전에 끝나는 시간만 보입니다.</p>
+    <div class="alt"><a class="btn l" href="sms:020000000">문자로 문의</a><a class="btn l" href="tel:020000000">전화 02-000-0000</a></div>
+  </div>
+  <form id="bk" novalidate>
+    <div class="f full"><label for="svc">시술</label><select id="svc" name="svc" required aria-describedby="e-svc">
+      <option value="">선택해 주세요</option>
+      <option value="cut" data-m="60">커트 · 45,000원 · 약 60분</option>
+      <option value="trim" data-m="20">앞머리·기장 정리 · 15,000원 · 약 20분</option>
+      <option value="perm" data-m="150">펌 · 150,000원~ · 약 150분</option>
+      <option value="color" data-m="120">염색 · 110,000원~ · 약 120분</option>
+      <option value="care" data-m="40">두피·모발 클리닉 · 60,000원 · 약 40분</option>
+    </select><p class="err" id="e-svc"></p></div>
+    <div class="f full"><label for="dt">날짜 (화–토)</label><input id="dt" name="dt" type="date" required aria-describedby="e-dt"><p class="err" id="e-dt"></p></div>
+    <fieldset class="f full" aria-describedby="e-tm"><legend>시작 시간</legend><div class="slots" id="slots"><p class="hint">시술과 날짜를 먼저 골라 주세요.</p></div><p class="err" id="e-tm"></p></fieldset>
+    <div class="f"><label for="nm">이름</label><input id="nm" name="nm" autocomplete="name" required aria-describedby="e-nm"><p class="err" id="e-nm"></p></div>
+    <div class="f"><label for="ph">휴대폰 번호</label><input id="ph" name="ph" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" required aria-describedby="e-ph"><p class="err" id="e-ph"></p></div>
+    <div class="f full"><label for="memo">요청 사항 (선택)</label><textarea id="memo" name="memo" maxlength="200" placeholder="지금 길이, 원하는 스타일, 최근 시술 등"></textarea></div>
+    <div class="submit"><button class="btn b" type="submit">예약 남기기</button><span class="est" id="est" aria-live="polite"></span></div>
+    <div class="done" id="done" role="status" hidden></div>
+  </form>
+ </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="h-visit">
+ <div class="wrap">
+  <div>
+    <p class="num">IV — Visit</p>
+    <h2 id="h-visit">찾아오시는 길</h2>
+    <p class="addr">서울 ○○구 ○○로 00, 1층<br>버건디 문, 결 명판이 붙은 곳.</p>
+    <p class="vnote">전용 주차 공간이 없습니다. 가까운 공영주차장이나 대중교통을 이용해 주세요.</p>
+    <div class="maplinks">
+      <a class="btn b" href="https://map.naver.com/p/search/%EA%B2%B0%20%ED%97%A4%EC%96%B4" target="_blank" rel="noopener">네이버 지도에서 ‘결 헤어’ 찾기 ↗</a>
+      <a class="btn l" href="https://map.kakao.com/?q=%EA%B2%B0%20%ED%97%A4%EC%96%B4" target="_blank" rel="noopener">카카오맵에서 찾기 ↗</a>
+    </div>
+  </div>
+  <div>
+    <p class="num">Hours</p>
+    <ul class="hours" id="hours">
+      <li data-d="2"><b>화</b><span>10:00 – 19:00</span></li>
+      <li data-d="3"><b>수</b><span>10:00 – 19:00</span></li>
+      <li data-d="4"><b>목</b><span>10:00 – 19:00</span></li>
+      <li data-d="5"><b>금</b><span>10:00 – 19:00</span></li>
+      <li data-d="6"><b>토</b><span>10:00 – 19:00</span></li>
+      <li data-d="0"><b>일</b><span>쉽니다</span></li>
+      <li data-d="1"><b>월</b><span>쉽니다</span></li>
+    </ul>
+    <p class="vnote">모든 시술은 19:00 전에 끝나도록 시작합니다. 커트는 17:00 시작이 마지막입니다.</p>
+  </div>
+ </div>
+</section>
+</main>
+<footer>
+  <div class="fbig" aria-hidden="true"><b>결</b><span>GYEOL HAIR</span></div>
+  <div class="fb"><span>결 헤어 · 서울 ○○구 ○○로 00, 1층 · <a href="tel:020000000">02-000-0000</a></span><a href="#top">맨 위로 ↑</a></div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

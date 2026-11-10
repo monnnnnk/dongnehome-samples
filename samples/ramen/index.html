@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>라멘 소라 — 토리 파이탄 라멘</title>
+<meta name="description" content="닭 뼈를 열 시간 끓인 토리 파이탄. 카운터 열 석의 라멘집 소라. 메뉴, 영업시간, 오시는 길, 예약과 포장 주문.">
+<link rel="preload" href="fonts/GasoekOne-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Gasoek One © 2022 The Gasoek Project Authors · Gowun Batang © 2021 The Gowun Batang Project Authors — SIL OFL 1.1, subset woff2 (fonts/OFL_*.txt) */
+@font-face{font-family:"Gasoek";src:url(fonts/GasoekOne-Regular.subset.woff2) format("woff2");font-display:block}
+@font-face{font-family:"Gowun";src:url(fonts/GowunBatang-Regular.subset.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Gowun";src:url(fonts/GowunBatang-Bold.subset.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--or:#FF4A12;--ink:#141414;--body:#222;--paper:#F5F2ED;--line:#D9D4CC;--nav:72px;--pad:40px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
+body{background:#fff;color:var(--body);font-family:"Gowun",serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wm{font-family:"Gasoek",sans-serif;font-weight:400;line-height:1;letter-spacing:.02em;color:var(--ink)}
+.lab{font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--or);margin-right:10px;vertical-align:1px}
+.wrap{max-width:1360px;margin:0 auto}
+section{padding:128px var(--pad)}
+h2.big{font-family:"Gasoek",sans-serif;font-weight:400;font-size:72px;line-height:1.12;letter-spacing:.01em;color:var(--ink);margin-top:20px}
+
+/* nav */
+.nav{position:fixed;z-index:9;top:0;left:0;right:0;height:var(--nav);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--pad);background:#fff;border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-color:var(--line)}
+.nav .wm{font-size:34px;justify-self:start;display:flex;align-items:center;min-height:44px}
+.links{justify-self:end;display:flex;align-items:center;gap:4px}
+.links a{display:flex;align-items:center;min-height:44px;padding:0 14px;font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase}
+.links a:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px;text-decoration-color:var(--or)}
+.links .call{background:var(--ink);color:#fff;margin-left:10px;padding:0 18px;letter-spacing:.06em;box-shadow:inset 0 -4px 0 var(--or)}
+.links .call:hover{text-decoration:none}
+
+/* hero */
+.hero{height:100svh;min-height:560px;padding-top:var(--nav)}
+.hero picture,.hero img{width:100%;height:100%}
+.hero img{object-fit:cover;object-position:50% 40%}
+
+/* intro */
+.intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.intro p.lead{font-size:19px;color:var(--body);margin-top:28px;max-width:28em}
+.facts{display:flex;gap:48px;margin-top:40px;padding-top:24px;border-top:2px solid var(--ink)}
+.facts b{display:block;font-family:"Gasoek",sans-serif;font-weight:400;font-size:40px;line-height:1.1;color:var(--ink)}
+.facts span{font-size:16px}
+
+/* menu */
+.menu{background:var(--paper)}
+.mhead{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:48px}
+.tabs button{min-height:44px;padding:0 22px;border:0;border-radius:999px;background:transparent;font-weight:700;font-size:16px;cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.mgrid{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;margin-top:40px;align-items:start}
+.mlist{list-style:none;border-top:2px solid var(--ink)}
+.mlist li{display:grid;grid-template-columns:1fr auto;gap:4px 24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.mlist li[hidden]{display:none}
+.mlist h3{font-weight:700;font-size:22px;color:var(--ink);line-height:1.4}
+.mlist .p{font-weight:700;font-size:20px;color:var(--ink);font-variant-numeric:tabular-nums}
+.mlist p{grid-column:1/-1;font-size:16px;color:var(--body)}
+.mlist .tag{display:inline-flex;align-items:center;margin-left:12px;font-size:16px;font-weight:700;vertical-align:2px}
+.mlist .tag::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--or);margin-right:6px}
+.mnote{font-size:16px;margin-top:20px}
+.mphoto{position:sticky;top:calc(var(--nav) + 24px)}
+.mphoto figcaption{font-size:16px;margin-top:12px}
+
+/* takeout */
+.take .wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.take figure{position:relative}
+.take .txt{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-bottom:28px;align-items:end}
+.take p{max-width:30em}
+
+/* visit */
+.visit{background:var(--ink);color:#fff}
+.visit .lab,.visit h2.big{color:#fff}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.hours{list-style:none;margin-top:36px;border-top:1px solid #555}
+.hours li{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #555;font-size:17px}
+.hours li.today{box-shadow:inset 6px 0 0 var(--or);margin:0 -14px;padding:14px 14px 14px 22px;background:#262626}
+.hours li.today b::after{content:" 오늘";font-weight:700}
+.addr{font-size:19px;margin-top:32px}
+.maplinks{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;font-weight:700;font-size:17px;cursor:pointer;border:0}
+.btn.or{background:#fff;color:var(--ink);box-shadow:inset 0 -5px 0 var(--or)}
+.btn.ghost{box-shadow:inset 0 0 0 1.5px #fff;color:#fff;background:transparent}
+.btn.dark{background:var(--ink);color:#fff}
+.map{position:relative;aspect-ratio:4/3;background:#202020;overflow:hidden}
+.map svg{width:100%;height:100%;display:block}
+.map .pin{position:absolute;left:58%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
+.map .pin b{font-family:"Gasoek",sans-serif;font-weight:400;background:#fff;color:var(--ink);padding:6px 12px;font-size:22px;line-height:1;box-shadow:inset 0 -5px 0 var(--or)}
+.map .pin i{width:2px;height:22px;background:var(--or)}
+.map figcaption{position:absolute;left:16px;bottom:12px;font-size:16px;color:#fff}
+
+/* book */
+.book .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start}
+.book p.lead{margin-top:24px;max-width:26em}
+.telbig{display:inline-flex;align-items:center;min-height:52px;margin-top:24px;font-family:"Gasoek",sans-serif;font-size:40px;color:var(--ink);border-bottom:4px solid var(--or)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.f{display:flex;flex-direction:column;gap:8px}
+.f.full{grid-column:1/-1}
+.f label,.f legend{font-weight:700;font-size:16px;color:var(--ink)}
+.f input,.f select,.f textarea{min-height:52px;padding:12px 14px;border:0;border-bottom:2px solid var(--ink);background:var(--paper);font-size:17px;border-radius:0;appearance:none}
+.f textarea{min-height:96px;resize:vertical}
+.f select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
+.f input[aria-invalid="true"],.f select[aria-invalid="true"]{border-bottom-color:#B3261E;background:#FCEDEA}
+.err{font-size:16px;line-height:1.5;color:#9C1C14;min-height:1.5em}
+fieldset.f{border:0}
+.seg{display:flex;gap:8px}
+.seg label{flex:1}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:flex;align-items:center;justify-content:center;min-height:52px;box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:700;cursor:pointer}
+.seg input:checked+span{background:var(--ink);color:#fff}
+.seg input:focus-visible+span{outline:3px solid var(--or);outline-offset:2px}
+.submit{grid-column:1/-1;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.done{grid-column:1/-1;padding:24px 24px 24px 30px;background:var(--ink);color:#fff;font-size:17px;box-shadow:inset 6px 0 0 var(--or)}
+.done[hidden]{display:none}
+.done b{font-family:"Gasoek",sans-serif;font-weight:400;font-size:28px;display:block;margin-bottom:6px;color:var(--or)}
+
+/* footer */
+footer{background:var(--or);color:var(--ink);padding:72px 0 0;overflow:hidden}
+footer .wm{padding:0 var(--pad)}
+footer .wm{font-size:clamp(120px,22vw,340px);letter-spacing:.02em;line-height:.9}
+.fb{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:40px;padding:20px var(--pad);background:var(--ink);color:#fff;font-weight:700;font-size:17px}
+.fb a{display:inline-flex;align-items:center;min-height:44px}
+
+@media (max-width:1100px){h2.big{font-size:56px}.mgrid,.intro .wrap,.visit .wrap,.book .wrap{grid-template-columns:1fr}.mphoto{position:static}}
+@media (max-width:640px){
+  :root{--nav:60px;--pad:20px}
+  body{font-size:16px}
+  .nav{grid-template-columns:auto 1fr}
+  .nav .mid{display:none}
+  .nav .wm{font-size:28px}
+  .links a.hide-m{display:none}
+  .links a{padding:0 12px}
+  .links .call{margin-left:4px}
+  .hero{height:auto;min-height:0}
+  .hero img{height:calc(100svh - var(--nav));min-height:540px;object-position:50% 45%}
+  section{padding:88px var(--pad)}
+  h2.big{font-size:38px}
+  .intro .wrap,.mgrid,.visit .wrap,.book .wrap{gap:40px}
+  .intro p.lead{font-size:17px}
+  .facts{gap:28px}
+  .facts b{font-size:30px}
+  .tabs{gap:6px;flex-wrap:nowrap}
+  .tabs button{padding:0 14px;flex:1 0 auto}
+  .mlist h3{font-size:19px}
+  .mlist .p{font-size:18px}
+  .take .wrap,.take .txt{grid-template-columns:1fr;gap:20px}
+  form{grid-template-columns:1fr}
+  .telbig{font-size:30px}
+  .btn{width:100%}
+  .fb{font-size:16px}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="top">
+  <a class="wm" href="#top" aria-label="라멘 소라 처음으로">소라</a>
+  <span class="mid lab">Tori Paitan Ramen</span>
+  <nav class="links" aria-label="주요 메뉴">
+    <a class="hide-m" href="#menu">Menu</a><a class="hide-m" href="#visit">Visit</a><a href="#book">Book</a>
+    <a class="call" href="tel:020000000" aria-label="전화 걸기 02-000-0000">02-000-0000</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero">
+  <h1 class="sr">라멘 소라 — 토리 파이탄 라멘</h1>
+  <picture>
+    <source media="(max-width:640px)" srcset="img/front_mobile.jpg" width="1080" height="1920">
+    <img src="img/front_desktop.jpg" width="2048" height="1152" alt="연회색 벽에 오렌지색 노렌이 걸린 라멘 소라의 나무 미닫이문. 노렌과 벽등에 소라 글자가 찍혀 있다">
+  </picture>
+</div>
+
+<section class="intro" aria-labelledby="h-intro">
+ <div class="wrap">
+  <div>
+    <p class="lab"><span class="dot"></span>Tori Paitan · Shoyu · Tsukemen</p>
+    <h2 class="big" id="h-intro">닭 뼈를 열 시간.<br>한 그릇에 담습니다.</h2>
+    <p class="lead">뽀얀 토리 파이탄과 맑은 쇼유. 면은 전날 뽑아 하루 재우고, 카운터 열 석에서 한 그릇씩 냅니다. 국물이 떨어지면 일찍 닫습니다.</p>
+    <div class="facts"><div><b>10</b><span>시간 끓인 육수</span></div><div><b>10</b><span>카운터 좌석</span></div><div><b>3</b><span>가지 라멘</span></div></div>
+  </div>
+  <img src="img/bowl.jpg" width="1152" height="864" alt="오렌지색 테두리 그릇에 담긴 토리 파이탄 라멘. 옆에 소라 글자가 찍힌 오렌지색 젓가락 봉투와 흰 숟가락">
+ </div>
+</section>
+
+<section class="menu" id="menu" aria-labelledby="h-menu">
+ <div class="wrap">
+  <div class="mhead">
+    <div><p class="lab"><span class="dot"></span>Menu</p><h2 class="big" id="h-menu">국물은 두 가지,<br>면은 세 가지.</h2></div>
+  </div>
+  <div class="tabs" role="tablist" aria-label="메뉴 분류">
+    <button role="tab" aria-selected="true" aria-controls="mlist" data-f="all">전체</button>
+    <button role="tab" aria-selected="false" aria-controls="mlist" data-f="ramen">라멘</button>
+    <button role="tab" aria-selected="false" aria-controls="mlist" data-f="side">곁들임</button>
+    <button role="tab" aria-selected="false" aria-controls="mlist" data-f="add">추가</button>
+    <button role="tab" aria-selected="false" aria-controls="mlist" data-f="drink">음료</button>
+  </div>
+  <div class="mgrid">
+    <div>
+      <ul class="mlist" id="mlist" role="tabpanel" aria-live="polite">
+        <li data-c="ramen"><h3>토리 파이탄<span class="tag">대표</span></h3><span class="p">11,000</span><p>뽀얀 닭 육수, 차슈 두 장, 반숙 달걀 반 개, 파와 김.</p></li>
+        <li data-c="ramen"><h3>쇼유 라멘</h3><span class="p">10,000</span><p>맑은 간장 국물에 완탕, 얇은 면.</p></li>
+        <li data-c="ramen"><h3>츠케멘</h3><span class="p">12,000</span><p>굵은 면을 진한 국물에 찍어 먹습니다.</p></li>
+        <li data-c="side"><h3>차슈동</h3><span class="p">4,000</span><p>구운 차슈와 파를 올린 작은 덮밥.</p></li>
+        <li data-c="side"><h3>교자 5개</h3><span class="p">6,000</span><p>바닥을 바삭하게 구운 군만두.</p></li>
+        <li data-c="add"><h3>맛달걀</h3><span class="p">2,000</span><p>간장에 하루 재운 반숙 달걀 한 개.</p></li>
+        <li data-c="add"><h3>면 추가</h3><span class="p">1,500</span><p>국물을 남겨 두셨다면 면만 더 드립니다.</p></li>
+        <li data-c="add"><h3>차슈 추가</h3><span class="p">3,000</span><p>차슈 두 장.</p></li>
+        <li data-c="add"><h3>공깃밥</h3><span class="p">1,000</span><p>남은 국물에 말아 드세요.</p></li>
+        <li data-c="drink"><h3>우롱차</h3><span class="p">2,500</span><p>차갑게 우린 병 우롱차.</p></li>
+        <li data-c="drink"><h3>생맥주</h3><span class="p">5,000</span><p>저녁 영업에만 냅니다.</p></li>
+      </ul>
+      <p class="mnote">가격 단위는 원입니다. 주문은 입구 식권 발매기에서 하며 현금과 카드 모두 받습니다.</p>
+    </div>
+    <figure class="mphoto"><img src="img/bag.jpg" width="864" height="1152" alt="소라 글자가 찍힌 오렌지색 포장 봉투와 엎어 둔 흰 그릇, 메뉴가 적힌 카드" loading="lazy"><figcaption>포장은 국물과 면을 따로 담아 드립니다.</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="take" aria-labelledby="h-take">
+ <div class="wrap">
+  <div class="txt">
+    <div><p class="lab"><span class="dot"></span>Counter</p><h2 class="big" id="h-take">주방이 보이는<br>카운터 열 석.</h2></div>
+    <p>새벽 다섯 시 반에 불을 올리고, 열한 시 반에 문을 엽니다. 앞치마를 맨 두 사람이 면을 삶고 국물을 붓는 모습을 바로 앞에서 보실 수 있습니다.</p>
+  </div>
+  <img src="img/apron.jpg" width="864" height="1152" alt="소라 글자가 오렌지색으로 찍힌 캔버스 앞치마가 나무 걸이에 걸려 있다" loading="lazy">
+  <img src="img/bowl_crop.jpg" width="864" height="1152" alt="토리 파이탄 라멘 그릇을 가까이서 본 모습" loading="lazy">
+ </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="h-visit">
+ <div class="wrap">
+  <div>
+    <p class="lab"><span class="dot"></span>Visit</p>
+    <h2 class="big" id="h-visit">오렌지 노렌이<br>걸린 문.</h2>
+    <ul class="hours" id="hours">
+      <li data-d="1"><b>월</b><span>쉽니다</span></li>
+      <li data-d="2"><b>화</b><span>11:30 – 15:00 · 17:00 – 21:00</span></li>
+      <li data-d="3"><b>수</b><span>11:30 – 15:00 · 17:00 – 21:00</span></li>
+      <li data-d="4"><b>목</b><span>11:30 – 15:00 · 17:00 – 21:00</span></li>
+      <li data-d="5"><b>금</b><span>11:30 – 15:00 · 17:00 – 21:00</span></li>
+      <li data-d="6"><b>토</b><span>11:30 – 15:00 · 17:00 – 21:00</span></li>
+      <li data-d="0"><b>일</b><span>11:30 – 15:00 · 17:00 – 21:00</span></li>
+    </ul>
+    <p class="addr">서울 ○○구 ○○로 00, 1층<br>지하철역에서 걸어서 3분, 오렌지 노렌이 걸린 문입니다.</p>
+    <p>마지막 주문은 14:30, 20:30. 낮 12시 전후로 줄이 생깁니다.</p>
+    <div class="maplinks">
+      <a class="btn or" href="https://map.naver.com/p/search/%EB%9D%BC%EB%A9%98%20%EC%86%8C%EB%9D%BC" target="_blank" rel="noopener">네이버 지도에서 ‘라멘 소라’ 찾기 ↗</a>
+      <a class="btn ghost" href="https://map.kakao.com/?q=%EB%9D%BC%EB%A9%98%20%EC%86%8C%EB%9D%BC" target="_blank" rel="noopener">카카오맵에서 찾기 ↗</a>
+    </div>
+  </div>
+  <figure class="map" aria-label="가게 위치 약도">
+    <svg viewBox="0 0 400 300" aria-hidden="true">
+      <rect width="400" height="300" fill="#1d1d1d"/>
+      <path d="M-10 210 L410 170" stroke="#3a3a3a" stroke-width="26"/>
+      <path d="M150 -10 L190 310" stroke="#3a3a3a" stroke-width="18"/>
+      <path d="M190 120 L410 95" stroke="#2f2f2f" stroke-width="10"/>
+      <path d="M-10 70 L160 60" stroke="#2f2f2f" stroke-width="10"/>
+      <g fill="#262626"><rect x="20" y="95" width="110" height="80"/><rect x="210" y="10" width="170" height="70"/><rect x="215" y="130" width="70" height="30"/><rect x="300" y="125" width="90" height="35"/><rect x="20" y="235" width="140" height="60"/><rect x="215" y="205" width="170" height="90"/></g>
+      <rect x="226" y="130" width="40" height="30" fill="#FF4A12"/>
+      <circle cx="170" cy="200" r="10" fill="none" stroke="#fff" stroke-width="3"/>
+      <path d="M170 200 L232 152" stroke="#FF4A12" stroke-width="3" stroke-dasharray="6 6"/>
+    </svg>
+    <div class="pin" style="left:61.5%;top:43%"><b>소라</b><i></i></div>
+    <figcaption>역에서 걸어서 3분</figcaption>
+  </figure>
+ </div>
+</section>
+
+<section class="book" id="book" aria-labelledby="h-book">
+ <div class="wrap">
+  <div>
+    <p class="lab"><span class="dot"></span>Book · Takeout</p>
+    <h2 class="big" id="h-book">줄 서지 않고<br>드시려면.</h2>
+    <p class="lead">저녁 방문은 예약을 받고, 포장은 시간을 정해 두시면 맞춰 준비합니다. 확정 연락은 가게에서 문자로 드립니다.</p>
+    <a class="telbig" href="tel:020000000" aria-label="전화 걸기 02-000-0000">02-000-0000</a>
+  </div>
+  <form id="bk" novalidate>
+    <fieldset class="f full"><legend>무엇을 도와드릴까요</legend>
+      <div class="seg"><label><input type="radio" name="kind" value="visit" checked><span>방문 예약</span></label><label><input type="radio" name="kind" value="take"><span>포장 주문</span></label></div>
+    </fieldset>
+    <div class="f"><label for="nm">이름</label><input id="nm" name="nm" autocomplete="name" required aria-describedby="e-nm"><p class="err" id="e-nm" aria-live="polite"></p></div>
+    <div class="f"><label for="ph">휴대폰 번호</label><input id="ph" name="ph" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" required aria-describedby="e-ph"><p class="err" id="e-ph" aria-live="polite"></p></div>
+    <div class="f"><label for="dt">날짜</label><input id="dt" name="dt" type="date" required aria-describedby="e-dt"><p class="err" id="e-dt" aria-live="polite"></p></div>
+    <div class="f"><label for="tm">시간</label><select id="tm" name="tm" required aria-describedby="e-tm"><option value="">선택</option></select><p class="err" id="e-tm" aria-live="polite"></p></div>
+    <div class="f" id="f-ppl"><label for="ppl">인원</label><select id="ppl" name="ppl"><option>1명</option><option selected>2명</option><option>3명</option><option>4명</option></select></div>
+    <div class="f" id="f-ord" hidden><label for="ord">포장 메뉴</label><select id="ord" name="ord"><option>토리 파이탄</option><option>쇼유 라멘</option><option>츠케멘</option></select></div>
+    <div class="f full"><label for="memo">요청 사항 <span style="font-weight:400">(선택)</span></label><textarea id="memo" name="memo" maxlength="200"></textarea></div>
+    <div class="submit"><button class="btn dark" type="submit">요청 보내기</button><span style="font-size:16px">카운터 좌석이라 한 번에 4명까지 받습니다.</span></div>
+    <div class="done" id="done" role="status" hidden></div>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+  <p class="wm" aria-hidden="true">소라</p>
+  <div class="fb"><span>라멘 소라 · 서울 ○○구 ○○로 00, 1층 · <a href="tel:020000000">02-000-0000</a></span><a href="#top">맨 위로 ↑</a></div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
