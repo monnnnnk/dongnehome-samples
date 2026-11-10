@@ -442,15 +442,16 @@ var K=(function(){
        .fromTo($('p,.btn',c),{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08},.3)});
     });
     step(function(){
-    // 카드: 기울어진 채 튀어 올라와 바로 섬
-    G.set('.card',{opacity:0});
-    ScrollTrigger.batch('.card',{start:'top 88%',once:true,onEnter:function(b){G.fromTo(b,{opacity:0,y:70,rotation:3},{opacity:1,y:0,rotation:0,duration:.8,ease:'power4.out',stagger:.08})}});
-    G.fromTo('.adds li',{opacity:0,y:16},{opacity:1,y:0,duration:.5,ease:'power3.out',stagger:.04,scrollTrigger:{trigger:'.adds',start:'top 90%'}});
+    // 카드: 그릇 장면이 올라가는 동안 처음부터 보이는 채로(투명 없음) 위쪽으로 당겨져 있다가 계단처럼 제자리로 내려앉음 → 그릇과 카드 사이에 빈 빨간 칸이 안 생김
+    var cl=$('.cards .card'), cm=innerWidth<900?[-24,-24,-56,-56]:[-36,-72,-108,-144];
+    G.timeline({scrollTrigger:{trigger:'#menu-list',start:'top bottom',end:innerWidth<900?'top 20%':'top 35%',scrub:.5}})
+      .fromTo(cl,{y:function(i){return cm[i]||0}},{y:0,ease:'none',duration:1},0)
+      .fromTo('.adds,#menu-list .note',{y:-64},{y:0,ease:'none',duration:1},0);
     $('.steps,.facts').forEach(function(u){G.fromTo($('li',u),{opacity:0,x:-44},{opacity:1,x:0,duration:.7,ease:'power4.out',stagger:.08,scrollTrigger:{trigger:u,start:'top 86%'}})});
     $('.facts b').forEach(function(b){var v=parseInt(b.textContent,10); if(isNaN(v)) return; var o={v:0};
       G.to(o,{v:v,duration:.9,ease:'power2.out',scrollTrigger:{trigger:'.facts',start:'top 86%'},onUpdate:function(){b.textContent=Math.round(o.v)}})});
     G.fromTo('.vz>div',{opacity:0,y:56},{opacity:1,y:0,duration:.8,ease:'power4.out',stagger:.1,scrollTrigger:{trigger:'.vz',start:'top 86%'}});
-    $('.below .note').forEach(function(n){G.fromTo(n,{opacity:0},{opacity:1,duration:.6,scrollTrigger:{trigger:n,start:'top 92%'}})});
+    $('.below:not(#menu-list) .note').forEach(function(n){G.fromTo(n,{opacity:0},{opacity:1,duration:.6,scrollTrigger:{trigger:n,start:'top 92%'}})});
     // 마우스(데스크톱): 그릇이 손을 따라 기울고, 카드가 손 쪽으로 기울어짐
     if(K.DESK){var b=$('.bowl')[0],bx=G.quickTo(b,'x',{duration:.9,ease:'power3'}),by=G.quickTo(b,'y',{duration:.9,ease:'power3'});
       $('.hero')[0].addEventListener('pointermove',function(e){var nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;bx(nx*36);by(ny*24)});
