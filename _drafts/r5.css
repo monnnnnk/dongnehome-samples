@@ -1,0 +1,31 @@
+/* r5 drafts — shared base. Pretendard (SIL OFL 1.1) subset, our own mark. */
+@font-face{font-family:"PretR5";src:url(fonts/Pretendard-Medium.r5.woff) format("woff");font-weight:500;font-display:block}
+@font-face{font-family:"PretR5";src:url(fonts/Pretendard-SemiBold.r5.woff) format("woff");font-weight:600;font-display:block}
+@font-face{font-family:"PretR5";src:url(fonts/Pretendard-Black.r5.woff) format("woff");font-weight:900;font-display:block}
+:root{--bg:#EEECE5;--ink:#111110;--mute:#57534B;--line:#CFCBC0;--dev:#1C1B19;--io:cubic-bezier(.87,0,.13,1);--out:cubic-bezier(.19,1,.22,1);--m:16px;--sans:"PretR5","Pretendard","Noto Sans KR",system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.5 var(--sans);word-break:keep-all;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+p,h1,h2,ul{margin:0;padding:0}ul{list-style:none}
+img{display:block;width:100%;height:auto}
+.lb{font:500 12px/14px var(--sans)}
+.mu{color:var(--mute)}
+.tag{display:inline-block;border:1px solid var(--ink);padding:2px 6px;font:500 12px/1.3 var(--sans);white-space:nowrap}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;z-index:99;background:var(--ink);color:var(--bg);padding:10px 14px}
+/* mark: roof over a browser window = 'a homepage with a roof' */
+.mark{display:block;overflow:visible}
+.mark path,.mark rect,.mark line{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linejoin:miter;stroke-linecap:square;vector-effect:non-scaling-stroke}
+.mark .dot{fill:currentColor;stroke:none}
+.wm{font-weight:900;letter-spacing:-.055em;line-height:.86}
+/* device frames, drawn in CSS (generic, no brand) */
+.lt{display:block}
+.lt .scr{background:var(--dev);padding:7px 7px 9px;border-radius:9px 9px 0 0}
+.lt .scr>div{overflow:hidden;aspect-ratio:16/10;background:#000}
+.lt .scr img{height:100%;object-fit:cover;object-position:top}
+.lt .base{height:11px;margin:0 -6.5%;background:#C9C5BA;border-radius:0 0 7px 7px;position:relative}
+.lt .base::before{content:"";position:absolute;left:50%;top:0;width:14%;height:4px;transform:translateX(-50%);background:#B5B0A4;border-radius:0 0 4px 4px}
+.ph{display:block;background:var(--dev);padding:6px;border-radius:26px}
+.ph>div{overflow:hidden;aspect-ratio:390/844;border-radius:20px;background:#000}
+.ph img{height:100%;object-fit:cover;object-position:top}
+@media (max-width:899px){:root{--m:12px}}

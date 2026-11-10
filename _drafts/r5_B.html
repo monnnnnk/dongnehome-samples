@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>동네홈 — 동네 가게 홈페이지를 만듭니다 (r5 시안 B)</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="r5.css">
+<style>
+body{min-height:100svh}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 40px;min-height:100svh;padding:0 var(--m) var(--m)}
+.bar{grid-column:1/-1;display:grid;grid-template-columns:5fr 7fr;gap:40px;padding-top:14px;height:58px}
+.bar .r{display:flex;justify-content:space-between;align-items:flex-start}
+.bar nav{display:flex;gap:14px}.bar nav a{padding-bottom:14px}.bar nav a:hover{text-decoration:underline;text-underline-offset:3px}
+.left{display:flex;flex-direction:column;justify-content:space-between;padding:4svh 0 0;min-width:0}
+.left .mark{width:clamp(44px,4.4vw,64px);height:auto;aspect-ratio:1;margin:0 0 22px 4px}
+.left .wm{font-size:clamp(88px,13.4vw,212px);margin-left:-.04em;display:block}
+.left .wm span{display:inline-block}
+.left .line{margin-top:26px;font:600 clamp(24px,2.5vw,38px)/1.25 var(--sans);letter-spacing:-.03em}
+.left .sub{margin-top:14px;max-width:30em;font-size:15px;line-height:1.6}
+.cta{display:flex;gap:20px;margin-top:22px}.cta a{border-bottom:1px solid currentColor;padding:6px 0;font-weight:600}
+.idx{border-top:1px solid var(--ink);margin-top:28px}
+.idx li{border-bottom:1px solid var(--line)}
+.idx button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:34px 1fr auto;gap:8px;padding:11px 0;font:500 13px/1.3 var(--sans);position:relative;color:var(--mute)}
+.idx button b{color:var(--ink);font-weight:600}
+.idx button[aria-current="true"]{color:var(--ink)}
+.idx button::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--ink)}
+.idx button[aria-current="true"]::after{animation:prog var(--dur) linear forwards}
+@keyframes prog{to{width:100%}}
+.stage{position:relative;align-self:end;margin-top:4svh}
+.stage .lt{width:88%}
+.stage .ph{position:absolute;right:0;bottom:-2px;width:22%}
+.scr>div,.ph>div{position:relative}
+.scr img,.ph>div img{position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:clip-path .95s var(--io)}
+.scr img.on,.ph>div img.on{clip-path:inset(0 0 0 0)}
+.scr img.was,.ph>div img.was{clip-path:inset(0 0 0 0);transition:none}
+.scap{display:flex;justify-content:space-between;margin-top:12px;width:88%}
+/* intro */
+.js .mark path,.js .mark rect,.js .mark line{stroke-dasharray:140;stroke-dashoffset:140;transition:stroke-dashoffset 1s var(--io)}
+.js .mark .dot{opacity:0;transition:opacity .3s 1s}
+.js .wm span{clip-path:inset(0 0 100% 0);transform:translateY(25%);transition:clip-path .95s var(--io),transform .95s var(--io)}
+.js .wm span:nth-child(2){transition-delay:.06s}.js .wm span:nth-child(3){transition-delay:.12s}
+.js .line,.js .sub,.js .cta,.js .idx,.js .bar,.js .scap{opacity:0;transition:opacity .7s ease-out}
+.js .stage .lt{transform:translateY(40px);opacity:0;transition:transform 1.1s var(--io),opacity .6s}
+.js .stage .ph{transform:translateY(80px);opacity:0;transition:transform 1.1s var(--io) .12s,opacity .6s .12s}
+.go .mark path,.go .mark rect,.go .mark line{stroke-dashoffset:0}.go .mark .dot{opacity:1}
+.go .wm span{clip-path:inset(-10% 0 -15% 0);transform:none}
+.go .line{opacity:1;transition-delay:.8s}.go .sub,.go .cta{opacity:1;transition-delay:1s}
+.go .stage .lt,.go .stage .ph{transform:none;opacity:1;transition-delay:1.1s,1.1s}
+.go .stage .ph{transition-delay:1.25s,1.25s}
+.go .idx,.go .bar,.go .scap{opacity:1;transition-delay:1.8s}
+@media (max-width:899px){
+ .hero{grid-template-columns:1fr;gap:0}
+ .bar{grid-template-columns:1fr;height:auto;padding-bottom:6px}.bar .c{display:none}
+ .bar .r{position:absolute;right:var(--m);top:14px;gap:10px}.bar .r nav{display:none}
+ .left{padding-top:22px}
+ .left .mark{width:36px;margin-bottom:12px}
+ .left .wm{font-size:27vw}
+ .left .line{font-size:22px;margin-top:16px}
+ .left .sub{font-size:14px;margin-top:8px}
+ .cta,.idx{display:none}
+ .stage{margin-top:26px}
+ .stage .lt{width:84%}.stage .ph{width:30%}
+ .scap{width:84%}
+}
+@media (prefers-reduced-motion:reduce){.js *{transition:none!important;animation:none!important}}
+</style></head>
+<body>
+<a class="skip" href="#work">작업 바로 보기</a>
+<div class="hero">
+ <header class="bar lb">
+  <a href="#"><b>동네홈</b> <span class="mu">— 디자인·제작 재영</span></a>
+  <div class="r"><span class="c mu">카페 · 미용실 · 식당</span><nav aria-label="주요"><a href="#work">작업</a><a href="#">가격</a><a href="#">문의</a></nav><span class="tag">데모·가상 매장 샘플</span></div>
+ </header>
+ <section class="left" aria-label="동네홈 소개">
+  <div>
+   <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M3 21 24 4 45 21"/><rect x="9" y="17" width="30" height="27"/><line x1="9" y1="25" x2="39" y2="25"/><rect class="dot" x="13" y="20" width="3" height="2.4"/></svg>
+   <h1><span class="wm" aria-label="동네홈"><span>동</span><span>네</span><span>홈</span></span></h1>
+   <p class="line">동네 가게 홈페이지를 만듭니다.</p>
+   <p class="sub mu">카페·미용실·식당처럼 골목에 있는 가게의 홈페이지를 디자인하고 직접 코드로 만듭니다. 오른쪽은 실제로 만든 데모 페이지입니다.</p>
+   <p class="cta"><a href="#work">작업 보기</a><a href="#">문의하기</a></p>
+  </div>
+  <ol class="idx" id="idx" aria-label="작업 목록"></ol>
+ </section>
+ <section class="stage" id="work" aria-label="작업 화면">
+  <div class="lt"><div class="scr"><div id="lt"></div></div><div class="base"></div></div>
+  <div class="ph"><div id="ph"></div></div>
+  <p class="scap lb"><span id="scn"></span><span class="mu" id="scs"></span></p>
+ </section>
+</div>
+<script>
+document.documentElement.classList.add('js');
+const W=[{s:'cafe',n:'소담별 커피',t:'카페',d:'cafe_d0',m:'cafe_m0'},{s:'salon',n:'GYEOL 결 헤어',t:'미용실',d:'salon_d0',m:'salon_m0'},{s:'ramen',n:'라멘 소라',t:'라멘집',d:'ramen_d0',m:'ramen_m0'}];
+const DUR=4600;document.documentElement.style.setProperty('--dur',DUR+'ms');
+const lt=document.getElementById('lt'),ph=document.getElementById('ph'),idx=document.getElementById('idx');
+W.forEach((w,i)=>{lt.insertAdjacentHTML('beforeend',`<img src="img/${w.d}_lt.jpg" alt="${w.n} 데스크톱 첫 화면">`);ph.insertAdjacentHTML('beforeend',`<img src="img/${w.m}_ph.jpg" alt="${w.n} 모바일 첫 화면">`);
+ idx.insertAdjacentHTML('beforeend',`<li><button type="button" data-i="${i}"><span>0${i+1}</span><b>${w.n}</b><span>${w.t} 데모</span></button></li>`)});
+let cur=-1,tm=null;const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function show(i){if(i===cur)return;[lt,ph].forEach(box=>{const im=box.children;[...im].forEach((x,k)=>{x.classList.remove('was');if(k===cur){x.classList.remove('on');x.classList.add('was')}else if(k!==i)x.classList.remove('on')});
+  im[i].style.zIndex=2;if(cur>=0)im[cur].style.zIndex=1;[...im].forEach((x,k)=>{if(k!==i&&k!==cur)x.style.zIndex=0});requestAnimationFrame(()=>im[i].classList.add('on'))});
+ ph.children[i].style.transitionDelay='.1s';
+ cur=i;document.getElementById('scn').textContent=`0${i+1} ${W[i].n}`;document.getElementById('scs').textContent=`${W[i].t} 데모 · 데스크톱 / 모바일 첫 화면`;
+ idx.querySelectorAll('button').forEach((b,k)=>{b.setAttribute('aria-current',k===i);if(k===i){b.style.animation='none';b.offsetWidth;b.style.animation=''}});
+ clearTimeout(tm);if(!rm)tm=setTimeout(()=>show((i+1)%3),DUR)}
+idx.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(+b.dataset.i)});
+[...lt.children].forEach(x=>x.style.transition='none');[...ph.children].forEach(x=>x.style.transition='none');
+show(0);requestAnimationFrame(()=>{[...lt.children,...ph.children].forEach(x=>x.style.transition='')});
+document.fonts.ready.then(()=>requestAnimationFrame(()=>setTimeout(()=>document.documentElement.classList.add('go'),rm?0:250)));
+</script>
+</body></html>

@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Montserrat:wght@500;600;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/s_hero_bowl_red.jpg">
+<script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('mo');setTimeout(function(){if(!d.classList.contains('mo-ok'))d.classList.remove('mo')},3500)}})(document.documentElement)</script>
 <style>
 :root{--red:#9C191B;--red-d:#6F1013;--ink:#111;--soft:#555;--grey:#F3F3F3;--line:#DDD;--g:20px;--w:1200px;
   --kr:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;--en:"Montserrat",var(--kr)}
@@ -142,47 +143,67 @@ footer p{margin:0 0 6px;color:#D0D0D0}
   .vz > div{padding:28px 26px 30px}
   footer{padding:56px 0 64px}
 }
-/* ---------- motion: 라멘 = 포스터처럼 또렷하게 (짧고 분명한 타이밍, 큰 거리) ----------
-   숨김 상태는 JS가 <html class="mo">를 붙인 뒤에만 적용 → JS 없으면 그대로 보임.
-   transform/opacity만 움직임. 동작 줄이기 설정이면 .mo를 안 붙임. 스무스 스크롤 없음. */
-:root{--e-x:cubic-bezier(.16,1,.3,1);--e-io:cubic-bezier(.76,0,.24,1)}
+/* ---------- motion v2: 라멘 = 포스터처럼 또렷하게 (짧고 분명한 타이밍, 큰 거리) ----------
+   빨간 배경은 CSS로 처음부터 칠해져 있고 안의 내용만 들어옴. .js/.mo는 <head>의 짧은 스크립트가 붙임(3.5초 안에 모션이 시작 안 되면 풀림).
+   transform/opacity만 움직임. 스무스 스크롤 없음. */
 .m-clip{display:block;overflow:hidden}
-.m-clip>img{transition:scale .6s var(--e-x)}
-.m-ow{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.m-iw{display:block}
 .band .ph{overflow:hidden}
 .band.light .ph{position:relative}
+.wipe{position:absolute;inset:0;z-index:1;background:var(--red);transform-origin:right center;pointer-events:none}
 .top{position:relative;z-index:3}
-.hero{position:relative}
-/* 첫 화면: 빨간 배경은 처음부터 칠해져 있고, 메뉴 막대·제목·그릇만 들어옴 */
-.mo .top{translate:0 -100%;transition:translate .6s var(--e-x)}
-.mo-go .top{translate:none}
-.mo .hero h1 .m-iw{translate:0 110%;transition:translate .8s var(--e-x) calc(.55s + var(--i,0)*.08s)}
-.mo-go .hero h1 .m-iw{translate:none}
-.mo .kick,.mo .lede,.mo .cta,.mo .label{opacity:0;translate:0 24px;transition:opacity .5s ease-out calc(.8s + var(--i,0)*.07s),translate .6s var(--e-x) calc(.8s + var(--i,0)*.07s)}
-.mo-go .kick,.mo-go .lede,.mo-go .cta,.mo-go .label{opacity:1;translate:none}
-.mo .bowl img{opacity:0;translate:18% 0;rotate:-14deg;transition:opacity .6s ease-out .5s,translate 1s var(--e-x) .5s,rotate 1.2s var(--e-x) .5s}
-.mo-go .bowl img{opacity:1;translate:none;rotate:none}
-/* 사진 띠: 빨간 판이 오른쪽으로 걷히며 사진이 드러남 */
-.mo .band .ph::before{content:"";position:absolute;inset:0;z-index:1;background:var(--red);transform-origin:right center;transition:transform .8s var(--e-io)}
-.mo .band .ph.is-in::before{transform:scaleX(0)}
-.mo .band .ph img{scale:1.15;transition:scale 1.1s var(--e-x) .15s}
-.mo .band .ph.is-in img{scale:1}
-.mo [data-m] .m-iw{translate:0 105%;transition:translate .75s var(--e-x) .1s}
-.mo [data-m].is-in .m-iw{translate:none}
-.mo [data-r]{opacity:0;translate:0 var(--dy,32px);transition:opacity .45s ease-out calc(var(--d0,0s) + var(--i,0)*.07s),translate .6s var(--e-x) calc(var(--d0,0s) + var(--i,0)*.07s)}
-.mo [data-r="x"]{translate:-24px 0}
-.mo [data-r].is-in{opacity:1;translate:none}
+.mo .top,.mo .hero .txt>*,.mo .bowl img{opacity:0}
+/* 따라붙는 메뉴 막대: 첫 화면을 지나면 위에서 내려오고, 지금 구역 아래에 흰 막대가 붙음 (JS가 만듦) */
+.stick{position:fixed;top:0;left:0;right:0;z-index:20;display:grid;grid-template-columns:1fr;background:var(--red-d);color:#FFF;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.stick .sw{display:none}
+.stick nav{position:relative;display:grid;grid-template-columns:repeat(4,1fr)}
+.stick nav a{display:flex;align-items:center;justify-content:center;min-height:48px;font-size:14px;font-weight:700;text-decoration:none;border-right:1px solid rgba(255,255,255,.22)}
+.stick nav a:last-child{border-right:0}
+.stick .bar{position:absolute;left:0;bottom:0;width:25%;height:4px;background:#FFF;transform-origin:left center;transform:scaleX(0)}
+@media (min-width:900px){
+  .stick{grid-template-columns:auto 1fr auto}
+  .stick .sw{display:flex;align-items:center;padding:0 var(--g);font-weight:900;font-size:20px;text-decoration:none;border-right:1px solid rgba(255,255,255,.22)}
+  .stick nav a{min-height:56px;font-size:15px}
+  .stick .sc{display:flex;align-items:center;padding:0 28px;font-weight:700;font-size:15px;text-decoration:none;border-left:1px solid rgba(255,255,255,.22)}
+}
+@media (max-width:899px){.stick .sc{display:none}}
+/* 사진 확대 장면 (JS가 .zm을 붙일 때만): 작은 사진 카드가 스크롤에 맞춰 화면 전체로 열림. 모양은 프레임 scaleX/Y, 사진은 반대로 보정해서 찌그러지지 않음 */
+.below.red{background:var(--red-d);color:#FFF}
+.below.red .note{color:#F3DADA}
+.below.red .card,.below.red .adds li{color:var(--ink)}
+.band.zm .btn{background:#FFF;color:var(--red)}
+.zt{display:none}
+.band.zm{height:200vh;height:200svh;background:var(--red);color:#FFF}
+.zm .zin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;overflow:clip}
+.band.zm.dark{background:var(--red-d)}
+.zm .zt{position:absolute;inset:clamp(76px,11vh,120px) var(--g) clamp(28px,6vh,64px);z-index:0;display:flex;flex-direction:column;justify-content:space-between;margin:0;font-family:var(--en);font-weight:800;font-size:clamp(56px,15vw,260px);line-height:.84;letter-spacing:-.045em;text-transform:uppercase;pointer-events:none}
+.zm .zt span{display:block;will-change:transform}
+.zm .zt span+span{align-self:flex-end}
+.band.zm .ph{position:absolute;inset:0;z-index:1;margin:0;overflow:hidden;transform-origin:50% 50%;will-change:transform}
+.band.zm .ph::after{display:none}
+.band.zm .ph img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;will-change:transform}
+.zm .zs{position:absolute;inset:0;background:rgba(0,0,0,.56);opacity:0}
+.band.zm .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;max-width:var(--w);margin:0 auto;padding:0 var(--g) clamp(40px,8vh,88px);text-align:left;background:none;color:#FFF}
+.band.zm .cap p{margin-left:0}
+@media (max-width:899px){
+  .band.zm{height:175vh;height:175svh}
+  .zm .zt{inset:74px var(--g) auto;justify-content:flex-start}
+  .band.zm .ph{inset:auto 0;top:clamp(170px,23vh,210px);height:min(104vw,48vh)}
+  .band.zm .ph img{object-position:62% 50%}
+  .zm .zs{display:none}
+  .band.zm .cap{padding-bottom:34px}.band.zm .cap p{margin:8px 0 16px}.band.zm .en{margin-bottom:4px}.band.zm h2{font-size:40px}
+}
 /* 호버 (마우스 있는 데스크톱만): 메뉴 밑줄, 버튼 채움, 사진 확대 */
 @media (hover:hover){
-  .navg a,.top .call{position:relative}
-  .navg a::after,.top .call::after{content:"";position:absolute;left:14%;right:14%;bottom:12px;height:3px;background:#FFF;transform:scaleX(0);transform-origin:left center;transition:transform .3s var(--e-x)}
-  .navg a:hover::after,.top .call:hover::after{transform:scaleX(1)}
+  .navg a,.top .call,.stick nav a{position:relative}
+  .navg a::after,.top .call::after{content:"";position:absolute;left:14%;right:14%;bottom:12px;height:3px;background:#FFF;transform:scaleX(0);transform-origin:right center;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .navg a:hover::after,.top .call:hover::after{transform:scaleX(1);transform-origin:left center}
   .btn:not(.w){position:relative;isolation:isolate;overflow:hidden}
-  .btn:not(.w)::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--red-d);transform:scaleX(0);transform-origin:left center;transition:transform .35s var(--e-x)}
+  .btn:not(.w)::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--red-d);transform:scaleX(0);transform-origin:right center;transition:transform .4s cubic-bezier(.76,0,.24,1)}
   .btn:not(.w):hover{background:var(--red)}
-  .btn:not(.w):hover::before{transform:scaleX(1)}
-  .card:hover .m-clip>img{scale:1.06}
+  .btn:not(.w):hover::before{transform:scaleX(1);transform-origin:left center}
+  .card .m-clip>img{transition:scale .7s cubic-bezier(.16,1,.3,1)}
+  .card:hover .m-clip>img{scale:1.08}
+  .band.zm .btn:hover{background:#FFF;color:#FFF}
 }
 </style>
 </head>
@@ -190,7 +211,7 @@ footer p{margin:0 0 6px;color:#D0D0D0}
 <a class="skip" href="#main">본문 바로가기</a>
 <header class="top">
   <div class="row"><a class="word" href="./">라멘 소라<small>RAMEN SORA</small></a><a class="call" href="tel:+8220000000">전화 주문</a></div>
-  <nav class="navg" aria-label="주요 메뉴"><a href="#menu">메뉴<span>MENU</span></a><a href="#kitchen">주방<span>KITCHEN</span></a><a href="#shop">가게<span>SHOP</span></a><a href="#access">오시는 길<span>ACCESS</span></a></nav>
+  <nav class="navg" aria-label="주요 메뉴"><a href="#menu">메뉴<span>MENU</span></a><a href="#shop">가게<span>SHOP</span></a><a href="#kitchen">주방<span>KITCHEN</span></a><a href="#access">오시는 길<span>ACCESS</span></a></nav>
 </header>
 <main id="main">
   <section class="hero" aria-label="라멘 소라"><div class="in">
@@ -205,10 +226,11 @@ footer p{margin:0 0 6px;color:#D0D0D0}
   </div></section>
 
   <section class="band light menu" id="menu" aria-labelledby="h-menu">
+    <p class="zt" aria-hidden="true"><span>Tori</span><span>Paitan</span></p>
     <div class="cap rv"><span class="en">Menu</span><h2 id="h-menu">메뉴</h2><p>국물은 두 가지, 면은 세 가지입니다.</p><a class="btn" href="#menu-list">메뉴와 가격 보기</a></div>
     <figure class="ph" style="margin:0"><img src="img/s_band_menu.jpg" width="1600" height="900" alt="검은 그릇에 담긴 라멘. 반숙 맛달걀 두 개, 차슈, 시금치, 김" loading="lazy"></figure>
   </section>
-  <div class="below grey" id="menu-list"><div class="in">
+  <div class="below red" id="menu-list"><div class="in">
     <ul class="cards">
       <li class="card rv"><img src="img/s_card_paitan.jpg" width="960" height="720" alt="위에서 본 뽀얀 국물 라멘. 두툼한 차슈와 파" loading="lazy"><div class="bd"><h3>토리 파이탄</h3><span class="price">11,000<small>원</small></span></div></li>
       <li class="card rv"><img src="img/s_card_shoyu.jpg" width="960" height="720" alt="위에서 본 맑은 간장 국물 라멘. 차슈, 완탕, 나루토" loading="lazy"><div class="bd"><h3>쇼유 라멘</h3><span class="price">10,000<small>원</small></span></div></li>
@@ -217,6 +239,20 @@ footer p{margin:0 0 6px;color:#D0D0D0}
     </ul>
     <ul class="adds"><li><span>맛달걀 추가</span><b>2,000</b></li><li><span>면 추가</span><b>1,500</b></li><li><span>차슈 추가</span><b>3,000</b></li><li><span>공깃밥</span><b>1,000</b></li></ul>
     <p class="note">가격은 데모용 예시입니다(단위 원). 주문은 입구 식권 발매기에서, 현금과 카드 모두 됩니다.</p>
+  </div></div>
+
+  <section class="band dark" id="shop" aria-labelledby="h-shop">
+    <p class="zt" aria-hidden="true"><span>10 Seats</span><span>Counter</span></p>
+    <figure class="ph" style="margin:0"><img src="img/s_band_shop.jpg" width="1600" height="900" alt="" loading="lazy"></figure>
+    <div class="cap rv"><span class="en">Shop</span><h2 id="h-shop">카운터 열 석</h2><p>주방이 바로 보이는 긴 카운터 하나뿐인 가게입니다.</p><a class="btn" href="tel:+8220000000">전화로 포장 주문</a></div>
+  </section>
+  <div class="below" id="shop-facts"><div class="in">
+    <ul class="facts">
+      <li><b>10</b><span>카운터 자리</span></li>
+      <li><b>2</b><span>국물 (파이탄 · 쇼유)</span></li>
+      <li><b>1</b><span>식권 발매기 (현금 · 카드)</span></li>
+      <li><b>OK</b><span>포장 (국물과 면 따로)</span></li>
+    </ul>
   </div></div>
 
   <section class="band dark" id="kitchen" aria-labelledby="h-kitchen">
@@ -230,19 +266,6 @@ footer p{margin:0 0 6px;color:#D0D0D0}
       <li><time>11:00</time><b>간 맞추기</b><p>간장 양념을 섞고 차슈를 썹니다.</p></li>
       <li><time>11:30</time><b>문 열기</b><p>국물이 떨어지면 일찍 닫습니다.</p></li>
     </ol>
-  </div></div>
-
-  <section class="band dark" id="shop" aria-labelledby="h-shop">
-    <figure class="ph" style="margin:0"><img src="img/s_band_shop.jpg" width="1600" height="900" alt="" loading="lazy"></figure>
-    <div class="cap rv"><span class="en">Shop</span><h2 id="h-shop">카운터 열 석</h2><p>주방이 바로 보이는 긴 카운터 하나뿐인 가게입니다.</p><a class="btn" href="tel:+8220000000">전화로 포장 주문</a></div>
-  </section>
-  <div class="below" id="shop-facts"><div class="in">
-    <ul class="facts">
-      <li><b>10</b><span>카운터 자리</span></li>
-      <li><b>2</b><span>국물 (파이탄 · 쇼유)</span></li>
-      <li><b>1</b><span>식권 발매기 (현금 · 카드)</span></li>
-      <li><b>OK</b><span>포장 (국물과 면 따로)</span></li>
-    </ul>
   </div></div>
 
   <section class="band light access" id="access" aria-labelledby="h-access">
@@ -292,32 +315,155 @@ footer p{margin:0 0 6px;color:#D0D0D0}
   if(!work) h.querySelector('[data-d="m"]').classList.add('today');
   else h.querySelector('[data-d="'+(m>=900?'w2':'w')+'"]').classList.add('today');
 })();
-(function(){
-  // 모션: 동작 줄이기 설정이거나 IntersectionObserver가 없으면 아무것도 숨기지 않는다
-  var d=document.documentElement;
-  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var $=function(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))};
-  function wrap(el){var o=document.createElement('span'),i=document.createElement('span');o.className='m-ow';i.className='m-iw';
-    while(el.firstChild) i.appendChild(el.firstChild); o.appendChild(i); el.appendChild(o); return i}
-  $('.hero h1>span').forEach(function(sp,k){var i=document.createElement('span');i.className='m-iw';i.style.setProperty('--i',k);
-    while(sp.firstChild) i.appendChild(sp.firstChild); sp.appendChild(i); sp.classList.add('m-ow')});
-  $('.card>img').forEach(function(img){var c=document.createElement('span');c.className='m-clip';img.parentNode.insertBefore(c,img);c.appendChild(img)});
-  d.classList.add('mo');
-  $('.kick,.lede,.cta,.label').forEach(function(n,k){n.style.setProperty('--i',k)});
-  // 띠 글: 제목은 마스크, 나머지는 판이 걷힌 뒤 올라옴
-  $('.band .cap').forEach(function(c){var h=c.querySelector('h2'); wrap(h); h.setAttribute('data-m','');
-    $('.en,p,.btn',c).forEach(function(n,k){n.setAttribute('data-r','');n.style.setProperty('--i',k);n.style.setProperty('--dy','20px');n.style.setProperty('--d0','.2s')})});
-  function mark(q,val,stag){$(q).forEach(function(n,k){n.setAttribute('data-r',val||'');if(stag)n.style.setProperty('--i',k%4)})}
-  mark('.card','',1); mark('.adds,.below .note'); mark('.steps li,.facts li','x',1); mark('.vz>div','',1);
-  $('.card').forEach(function(n){n.style.setProperty('--dy','48px')});
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -15% 0px'});
-  $('.band .ph,[data-r],[data-m]').forEach(function(n){io.observe(n)});
-  // 첫 화면: 그릇 사진이 준비되면 시작 (최대 0.9초 대기)
-  var gone=0, go=function(){if(!gone&&(gone=1))requestAnimationFrame(function(){requestAnimationFrame(function(){void d.offsetWidth; d.classList.add('mo-go')})})};   // 숨김 상태를 먼저 계산시킨 뒤 시작
-  var hi=document.querySelector('.bowl img'); if(hi&&!hi.complete){hi.addEventListener('load',go);hi.addEventListener('error',go)} else go();
-  setTimeout(go,900);
+</script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script>
+/* 동네홈 모션 키트 v2 — 직접 작성(외부 코드 복사 없음). GSAP 3.15 + ScrollTrigger + SplitText(표준 무료 라이선스), Lenis(MIT) */
+var K=(function(){
+  var d=document.documentElement, G=window.gsap;
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DESK=matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches;
+  var OK=!RM&&!!G&&!!window.ScrollTrigger&&!!window.SplitText;
+  function $(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))}
+  function clip(img){var c=document.createElement('span');c.className='m-clip';img.parentNode.insertBefore(c,img);c.appendChild(img);return c}
+  var lenis=null;
+  function smooth(opt){
+    if(!OK||!DESK||!window.Lenis) return null;
+    try{lenis=new Lenis(Object.assign({lerp:.085,wheelMultiplier:1},opt||{}));lenis.on('scroll',ScrollTrigger.update);
+      G.ticker.add(function(t){lenis.raf(t*1000)});G.ticker.lagSmoothing(0)}catch(e){lenis=null}
+    return lenis;
+  }
+  // 앵커 이동(“페이지 전환” 대신): Lenis가 있으면 Lenis, 없으면 GSAP로 창 스크롤
+  function goTo(el,off,dur,ease){
+    off=off||0; var y=el.__zy?el.__zy():el.getBoundingClientRect().top+scrollY-off;
+    if(RM||!G){scrollTo(0,y);return}
+    if(lenis){lenis.scrollTo(y,{duration:dur||1.5,easing:function(t){return t===1?1:1-Math.pow(2,-10*t)}});return}
+    var o={y:scrollY}; G.to(o,{y:y,duration:dur||1,ease:ease||'power3.inOut',onUpdate:function(){scrollTo(0,o.y)}});
+  }
+  function anchors(off,dur,ease,before){
+    $('a[href^="#"]').forEach(function(a){var id=a.getAttribute('href').slice(1); if(!id) return;
+      a.addEventListener('click',function(e){var t=document.getElementById(id); if(!t) return; e.preventDefault();
+        var w=before?before():0; setTimeout(function(){goTo(t,typeof off=='function'?off():off,dur,ease); if(t.tabIndex<0&&!/^(A|BUTTON|INPUT)$/.test(t.tagName)) t.setAttribute('tabindex','-1'); t.focus({preventScroll:true})},w||0)})});
+  }
+  // 메뉴: 버튼+오버레이를 JS로 만든다(JS 없으면 안 보임). anim(open)으로 열고 닫는 타임라인을 받는다
+  function menu(cfg){
+    var btn=document.createElement('button'); btn.type='button'; btn.className='mbtn'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-controls','m-ov');
+    btn.innerHTML=cfg.btn; btn.setAttribute('aria-label','메뉴 열기');
+    var ov=document.createElement('nav'); ov.id='m-ov'; ov.className='ov'; ov.setAttribute('aria-label','전체 메뉴'); ov.innerHTML=cfg.html; ov.hidden=true;
+    (cfg.btnParent||document.body).appendChild(btn); document.body.appendChild(ov);
+    var open=false, busy=null;
+    function set(o){open=o; btn.setAttribute('aria-expanded',o?'true':'false'); btn.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기'); d.classList.toggle('menu-open',o);
+      if(lenis){o?lenis.stop():lenis.start()} document.body.style.overflow=o&&!lenis?'hidden':'';
+      if(busy) busy.kill();
+      if(o){ov.hidden=false; busy=OK?cfg.open(ov):null; var f=ov.querySelector('a'); f&&f.focus({preventScroll:true})}
+      else{ if(OK){busy=cfg.close(ov); busy.eventCallback('onComplete',function(){ov.hidden=true})} else ov.hidden=true; }
+    }
+    btn.addEventListener('click',function(){set(!open)});
+    addEventListener('keydown',function(e){if(e.key==='Escape'&&open){set(false);btn.focus()}});
+    $('a',ov).forEach(function(a){a.addEventListener('click',function(){if(open) set(false)})});
+    return {btn:btn,ov:ov,close:function(){if(open)set(false)},isOpen:function(){return open},closeDelay:function(){return open?(cfg.closeWait||350):0}};
+  }
+  // 자석 버튼(데스크톱)
+  function magnet(els,s){ if(!OK||!DESK) return; s=s||.3;
+    els.forEach(function(el){var qx=G.quickTo(el,'x',{duration:.6,ease:'power3'}),qy=G.quickTo(el,'y',{duration:.6,ease:'power3'});
+      el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();qx((e.clientX-r.left-r.width/2)*s);qy((e.clientY-r.top-r.height/2)*s)});
+      el.addEventListener('pointerleave',function(){G.to(el,{x:0,y:0,duration:1,ease:'elastic.out(1,.45)',overwrite:'auto'})})});
+  }
+  function fontsReady(cap){return Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),new Promise(function(r){setTimeout(r,cap||1400)})])}
+  return {d:d,G:G,RM:RM,DESK:DESK,OK:OK,$:$,clip:clip,smooth:smooth,goTo:goTo,anchors:anchors,menu:menu,magnet:magnet,fontsReady:fontsReady,lenis:function(){return lenis}};
 })();
+(function(){
+  var d=K.d,G=K.G,$=K.$;
+  // 따라붙는 메뉴 막대 (원래 메뉴를 복제해서 만듦; JS 없으면 없음)
+  var st=document.createElement('div'); st.className='stick';
+  st.innerHTML='<a class="sw" href="#main" tabindex="-1">라멘 소라</a><nav aria-label="빠른 메뉴">'+$('.navg a').map(function(a){return '<a href="'+a.getAttribute('href')+'">'+a.firstChild.textContent+'</a>'}).join('')+'<i class="bar"></i></nav><a class="sc" href="tel:+8220000000">전화 주문</a>';
+  document.body.appendChild(st); if(window.gsap) gsap.set(st,{yPercent:-101}); var bar=$('.bar',st)[0], links=$('nav a',st), secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+  var stH=function(){return st.offsetHeight};
+  if(!K.OK){d.classList.remove('mo'); st.style.display='none'; K.anchors(0); return}
+  G.registerPlugin(ScrollTrigger,SplitText);
+  K.anchors(function(){return stH()-1},.9,'power3.inOut'); K.magnet($('.hero .btn,.vz .btn'),.25);
+  var cards=$('.card>img').map(K.clip);
+  // 사진 확대 장면: 메뉴(그릇)와 가게(카운터). JS가 켜질 때만 모양이 바뀜
+  // 고정은 CSS sticky로 함(스크롤은 브라우저가 처리해서 떨림·레이아웃 이동 없음), GSAP는 진행률만 씀
+  var ZM=$('#menu,#shop'); ZM.forEach(function(sec){var w=document.createElement('div'); w.className='zin'; while(sec.firstChild) w.appendChild(sec.firstChild); sec.appendChild(w); sec.classList.add('zm');
+    var z=document.createElement('span'); z.className='zs'; sec.querySelector('.ph').appendChild(z)});
+  d.classList.add('mo-ok');
+  K.fontsReady(1000).then(function(){
+    var h1=$('.hero h1')[0]; G.set(h1,{opacity:1}); var sp=SplitText.create(h1,{type:'lines,chars',mask:'lines'});
+    var bowl=$('.bowl img')[0];
+    var tl=G.timeline({defaults:{ease:'power4.out'}});
+    tl.fromTo('.top',{opacity:1,yPercent:-100},{yPercent:0,duration:.6,ease:'expo.out'},0)
+      .fromTo(bowl,{opacity:0,scale:.55,rotation:-150,xPercent:20},{opacity:1,scale:1,rotation:0,xPercent:0,duration:1.2,ease:'expo.out'},.1)
+      .fromTo('.kick',{opacity:0,x:-24},{opacity:1,x:0,duration:.6},.15)
+      .fromTo(sp.chars,{yPercent:118},{yPercent:0,duration:.7,stagger:.026},.2)
+      .fromTo('.lede,.cta,.label',{opacity:0,y:26},{opacity:1,y:0,duration:.7,stagger:.07},.6);
+    // 나머지 설정은 작은 작업 여러 개로 나눠 돌림(모바일에서 첫 로드 때 긴 작업이 생기지 않게)
+    var Q=[]; function step(f){Q.push(f)} function run(){var f=Q.shift(); if(f){f(); setTimeout(run,0)}}
+    step(function(){
+    // 사진 확대: 섹션을 화면에 고정하고, 작은 카드(그릇은 세로, 카운터는 가로 띠)가 화면 전체로 열린 뒤 글이 올라오고 다음 구역으로 넘어감
+    var MOB=innerWidth<900;
+    ZM.forEach(function(sec,n){
+      var ph=$('.ph',sec)[0], im=$('img',ph)[0], zs=$('.zs',ph)[0], wd=$('.zt span',sec), cap=$('.cap',sec)[0];
+      var A=n===0?(MOB?[.56,.72]:[.30,.62]):(MOB?[.9,.34]:[.64,.30]), p={v:0};
+      function draw(){var e=p.v, sx=A[0]+(1-A[0])*e, sy=A[1]+(1-A[1])*e, s=Math.max(sx,sy)*(1.22-.22*e);
+        ph.style.transform='scale('+sx.toFixed(4)+','+sy.toFixed(4)+')'; im.style.transform='scale('+(s/sx).toFixed(4)+','+(s/sy).toFixed(4)+')'}
+      draw();
+      var tl=G.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:MOB?.35:.6}});
+      tl.to(p,{v:1,duration:.66,ease:'power2.inOut',onUpdate:draw},0)
+        .fromTo(wd[0],{yPercent:0},{yPercent:-70,duration:.7},0).fromTo(wd[1],{yPercent:0},{yPercent:70,duration:.7},0)
+        .fromTo(zs,{opacity:0},{opacity:1,duration:.2},.48)
+        .fromTo($('.en,h2,p,.btn',cap),{opacity:0,y:56},{opacity:1,y:0,duration:.22,stagger:.04,ease:'power3.out'},.58)
+        .to({},{duration:.1});
+      sec.__zy=function(){return sec.getBoundingClientRect().bottom+scrollY-innerHeight};
+    });
+    });
+    step(function(){
+    // 첫 스크롤: 그릇이 굴러가듯 돌고, 글은 위로 빠짐
+    G.to('.bowl',{rotation:24,yPercent:10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.4}});
+    G.to('.hero .txt',{y:-80,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.4}});
+    // 따라붙는 막대: 첫 화면 끝에서 내려옴, 지금 구역 표시
+    ScrollTrigger.create({trigger:'.hero',start:'bottom top+=10',onEnter:function(){G.to(st,{yPercent:0,duration:.55,ease:'expo.out',overwrite:true})},onLeaveBack:function(){G.to(st,{yPercent:-101,duration:.35,ease:'power3.in',overwrite:true})}});
+    var cur=-1; function setBar(i){ if(i===cur) return; cur=i; links.forEach(function(a,k){a.toggleAttribute('aria-current',k===i)});
+      if(i<0) G.to(bar,{scaleX:0,duration:.35,ease:'power3.in'}); else G.to(bar,{x:links[i].offsetLeft,width:links[i].offsetWidth,scaleX:1,duration:.6,ease:'expo.out'}) }
+    secs.forEach(function(s,i){ var nx=secs[i+1]; ScrollTrigger.create({trigger:s,start:'top 40%',endTrigger:nx||'footer',end:nx?'top 40%':'top 40%',onToggle:function(self){if(self.isActive) setBar(i); else if(i===0&&self.direction<0) setBar(-1)}})});
+    });
+    step(function(){
+    // 사진 띠: 빨간 판이 오른쪽으로 걷히고, 사진은 크게에서 제자리로, 스크롤에 따라 흐름
+    $('.band:not(.zm) .ph').forEach(function(ph){var im=ph.querySelector('img'),w=document.createElement('span');w.className='wipe';ph.appendChild(w);
+      var t=G.timeline({scrollTrigger:{trigger:ph,start:'top 82%'}});
+      t.fromTo(w,{scaleX:1},{scaleX:0,duration:.9,ease:'expo.inOut'}).fromTo(im,{scale:1.38},{scale:1.12,duration:1.3,ease:'expo.out'},.15);
+      G.fromTo(im,{yPercent:-5},{yPercent:5,ease:'none',scrollTrigger:{trigger:ph,start:'top bottom',end:'bottom top',scrub:true}});
+    });
+    $('.band:not(.zm) .cap').forEach(function(c){var h=c.querySelector('h2'),s=SplitText.create(h,{type:'lines,chars',mask:'lines'});
+      var t=G.timeline({scrollTrigger:{trigger:c,start:'top 80%'},defaults:{ease:'power4.out'}});
+      t.fromTo(c.querySelector('.en'),{opacity:0,x:-30},{opacity:1,x:0,duration:.6},0).fromTo(s.chars,{yPercent:120},{yPercent:0,duration:.7,stagger:.04},.05)
+       .fromTo($('p,.btn',c),{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08},.3)});
+    });
+    step(function(){
+    // 카드: 기울어진 채 튀어 올라와 바로 섬
+    G.set('.card',{opacity:0});
+    ScrollTrigger.batch('.card',{start:'top 88%',once:true,onEnter:function(b){G.fromTo(b,{opacity:0,y:70,rotation:3},{opacity:1,y:0,rotation:0,duration:.8,ease:'power4.out',stagger:.08})}});
+    G.fromTo('.adds li',{opacity:0,y:16},{opacity:1,y:0,duration:.5,ease:'power3.out',stagger:.04,scrollTrigger:{trigger:'.adds',start:'top 90%'}});
+    $('.steps,.facts').forEach(function(u){G.fromTo($('li',u),{opacity:0,x:-44},{opacity:1,x:0,duration:.7,ease:'power4.out',stagger:.08,scrollTrigger:{trigger:u,start:'top 86%'}})});
+    $('.facts b').forEach(function(b){var v=parseInt(b.textContent,10); if(isNaN(v)) return; var o={v:0};
+      G.to(o,{v:v,duration:.9,ease:'power2.out',scrollTrigger:{trigger:'.facts',start:'top 86%'},onUpdate:function(){b.textContent=Math.round(o.v)}})});
+    G.fromTo('.vz>div',{opacity:0,y:56},{opacity:1,y:0,duration:.8,ease:'power4.out',stagger:.1,scrollTrigger:{trigger:'.vz',start:'top 86%'}});
+    $('.below .note').forEach(function(n){G.fromTo(n,{opacity:0},{opacity:1,duration:.6,scrollTrigger:{trigger:n,start:'top 92%'}})});
+    // 마우스(데스크톱): 그릇이 손을 따라 기울고, 카드가 손 쪽으로 기울어짐
+    if(K.DESK){var b=$('.bowl')[0],bx=G.quickTo(b,'x',{duration:.9,ease:'power3'}),by=G.quickTo(b,'y',{duration:.9,ease:'power3'});
+      $('.hero')[0].addEventListener('pointermove',function(e){var nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;bx(nx*36);by(ny*24)});
+      $('.card').forEach(function(c){var rx=G.quickTo(c,'rotationX',{duration:.5,ease:'power3'}),ry=G.quickTo(c,'rotationY',{duration:.5,ease:'power3'});G.set(c,{transformPerspective:800});
+        c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();ry(((e.clientX-r.left)/r.width-.5)*10);rx(-((e.clientY-r.top)/r.height-.5)*10)});
+        c.addEventListener('pointerleave',function(){rx(0);ry(0)})});
+    }
+    ScrollTrigger.refresh();
+    });
+    setTimeout(run,0);
+  });
+})();
+
 </script>
 </body>
 </html>

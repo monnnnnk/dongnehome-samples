@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Serif+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/05_cup.jpg" media="(max-width: 899px)">
 <link rel="preload" as="image" href="img/01_window.jpg" media="(min-width: 900px)">
+<script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('mo');setTimeout(function(){if(!d.classList.contains('mo-ok'))d.classList.remove('mo')},3500)}})(document.documentElement)</script>
 <style>
 :root{
   --paper:#ECE7DE;      /* plaster wall in the set */
@@ -179,37 +180,58 @@ a{color:inherit}
   .visit-photo img{position:absolute;inset:0;height:100%;aspect-ratio:auto}
   .visit-body{grid-column:8/span 4;padding:168px 0 168px}
 }
-/* ---------- motion: 카페 = 느리고 부드럽게 (긴 시간, ease-out, 작은 거리) ----------
-   숨김 상태는 JS가 <html class="mo">를 붙인 뒤에만 적용 → JS 없으면 그대로 보임.
-   transform 계열(translate/scale)과 opacity만 움직임. 동작 줄이기 설정이면 .mo 자체를 안 붙임. */
-:root{--e-soft:cubic-bezier(.22,.61,.36,1);--e-out:cubic-bezier(.16,1,.3,1)}
+/* ---------- motion v2: 카페 = 김이 오르듯 느리고 따뜻하게 ----------
+   .js/.mo는 <head>의 짧은 스크립트가 붙임. .mo는 동작 줄이기 설정이 아닐 때만, 3.5초 안에 모션이 시작 안 되면 스스로 풀림 → JS·라이브러리가 없어도 내용은 보임.
+   움직임은 transform/opacity, 사진 열림만 clip-path(inset). */
 .m-clip{display:block;overflow:hidden;position:relative}
-.m-clip img{scale:var(--ps,1);transition:scale 1.6s var(--e-out);will-change:translate}
 @media (min-width:900px){
   .pour .m-clip{flex:1 1 0;min-height:0}
   .pour .m-clip img{position:absolute;inset:0;width:100%;height:100%}
   .visit-photo .m-clip{position:absolute;inset:0}
 }
-/* 첫 화면 */
-.mo .hero picture img{opacity:0;scale:1.06;transition:opacity 1.8s var(--e-soft),scale 2.8s var(--e-out)}
-.mo-go .hero picture img{opacity:1;scale:1}
-.mo .hero figcaption{opacity:0;transition:opacity 1.6s var(--e-soft) 1.4s}
-.mo-go .hero figcaption{opacity:1}
-.mo .mast,.mo .hero-copy>*{opacity:0;translate:0 18px;transition:opacity 1.4s var(--e-soft) calc(.4s + var(--i,0)*.12s),translate 1.8s var(--e-out) calc(.4s + var(--i,0)*.12s)}
-.mo-go .mast,.mo-go .hero-copy>*{opacity:1;translate:none}
-/* 스크롤 등장 */
-.mo [data-r]{opacity:0;translate:0 28px;transition:opacity 1.6s var(--e-soft) calc(var(--i,0)*.1s),translate 1.9s var(--e-out) calc(var(--i,0)*.1s)}
-.mo [data-r="ph"]{translate:0 44px}
-.mo [data-r].is-in{opacity:1;translate:none}
-/* 사진 호버 (마우스 있는 데스크톱만): 아주 천천히 살짝 */
+.hero figure{overflow:hidden}
+.hero picture{display:block;height:100%}.hero figure{overflow:hidden}
+.mo .hero picture img,.mo .hero-copy>*,.mo .mast,.mo .hero figcaption{opacity:0}
+/* 인트로: 종이색 막 위로 상호가 올라오고 갈색 선이 그어진 뒤 막이 걷힘 (CSS로 바로 시작) */
+.intro{position:fixed;inset:0;z-index:70;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;pointer-events:none}
+.intro .w{overflow:hidden;padding:0 0 .1em}
+.intro b{display:block;font-weight:500;font-size:clamp(26px,3.4vw,40px);letter-spacing:.5em;margin-right:-.5em;color:var(--ink);animation:k-up 1.1s cubic-bezier(.16,1,.3,1) .05s both}
+.intro i{display:block;width:96px;height:1px;background:var(--walnut);transform-origin:left center;animation:k-line 1.1s cubic-bezier(.65,0,.35,1) .25s both}
+.intro span{font-family:var(--en);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);animation:k-fade 1s ease-out .45s both}
+@keyframes k-up{from{transform:translateY(105%)}to{transform:none}}
+@keyframes k-line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes k-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* 메뉴 버튼 + 오버레이 (JS가 만듦) */
+.js .nav-wrap{margin-right:104px}
+@media (min-width:900px){.js .nav-wrap{margin-right:0}}
+.mbtn{position:fixed;top:10px;right:12px;z-index:65;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 18px;border:1px solid var(--rule);border-radius:999px;
+  background:rgba(236,231,222,.94);color:var(--ink);font:inherit;font-size:12px;font-weight:400;letter-spacing:.26em;cursor:pointer;transition:background-color .5s,color .5s,border-color .5s}
+.mbtn i{position:relative;display:block;width:18px;height:7px}
+.mbtn i::before,.mbtn i::after{content:"";position:absolute;left:0;right:0;height:1px;background:currentColor;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.mbtn i::before{top:0}.mbtn i::after{bottom:0}
+.menu-open .mbtn{background:transparent;color:var(--ivory);border-color:rgba(239,232,220,.35)}
+.menu-open .mbtn i::before{transform:translateY(3px) rotate(45deg)}.menu-open .mbtn i::after{transform:translateY(-3px) rotate(-45deg)}
+@media (min-width:900px){.mbtn{top:28px;right:32px}}
+.ov{position:fixed;inset:0;z-index:60;background:var(--espresso);color:var(--ivory);display:flex;flex-direction:column;justify-content:center;padding:88px var(--pad) 40px}
+.ov[hidden]{display:none}
+.ov ul{list-style:none;margin:0;padding:0}
+.ov li{overflow:hidden;border-bottom:1px solid rgba(239,232,220,.14)}
+.ov a{display:flex;align-items:baseline;justify-content:space-between;gap:18px;min-height:64px;padding:10px 0;text-decoration:none;color:var(--ivory)}
+.ov a b{font-weight:300;font-size:clamp(36px,7.4vw,112px);line-height:1.05;letter-spacing:.06em;transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .5s cubic-bezier(.16,1,.3,1)}
+.ov a small{font-family:var(--en);font-style:italic;font-size:15px;letter-spacing:.12em;color:var(--ivory-2)}
+.ov .of{margin:36px 0 0;font-size:13px;letter-spacing:.06em;color:var(--ivory-2)}
+.ov .of a{display:inline-flex;min-height:44px;font-size:13px;color:var(--ivory);text-decoration:underline;text-underline-offset:6px}
+@media (min-width:900px){.ov{padding:110px 10vw 56px}.ov a:hover b{transform:translateX(24px)}.ov ul:hover a b{opacity:.32}.ov ul:hover a:hover b{opacity:1}}
+/* 호버(마우스 있는 데스크톱만) */
 @media (hover:hover) and (min-width:900px){
-  figure:hover>.m-clip img{scale:calc(var(--ps,1) * 1.035)}
+  .m-clip img{transition:scale 1.4s cubic-bezier(.16,1,.3,1)}
+  figure:hover>.m-clip img{scale:1.04}
   .quiet{position:relative;border-bottom-color:transparent}
-  .quiet::before,.quiet::after{content:"";position:absolute;left:2px;right:2px;bottom:-1px;height:1px;background:currentColor;transition:transform .9s var(--e-out)}
+  .quiet::before,.quiet::after{content:"";position:absolute;left:2px;right:2px;bottom:-1px;height:1px;background:currentColor;transition:transform .9s cubic-bezier(.16,1,.3,1)}
   .quiet::before{transform-origin:right center}
   .quiet::after{transform-origin:left center;transform:scaleX(0)}
   .quiet:hover::before{transform:scaleX(0)}
-  .quiet:hover::after{transform:scaleX(1);transition-delay:.28s}
+  .quiet:hover::after{transform:scaleX(1);transition-delay:.25s}
 }
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-stopped{overflow:clip}
@@ -350,42 +372,121 @@ html.lenis,html.lenis body{height:auto}
   }
   render(); setInterval(render,60000);
 })();
-(function(){
-  // 모션: 동작 줄이기 설정이거나 IntersectionObserver가 없으면 아무것도 숨기지 않는다
-  var d=document.documentElement;
-  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var $=function(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))};
-  // 사진을 클립 상자로 감싼다 (패럴랙스/호버 확대가 캡션을 덮지 않게)
-  var clips=$('.pour>img,.beans-fig>img,.menu-photo>img,.visit-photo>img').map(function(img){
-    var c=document.createElement('span'); c.className='m-clip'; img.parentNode.insertBefore(c,img); c.appendChild(img); return c;});
-  d.classList.add('mo');
-  $('.hero-copy>*').forEach(function(n,i){n.style.setProperty('--i',i+1)});
-  // 스크롤 등장 대상
-  function mark(q,kind,stag){$(q).forEach(function(n,i){n.setAttribute('data-r',kind||'');if(stag)n.style.setProperty('--i',Math.min(i,6))})}
-  mark('.coffee .sec-no,.coffee h2,.coffee .body,.menu-body .head,.sheet .fine');
-  mark('.beans-list li','',1); mark('.sheet>div','',1); mark('.visit-body>*','',1);
-  mark('.pour,.beans-fig,.menu-photo,.visit-photo','ph');
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
-  $('[data-r]').forEach(function(n){io.observe(n)});
-  // 첫 화면: 히어로 사진이 준비되면 시작 (최대 0.9초 대기)
-  var gone=0, go=function(){if(!gone&&(gone=1))requestAnimationFrame(function(){requestAnimationFrame(function(){void d.offsetWidth; d.classList.add('mo-go')})})};   // 숨김 상태를 먼저 계산시킨 뒤 시작
-  var hi=document.querySelector('.hero picture img'); if(hi&&!hi.complete){hi.addEventListener('load',go);hi.addEventListener('error',go)} else go();
-  setTimeout(go,900);
-  // 데스크톱(마우스)만: 가벼운 스무스 스크롤 + 사진 패럴랙스
-  var desk=matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)');
-  if(!desk.matches) return;
-  var ls=document.createElement('script'); ls.src='vendor/lenis.min.js'; ls.async=true;   // MIT, v7/vendor/LICENSES.md
-  ls.onload=function(){try{new Lenis({autoRaf:true,lerp:.09,anchors:true})}catch(err){}}; document.body.appendChild(ls);
-  clips.forEach(function(c){c.style.setProperty('--ps','1.08')});
-  var vh=innerHeight, ticking=false;
-  function par(){ticking=false;
-    clips.forEach(function(c){var r=c.getBoundingClientRect(); if(r.bottom<-50||r.top>vh+50) return;
-      var p=(r.top+r.height/2-vh/2)/(vh/2+r.height/2); p=Math.max(-1,Math.min(1,p));
-      c.firstElementChild.style.translate='0 '+(-p*r.height*.03).toFixed(1)+'px'})}
-  function req(){if(!ticking){ticking=true;requestAnimationFrame(par)}}
-  addEventListener('scroll',req,{passive:true}); addEventListener('resize',function(){vh=innerHeight;req()}); par();
+</script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script>
+/* 동네홈 모션 키트 v2 — 직접 작성(외부 코드 복사 없음). GSAP 3.15 + ScrollTrigger + SplitText(표준 무료 라이선스), Lenis(MIT) */
+var K=(function(){
+  var d=document.documentElement, G=window.gsap;
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DESK=matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches;
+  var OK=!RM&&!!G&&!!window.ScrollTrigger&&!!window.SplitText;
+  function $(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))}
+  function clip(img){var c=document.createElement('span');c.className='m-clip';img.parentNode.insertBefore(c,img);c.appendChild(img);return c}
+  var lenis=null;
+  function smooth(opt){
+    if(!OK||!DESK||!window.Lenis) return null;
+    try{lenis=new Lenis(Object.assign({lerp:.085,wheelMultiplier:1},opt||{}));lenis.on('scroll',ScrollTrigger.update);
+      G.ticker.add(function(t){lenis.raf(t*1000)});G.ticker.lagSmoothing(0)}catch(e){lenis=null}
+    return lenis;
+  }
+  // 앵커 이동(“페이지 전환” 대신): Lenis가 있으면 Lenis, 없으면 GSAP로 창 스크롤
+  function goTo(el,off,dur,ease){
+    off=off||0; var y=el.getBoundingClientRect().top+scrollY-off;
+    if(RM||!G){scrollTo(0,y);return}
+    if(lenis){lenis.scrollTo(y,{duration:dur||1.5,easing:function(t){return t===1?1:1-Math.pow(2,-10*t)}});return}
+    var o={y:scrollY}; G.to(o,{y:y,duration:dur||1,ease:ease||'power3.inOut',onUpdate:function(){scrollTo(0,o.y)}});
+  }
+  function anchors(off,dur,ease,before){
+    $('a[href^="#"]').forEach(function(a){var id=a.getAttribute('href').slice(1); if(!id) return;
+      a.addEventListener('click',function(e){var t=document.getElementById(id); if(!t) return; e.preventDefault();
+        var w=before?before():0; setTimeout(function(){goTo(t,typeof off=='function'?off():off,dur,ease); if(t.tabIndex<0&&!/^(A|BUTTON|INPUT)$/.test(t.tagName)) t.setAttribute('tabindex','-1'); t.focus({preventScroll:true})},w||0)})});
+  }
+  // 메뉴: 버튼+오버레이를 JS로 만든다(JS 없으면 안 보임). anim(open)으로 열고 닫는 타임라인을 받는다
+  function menu(cfg){
+    var btn=document.createElement('button'); btn.type='button'; btn.className='mbtn'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-controls','m-ov');
+    btn.innerHTML=cfg.btn; btn.setAttribute('aria-label','메뉴 열기');
+    var ov=document.createElement('nav'); ov.id='m-ov'; ov.className='ov'; ov.setAttribute('aria-label','전체 메뉴'); ov.innerHTML=cfg.html; ov.hidden=true;
+    (cfg.btnParent||document.body).appendChild(btn); document.body.appendChild(ov);
+    var open=false, busy=null;
+    function set(o){open=o; btn.setAttribute('aria-expanded',o?'true':'false'); btn.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기'); d.classList.toggle('menu-open',o);
+      if(lenis){o?lenis.stop():lenis.start()} document.body.style.overflow=o&&!lenis?'hidden':'';
+      if(busy) busy.kill();
+      if(o){ov.hidden=false; busy=OK?cfg.open(ov):null; var f=ov.querySelector('a'); f&&f.focus({preventScroll:true})}
+      else{ if(OK){busy=cfg.close(ov); busy.eventCallback('onComplete',function(){ov.hidden=true})} else ov.hidden=true; }
+    }
+    btn.addEventListener('click',function(){set(!open)});
+    addEventListener('keydown',function(e){if(e.key==='Escape'&&open){set(false);btn.focus()}});
+    $('a',ov).forEach(function(a){a.addEventListener('click',function(){if(open) set(false)})});
+    return {btn:btn,ov:ov,close:function(){if(open)set(false)},isOpen:function(){return open},closeDelay:function(){return open?(cfg.closeWait||350):0}};
+  }
+  // 자석 버튼(데스크톱)
+  function magnet(els,s){ if(!OK||!DESK) return; s=s||.3;
+    els.forEach(function(el){var qx=G.quickTo(el,'x',{duration:.6,ease:'power3'}),qy=G.quickTo(el,'y',{duration:.6,ease:'power3'});
+      el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();qx((e.clientX-r.left-r.width/2)*s);qy((e.clientY-r.top-r.height/2)*s)});
+      el.addEventListener('pointerleave',function(){G.to(el,{x:0,y:0,duration:1,ease:'elastic.out(1,.45)',overwrite:'auto'})})});
+  }
+  function fontsReady(cap){return Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),new Promise(function(r){setTimeout(r,cap||1400)})])}
+  return {d:d,G:G,RM:RM,DESK:DESK,OK:OK,$:$,clip:clip,smooth:smooth,goTo:goTo,anchors:anchors,menu:menu,magnet:magnet,fontsReady:fontsReady,lenis:function(){return lenis}};
 })();
+(function(){
+  var d=K.d,G=K.G,$=K.$;
+  var mm=K.menu({btn:'<span>메뉴</span><i></i>',closeWait:420,
+    html:'<ul><li><a href="#main"><b>처음</b><small>Top</small></a></li><li><a href="#coffee"><b>커피</b><small>No. 01</small></a></li><li><a href="#menu"><b>메뉴</b><small>No. 02</small></a></li><li><a href="#visit"><b>오시는 길</b><small>No. 03</small></a></li></ul>'+
+      '<p class="of">화–일 10:00 – 18:00 · 월요일 쉼 · <a href="tel:+8220000000">02 · 000 · 0000</a> (데모 번호)</p>',
+    open:function(ov){return G.timeline().fromTo(ov,{yPercent:-100},{yPercent:0,duration:.95,ease:'expo.inOut'})
+      .fromTo($('li a',ov),{yPercent:110},{yPercent:0,duration:1.1,ease:'expo.out',stagger:.07},.45).fromTo($('.of',ov),{opacity:0,y:10},{opacity:1,y:0,duration:.9,ease:'power3.out'},.75)},
+    close:function(ov){return G.timeline().to($('li a',ov),{yPercent:-110,duration:.45,ease:'power3.in',stagger:.03}).to($('.of',ov),{opacity:0,duration:.3},0).to(ov,{yPercent:-100,duration:.8,ease:'expo.inOut'},.2)}});
+  if(!K.OK){d.classList.remove('mo');K.anchors(0,0,0,mm.closeDelay);return}
+  G.registerPlugin(ScrollTrigger,SplitText);
+  var clips=$('.pour>img,.beans-fig>img,.menu-photo>img,.visit-photo>img').map(K.clip);
+  var lenis=K.smooth({lerp:.08}); K.anchors(0,1.6,'power3.inOut',mm.closeDelay); K.magnet([$('.quiet')[0],mm.btn],.28);
+  d.classList.add('mo-ok');
+  var seen=false; try{seen=sessionStorage.getItem('sd-intro')==='1';sessionStorage.setItem('sd-intro','1')}catch(e){}
+  var intro=null;
+  if(!seen){intro=document.createElement('div');intro.className='intro';intro.setAttribute('aria-hidden','true');intro.innerHTML='<div class="w"><b>소담별</b></div><i></i><span>Mangwon · Hand drip</span>';document.body.appendChild(intro);lenis&&lenis.stop()}
+  var t0=performance.now();
+  K.fontsReady(1400).then(function(){
+    var wait=intro?Math.max(0,1050-(performance.now()-t0))/1000:0;
+    var img=$('.hero picture img')[0], h1=$('.hero h1')[0];
+    G.set(h1,{opacity:1}); var sp=SplitText.create(h1,{type:'lines',mask:'lines'});
+    var tl=G.timeline({delay:wait,defaults:{ease:'expo.out'},onComplete:function(){intro&&intro.remove();lenis&&lenis.start()}});
+    var at=0;
+    if(intro){tl.to(intro,{yPercent:-100,duration:1.1,ease:'power4.inOut'},0); at=.55}
+    tl.fromTo(img,{opacity:1,scale:1.16,clipPath:'inset(12% 14% 12% 14%)'},{scale:1,clipPath:'inset(0% 0% 0% 0%)',duration:2.2,ease:'expo.out'},at)
+      .fromTo(sp.lines,{yPercent:108},{yPercent:0,duration:1.4,stagger:.13},at+.35)
+      .fromTo($('.hero-copy>*:not(h1)'),{opacity:0,y:18},{opacity:1,y:0,duration:1.3,stagger:.09,ease:'power3.out'},at+.6)
+      .fromTo('.mast',{opacity:0},{opacity:1,duration:1.2,ease:'power2.out'},at+.5)
+      .fromTo('.hero figcaption',{opacity:0,y:10},{opacity:1,y:0,duration:1.2,ease:'power3.out'},at+1.1);
+    // 첫 스크롤: 사진은 천천히 가라앉고(패럴랙스), 글은 조금 빨리 올라감
+    G.to('.hero picture',{yPercent:9,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    if(K.DESK) G.to('.hero-copy',{y:-70,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    // 제목: 줄 단위 마스크
+    $('.coffee h2,.menu-body h2,.visit h2').forEach(function(h){var s=SplitText.create(h,{type:'lines',mask:'lines'});
+      G.fromTo(s.lines,{yPercent:108},{yPercent:0,duration:1.4,ease:'expo.out',stagger:.13,scrollTrigger:{trigger:h,start:'top 84%'}})});
+    $('.sec-no').forEach(function(n){G.fromTo(n,{opacity:0,x:-14},{opacity:1,x:0,duration:1.3,ease:'power3.out',scrollTrigger:{trigger:n,start:'top 88%'}})});
+    // 본문: 줄마다 살짝 늦게
+    $('.coffee .body,.sheet .fine,.call>p:first-child').forEach(function(p){var s=SplitText.create(p,{type:'lines'});
+      G.fromTo(s.lines,{opacity:0,y:14},{opacity:1,y:0,duration:1.2,ease:'power3.out',stagger:.07,scrollTrigger:{trigger:p,start:'top 88%'}})});
+    [['.beans-list li','.beans-list'],['.sheet>div','.sheet'],['.hours>div','.hours'],['.visit-body .status,.visit-body .addr,.visit-body .links,.call .num,.call .links','.visit-body']].forEach(function(x){
+      G.fromTo(x[0],{opacity:0,y:18},{opacity:1,y:0,duration:1.2,ease:'power3.out',stagger:.09,scrollTrigger:{trigger:x[1],start:'top 84%'}})});
+    // 사진: 안쪽에서 바깥으로 천천히 열리고(inset), 스크롤에 따라 아주 조금 흐름
+    clips.forEach(function(c){var im=c.firstElementChild;
+      G.fromTo(c,{clipPath:'inset(10% 12% 10% 12%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.8,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 86%'}});
+      G.fromTo(im,{scale:1.28},{scale:1.1,duration:2.4,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 86%'}});
+      G.fromTo(im,{yPercent:-4},{yPercent:4,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}});
+      var cap=c.parentNode.querySelector('.cap'); cap&&G.fromTo(cap,{opacity:0,y:8},{opacity:1,y:0,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 70%'}});
+    });
+    // 마우스(데스크톱): 히어로 사진이 손끝을 아주 느리게 따라옴
+    if(K.DESK){var pic=$('.hero picture')[0]; G.set(pic,{scale:1.03}); var qx=G.quickTo(pic,'x',{duration:1.6,ease:'power3'}),qy=G.quickTo(pic,'y',{duration:1.6,ease:'power3'});
+      $('.hero')[0].addEventListener('pointermove',function(e){qx((e.clientX/innerWidth-.5)*-18);qy((e.clientY/innerHeight-.5)*-12)});}
+    ScrollTrigger.refresh();
+  });
+})();
+
 </script>
 
 </body>
