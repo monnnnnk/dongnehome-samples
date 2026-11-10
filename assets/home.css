@@ -2,6 +2,7 @@
 @font-face{font-family:"Pretendard";src:url(fonts/Pretendard-400.r7.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Pretendard";src:url(fonts/Pretendard-500.r7.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Pretendard";src:url(fonts/Pretendard-600.r7.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"DNH Serif";src:url(fonts/NotoSerifKR-300.r8.woff2) format("woff2");font-weight:300;font-display:swap}
 
 *,*::before,*::after{box-sizing:border-box}
 html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
@@ -32,6 +33,10 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 .eyebrow,.note{font-size:var(--t-small);line-height:var(--lh-small);font-weight:var(--w-medium);color:var(--ink-2)}
 .note{font-weight:var(--w-regular)}
 
+.serif{font-family:var(--font-serif);font-weight:var(--w-light)}
+.h2.serif{font-size:var(--t-serif-h2);line-height:var(--lh-serif-h2);letter-spacing:var(--ls-serif)}
+.h2-xl.serif{font-size:var(--t-serif-display);line-height:var(--lh-serif-display)}
+
 /* ---------- components: button / link / menu ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;height:var(--hit);padding:0 var(--s-5);border:0;border-radius:var(--r-control);font-size:15px;font-weight:var(--w-medium);letter-spacing:-0.01em;line-height:1;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color var(--d-1) linear,color var(--d-1) linear}
 .btn-primary{background:var(--ink);color:var(--paper)}
@@ -46,6 +51,8 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 .link-arrow::after{content:"→";margin-left:6px;text-decoration:none;display:inline-block;transition:transform var(--d-2) var(--ease-out)}
 .link-arrow:hover::after{transform:translate3d(3px,0,0)}
 .actions{display:flex;flex-wrap:wrap;gap:var(--s-3)}
+.link-lg{font-size:var(--t-lead);font-weight:var(--w-medium);text-decoration-color:currentColor;text-underline-offset:6px;transition:text-decoration-thickness var(--d-1) linear}
+.link-lg:hover{text-decoration-thickness:2px}
 
 /* ---------- header ---------- */
 .hd{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid transparent;transition:border-color var(--d-2) linear}
@@ -56,30 +63,38 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 .menu{display:flex;margin-right:calc(-1 * var(--s-3))}
 .menu a{display:inline-flex;align-items:center;min-height:var(--hit);padding:0 var(--s-3);font-size:var(--t-small);font-weight:var(--w-medium);color:var(--ink-2);text-decoration:none;transition:color var(--d-1) linear}
 .menu a:hover,.menu a[aria-current]{color:var(--ink)}
-.hd-cta{display:none}
+.hd-cta{display:none;align-items:center;min-height:var(--hit);padding:0 var(--s-3);margin-right:calc(-1 * var(--s-3));font-size:var(--t-small);font-weight:var(--w-medium);color:var(--ink);text-decoration:none;transition:color var(--d-1) linear}
+.hd-cta:hover{color:var(--ink-2)}
 @media (min-width:768px){
-  .hd-in{grid-template-columns:1fr auto 1fr}
+  .hd-in{grid-template-columns:1fr auto}
   .logo{height:21px}
-  .menu{margin:0}
+  .menu{margin-right:calc(-1 * var(--s-3))}
   .hd-cta{display:inline-flex;justify-self:end}
 }
 
-/* ---------- hero: short headline, then the work itself ---------- */
+/* ---------- hero (r9): sales page. one serif line + price + one CTA, then the finished shop pages as the product ---------- */
 .hero{padding-top:var(--s-6)}
-.hero-head{display:grid;justify-items:start;gap:var(--s-4)}
-.hero-lead{color:var(--ink-2);max-width:30em}
-.hero .actions{margin-top:var(--s-2)}
+.hero-in{display:grid;gap:var(--s-5)}
+.hero-title{font-size:var(--t-serif-display);line-height:var(--lh-serif-display);letter-spacing:var(--ls-serif)}
+.hero-side{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-3) var(--s-5)}
+.hero-price{font-size:var(--t-lead);color:var(--ink-2)}
+.hero-price b{font-weight:var(--w-semibold);color:var(--ink)}
+.hero .show{margin-top:var(--s-6)}
 @media (min-width:768px){
-  .hero{padding-top:var(--s-8)}
-  .hero-head{justify-items:center;text-align:center}
-  .hero-lead{max-width:none}
-  .hero .actions{justify-content:center}
+  .hero{padding-top:var(--s-7)}
+  .hero-in{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);align-items:end}
+  .hero-title{grid-column:1/9}
+  .hero-side{grid-column:9/-1;justify-content:flex-end;padding-bottom:6px}
+  .hero .show{margin-top:var(--s-7)}
 }
-@media (min-width:1200px){.hero{padding-top:var(--s-7)}}
+@media (min-width:1200px){
+  .hero{padding-top:var(--s-7)}
+  .hero-title{font-size:clamp(52px,min(5vw,7.6svh),76px)}
+}
 
 /* show: the three finished shop pages, frameless, floating on an ink stage that fills the rest of the first screen.
    Without JS: a plain horizontal scroll. With JS: centre slide + neighbours peeking. */
-.show{--sw:calc(100vw - 2 * var(--margin));--sgap:var(--s-3);--sar:2.1633;--spad:var(--s-5);margin-top:var(--s-6);background:var(--stage);color:var(--stage-fg)}
+.show{--sw:calc(100vw - 2 * var(--margin));--sgap:var(--s-3);--sar:2.1633;--spad:var(--s-5);background:var(--stage);color:var(--stage-fg)}
 .show :focus-visible{outline-color:var(--stage-fg)}
 .reel{display:flex;gap:var(--sgap);overflow-x:auto;scroll-snap-type:x mandatory;padding:var(--spad) var(--margin)}
 .slide{flex:0 0 var(--sw);scroll-snap-align:center}
@@ -93,7 +108,7 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 .js .slide:not(.on){--op:.4}
 .js .slide:not(.on):hover{--op:.6}
 @media (min-width:768px){
-  .show{--sw:min(1120px,80vw);--sgap:var(--s-5);--sar:.625;--spad:var(--s-7);margin-top:var(--s-7)}
+  .show{--sw:min(1120px,80vw);--sgap:var(--s-5);--sar:.625;--spad:var(--s-7)}
   .slide img{aspect-ratio:2080/1300}
 }
 
@@ -128,7 +143,7 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 }
 
 /* samples: text on the left, a section of the real page on the right */
-.sample-list{display:grid;gap:var(--s-9);margin-top:var(--s-8)}
+.sample-list{display:grid;gap:var(--s-8);margin-top:var(--s-7)}
 .sample{display:grid;gap:var(--s-5)}
 .sample-txt{display:grid;gap:var(--s-2);align-content:start;justify-items:start}
 .sample-txt .h3{margin-top:var(--s-1)}
@@ -140,7 +155,7 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 .sample-img img{width:100%;height:auto;transition:transform var(--d-4) var(--ease-out)}
 .sample-img:hover img{transform:translate3d(0,-4px,0)}
 @media (min-width:768px){
-  .sample-list{grid-column:1/-1;gap:var(--s-10);margin-top:var(--s-9)}
+  .sample-list{grid-column:1/-1;gap:var(--s-9);margin-top:var(--s-8)}
   .sample{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);align-items:end}
   .sample-txt{grid-column:1/5;padding-bottom:var(--s-2)}
   .sample-img{order:0;grid-column:5/-1;padding:var(--s-7) var(--s-7) 0}
@@ -160,12 +175,12 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 .pt-row [role=rowheader]{font-size:var(--t-small);font-weight:var(--w-medium);color:var(--ink-2)}
 .pt-row [role=cell]{font-weight:var(--w-medium)}
 .pt-make [role=cell]{font-size:var(--t-small);white-space:nowrap}
-.pt-make b{font-size:30px;line-height:1.1;letter-spacing:-0.035em;font-weight:var(--w-semibold);margin-right:2px}
+.pt-make b{font-family:var(--font-serif);font-size:32px;line-height:1.1;letter-spacing:-0.04em;font-weight:var(--w-light);margin-right:3px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .price .note{margin-top:var(--s-4)}
 @media (min-width:768px){
   .pt-row{grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,3fr))}
-  .pt-make b{font-size:48px}
+  .pt-make b{font-size:56px}
   .pt-make [role=cell]{font-size:var(--t-lead)}
 }
 
@@ -183,3 +198,75 @@ button{font:inherit;color:inherit;letter-spacing:inherit}
 /* ---------- motion (JS + motion allowed only; without JS everything is visible) ---------- */
 .mo .rv{opacity:0;transform:translate3d(0,16px,0);transition:opacity var(--d-4) var(--ease-out),transform var(--d-4) var(--ease-out);transition-delay:var(--rd,0ms)}
 .mo .rv.in{opacity:1;transform:none}
+
+/* ---------- r8 sections: same language as the first screen ---------- */
+.about-in{row-gap:var(--s-7)}
+.about-photo{width:82%}
+.about-photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.about-photo figcaption{margin-top:var(--s-2);font-size:var(--t-caption);line-height:var(--lh-caption);color:var(--ink-2)}
+.about-txt .eyebrow{margin-bottom:var(--s-4)}
+.about-txt .lead{margin-top:var(--s-5)}
+.about-txt .points{grid-template-columns:none;margin-top:var(--s-8);gap:var(--s-6)}
+.points li{grid-template-columns:40px 1fr;column-gap:var(--s-3)}
+.points li>*{grid-column:2}
+.points .num.serif{grid-column:1;grid-row:1/3;font-size:32px;line-height:1;color:var(--ink);margin:0}
+.sample-txt .h3.serif{font-size:28px;line-height:1.25;letter-spacing:-0.035em}
+@media (min-width:768px){
+  .about-photo{grid-column:1/6;width:auto;margin-top:var(--s-8)}
+  .about-txt{grid-column:7/-1}
+  .about-txt .points{margin-top:var(--s-8)}
+  .sample-txt .h3.serif{font-size:36px}
+  .sample:nth-child(2) .sample-txt{grid-column:9/-1;grid-row:1}
+  .sample:nth-child(2) .sample-img{grid-column:1/9;grid-row:1}
+  .about .about-txt .eyebrow{margin-bottom:var(--s-4);padding-top:0}
+}
+@media (min-width:1200px){
+  .sample:nth-child(2) .sample-txt{grid-column:10/-1;grid-row:1}
+  .sample:nth-child(2) .sample-img{grid-column:1/10;grid-row:1}
+}
+
+/* r8: each sample row carries a trace of the shop — one detail photo + one true work note */
+.sample-detail{display:none}
+.sample-note{margin-top:var(--s-3);font-size:var(--t-small);line-height:var(--lh-small);color:var(--ink-2)}
+.sample-note span{display:block;font-weight:var(--w-semibold);color:var(--ink);margin-bottom:2px}
+@media (min-width:768px){
+  .sample{align-items:stretch}
+  .sample-txt{grid-template-rows:auto 1fr;align-content:stretch}
+  .sample-detail{display:block;width:min(100%,180px);height:auto;aspect-ratio:4/5;object-fit:cover;margin-bottom:var(--s-6)}
+  .sample-txt>.num{align-self:end}
+}
+
+/* ---------- r9 sections ---------- */
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3);margin-top:var(--s-7)}
+.phone a{display:grid;gap:var(--s-1);text-decoration:none;color:inherit}
+.phone img{width:100%;height:auto;aspect-ratio:600/1298;background:var(--surface);transition:transform var(--d-3) var(--ease-out)}
+.phone a:hover img{transform:translate3d(0,-4px,0)}
+.phone-n{margin-top:var(--s-3);font-size:18px;line-height:1.3;letter-spacing:-0.03em}
+.phone-k{font-size:var(--t-caption);color:var(--ink-2)}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3);margin-top:var(--s-7)}
+.plan{display:grid;gap:var(--s-2);padding-top:var(--s-4);border-top:1px solid var(--ink)}
+.plan-n{font-size:var(--t-small);font-weight:var(--w-medium);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.plan-a{font-size:var(--t-lead);font-weight:var(--w-medium)}
+.plan-a{font-size:var(--t-small)}
+.plan-a b{font-size:40px;line-height:1.05;letter-spacing:-0.04em;margin-right:4px}
+.plan-m{font-size:var(--t-small);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.steps{display:grid;gap:var(--s-6);margin-top:var(--s-7)}
+.step{display:grid;grid-template-columns:40px 1fr;column-gap:var(--s-3);row-gap:var(--s-1)}
+.step>*{grid-column:2}
+.step-n{grid-column:1;grid-row:1/3;font-size:32px;line-height:1}
+.step p{color:var(--ink-2)}
+@media (min-width:768px){
+  .phones,.plans,.steps{grid-column:4/-1}
+  .phones{gap:var(--gutter);margin-top:var(--s-8)}
+  .phone-n{font-size:24px}
+  .plans{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gutter);margin-top:var(--s-8)}
+  .plan-a{font-size:var(--t-lead)}
+  .plan-a b{font-size:72px}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gutter);row-gap:var(--s-7);margin-top:var(--s-8)}
+}
+@media (min-width:1200px){
+  .steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .step{grid-template-columns:none}
+  .step>*{grid-column:1}
+  .step-n{grid-row:auto;margin-bottom:var(--s-4);font-size:48px}
+}

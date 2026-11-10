@@ -6,6 +6,9 @@
 |---|---|---|---|
 | 음악 Sleepy Bossa (DURU-AI), 30초 발췌, -24 LUFS | assets/sound/music.mp3 | https://github.com/uncle-sheepsky/duru-ai-cc0-bgm (mp3/duru-zoneout-06-sleepy-bossa.mp3) | CC0 1.0 (assets/sound/DURU_CC0_LICENSE.txt). 상업 이용 가능, 표기 의무 없음 |
 | 클릭음 click_001 (Kenney Interface Sounds) | assets/sound/click.mp3 | https://github.com/Calinou/kenney-interface-sounds | CC0 1.0 (assets/sound/KENNEY_LICENSE.txt) |
+| 사진 '좁은 주택가 골목' (Narrow Concrete Alleyway Between Houses) — 근형 김 | assets/img/r8/alley_d.jpg, alley_m.jpg (원본: assets/img/r8/src/pexels-6672769_original.jpg) | https://www.pexels.com/photo/narrow-concrete-alleyway-between-houses-6672769/ | Pexels License (무료, 상업 이용 가능, 표기 의무 없음). 아래쪽만 잘라 쓰고(집 번호판·벽 숫자 제외) _brief/film.py로 색을 낮추고 선명도를 줄이고 필름 입자를 더함 |
+| 사진 '커피잔과 빈 의자' (Coffee Cups on Table Near Empty Chair) — Sare | assets/img/r8/window_d.jpg, window_m.jpg (원본: assets/img/r8/src/pexels-18457617_original.jpg) | https://www.pexels.com/photo/18457617/ | Pexels License. _brief/film.py로 같은 필름 처리 |
+| Noto Serif KR (Light 300 고정, 제목 글자만 서브셋) | assets/fonts/NotoSerifKR-300.r8.woff2 | https://github.com/notofonts/noto-cjk | SIL Open Font License 1.1 (assets/fonts/NOTOSERIFKR_OFL.txt) |
 | Pretendard (Regular, Medium, SemiBold 서브셋) | assets/fonts/Pretendard-{400,500,600}.r7.woff2 | https://github.com/orioncactus/pretendard | SIL Open Font License 1.1 (assets/fonts/PRETENDARD_LICENSE.txt) |
 
 - 소리는 기본으로 꺼져 있습니다. 바닥글의 '소리 켜기' 버튼을 눌렀을 때만 음악(음량 0.18)과 클릭음(0.25)이 납니다.
@@ -16,3 +19,10 @@
 - 첫 화면 기기 띠와 샘플 섹션의 화면 assets/img/scr_*.jpg(12장), 마우스를 올렸을 때 흐르는 긴 화면 assets/img/long_*.jpg(6장)는 동네홈이 만든 세 샘플 페이지(카페, 미용실, 라멘집)를 그대로 캡처한 것입니다. 노트북과 휴대폰 테두리는 특정 제품을 본뜨지 않고 CSS로 그렸습니다. 화면 속 사진의 출처는 각 샘플의 PHOTO_CREDITS.md를 따릅니다.
 - 전환 때 잠깐 보이는 assets/img/{cafe,salon,ramen}_{d,m}.jpg는 각 샘플 첫 화면의 캡처입니다.
 - 샘플 속 가게, 메뉴, 가격, 연락처는 모두 가상입니다. 샘플 사진은 무료 스톡 이미지와 일부 AI 생성 이미지입니다. cafe/와 salon/의 사진 출처는 각 폴더의 PHOTO_CREDITS.md에 있습니다.
+
+- 첫 화면의 휴대폰 화면(assets/img/r8/ramen_phone_dark.jpg)은 이 저장소의 ramen/ 샘플을 어두운 모드로 찍은 캡처입니다.
+- 첫 화면의 손그림 화살표는 동네홈이 직접 만든 것입니다(_brief/hand_arrow.py, 파이썬으로 펜 굵기와 손떨림을 넣어 그림).
+
+## r9 (2026-11-10) 메인에서 내린 파일
+메인을 판매 페이지로 줄이면서 아래 파일은 화면에서 빠졌어요. 파일은 남겨 두지만 배포 목록에서는 뺍니다:
+골목 사진(alley_d/m.jpg), 창가 사진(window_d/m.jpg), 라멘 휴대폰 다크 캡처(ramen_phone_dark.jpg), 디테일 크롭(detail_*.jpg), 손그림 화살표, 샘플 영상(samples_reel_r7.mp4·poster).

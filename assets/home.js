@@ -87,7 +87,8 @@
   const warm = () => slides.forEach(sl => { const im = sl.querySelector('img'); if (im.loading === 'lazy') im.loading = 'eager'; });
   ('requestIdleCallback' in window) ? requestIdleCallback(warm, { timeout: 3000 }) : setTimeout(warm, 2000);
 
-  /* film */
+  /* film (only if present) */
+  if (document.getElementById('film')) {
   const v = document.getElementById('film'), vb = document.getElementById('filmBtn');
   let userPaused = reduce;
   if (reduce) { vb.textContent = '재생'; vb.setAttribute('aria-pressed', 'true'); }
@@ -96,6 +97,8 @@
     if (v.paused) { userPaused = false; v.play().catch(() => {}); vb.textContent = '일시정지'; vb.setAttribute('aria-pressed', 'false'); }
     else { userPaused = true; v.pause(); vb.textContent = '재생'; vb.setAttribute('aria-pressed', 'true'); }
   });
+
+  }
 
   /* sound: off by default */
   const snd = document.getElementById('snd'), bgm = document.getElementById('bgm');
@@ -108,5 +111,5 @@
 
   /* contact slot (link not ready) */
   const k = document.getElementById('kmong'), msg = document.getElementById('cmsg');
-  k.addEventListener('click', e => { e.preventDefault(); msg.textContent = '크몽 링크는 아직 준비 중입니다. 상품이 승인되면 이 버튼에 연결합니다.'; });
+  k.addEventListener('click', e => { e.preventDefault(); msg.textContent = '아직 크몽 상품이 승인 전이에요. 열리면 이 링크에 바로 이어 둘게요.'; });
 })();
