@@ -24,3 +24,9 @@
 같은 파일의 QA 보정 (사진과 무관하게 원래 있던 문제)
 - '전화'·'문자' 링크 폭을 최소 44px로 늘렸습니다.
 - 'One chair · Six a day' 글자색을 #8A6F4E에서 #76603F로 바꿨습니다. 대비가 3.92에서 4.5 이상이 됩니다.
+
+
+## r7 프리미엄 (2026-11-10)
+- 같은 사진을 그대로 씁니다. 새 사진은 없습니다. 페이지 구성만 동네홈 디자인 시스템으로 바꿨습니다.
+- 제목: Noto Serif KR 가변 글꼴을 굵기 500으로 고정하고 쓰는 글자만 남긴 `fonts/NotoSerifKR-500.r7.woff2`, SIL OFL 1.1, 원문 `fonts/NotoSerifKR_OFL.txt`
+- 본문: Pretendard 400/500/600 하위 집합 `fonts/Pretendard-*.r7.woff2`, SIL OFL 1.1, 원문 `fonts/PRETENDARD_LICENSE.txt`

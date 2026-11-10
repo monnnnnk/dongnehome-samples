@@ -3,513 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>소담별 커피 — 망원동 핸드드립 로스터리 (가상 매장 샘플)</title>
-<meta name="description" content="망원동의 여섯 자리 핸드드립 로스터리, 소담별 커피. 가상 매장 샘플입니다.">
-<meta name="robots" content="noindex">
+<title>소담별 커피 · 망원동 핸드드립 로스터리</title>
+<meta name="description" content="망원동 골목의 작은 핸드드립 로스터리, 소담별 커피. 이번 주 원두와 메뉴, 영업시간, 오시는 길.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0B0B" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:,">
-<link rel="preload" href="fonts/SodamSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/05_cup.jpg" media="(max-width: 899px)">
-<link rel="preload" as="image" href="img/01_window.jpg" media="(min-width: 900px)">
-<script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('mo');setTimeout(function(){if(!d.classList.contains('mo-ok'))d.classList.remove('mo')},3500)}})(document.documentElement)</script>
+<link rel="preload" href="fonts/Pretendard-400.r7.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/SodamSerif-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{
-  --paper:#ECE7DE;      /* plaster wall in the set */
-  --ink:#24211D;
-  --mute:#524B42;       /* 7.0:1 on paper */
-  --body:#2E2A25;
-  --walnut:#5E4632;     /* the one tone, from the window table */
-  --rule:rgba(36,33,29,.18);
-  --espresso:#2A1F17;   /* deep walnut, same hue as the table */
-  --ivory:#EFE8DC;      /* 13.2:1 on espresso */
-  --ivory-2:#CDBFAC;    /* 8.9:1 on espresso */
-  --kr:"Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --en:"Pretendard", "Apple SD Gothic Neo", sans-serif;
-  --hd:"Sodam Serif", "AppleMyungjo", "Batang", serif;
-  --pad:24px;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--kr);font-weight:300;
-  font-size:15px;line-height:1.9;letter-spacing:.02em;word-break:keep-all;overflow-wrap:break-word;
-  -webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-:focus-visible{outline:1px solid var(--walnut);outline-offset:4px}
-.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;min-height:44px;display:inline-flex;align-items:center;background:var(--paper);padding:8px 12px;z-index:9}
-
-/* ---------- header (from B) ---------- */
-.mast{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 var(--pad)}
-.mark{text-decoration:none;display:flex;align-items:baseline;gap:12px;min-height:44px;align-items:center}
-.mark b{font-weight:600;font-size:17px;letter-spacing:.42em;color:var(--ink)}
-.mark span{display:none;font-family:var(--en);font-weight:500;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute)}
-.nav{display:flex;gap:4px;margin:0;padding:0;list-style:none}
-.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;font-size:13px;letter-spacing:.24em;text-decoration:none}
-.nav a:hover{color:var(--walnut)}
-.demo{font-family:var(--kr);font-size:11px;letter-spacing:.2em;color:var(--mute);border:1px solid var(--rule);padding:3px 8px 4px;white-space:nowrap}
-
-/* ---------- 1. hero (from B) ---------- */
-.hero{display:flex;flex-direction:column}
-.hero-side{display:contents}
-.mast{order:0}.hero figure{order:1}.hero-copy{order:2}
-.hero figure{margin:0;position:relative}
-.hero picture img{width:100%;height:68svh;min-height:460px;object-fit:cover;object-position:50% 60%}
-.hero figcaption{position:absolute;right:10px;bottom:14px;writing-mode:vertical-rl;font-size:11px;letter-spacing:.32em;color:#F2EEE6;
-  text-shadow:0 0 6px rgba(0,0,0,.35)}
-.hero-copy{padding:44px var(--pad) 72px}
-.eyebrow{font-family:var(--en);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin:0 0 28px}
-.hero h1{margin:0;font-weight:200;font-size:30px;line-height:1.62;letter-spacing:.12em}
-.hero .lede{margin:28px 0 0;color:var(--body);font-weight:400;font-size:15px;letter-spacing:.06em;max-width:22em}
-.facts{margin:40px 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
-.facts li{font-weight:400;display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px;letter-spacing:.08em}
-.facts li span:first-child{color:var(--mute)}
-.quiet{display:inline-flex;align-items:center;min-height:44px;margin-top:28px;font-size:13px;letter-spacing:.26em;text-decoration:none;color:var(--walnut);
-  border-bottom:1px solid currentColor;padding:0 2px}
-.quiet:hover{color:var(--ink)}
-
-/* ---------- 2. coffee (from B) ---------- */
-.coffee{padding:24px 0 96px;display:flex;flex-direction:column}
-.coffee .lead{display:contents}
-.sec-no{order:0}.coffee h2{order:1}.pour{order:2}.coffee .body{order:3}.beans-list{order:4}.beans-fig{order:5}
-.sec-no{font-family:var(--en);font-style:italic;font-size:15px;letter-spacing:.1em;color:var(--walnut);margin:0 var(--pad) 20px}
-.coffee h2{margin:0 var(--pad);font-weight:200;font-size:24px;line-height:1.7;letter-spacing:.12em}
-.coffee .body{margin:24px var(--pad) 0;max-width:30em;color:var(--body);font-weight:400;font-size:16px}
-.pour{margin:40px 64px 8px 0}
-.pour img{width:100%;aspect-ratio:3/4;object-fit:cover}
-.cap{display:block;margin-top:10px;padding-left:var(--pad);font-size:11px;letter-spacing:.22em;color:var(--mute)}
-.beans-list{margin:48px var(--pad) 0;padding:0;list-style:none}
-.beans-list li{display:grid;grid-template-columns:1fr auto;column-gap:16px;padding:18px 0;border-top:1px solid var(--rule)}
-.beans-list li:last-child{border-bottom:1px solid var(--rule)}
-.beans-list b{font-weight:400;font-size:15px;letter-spacing:.1em}
-.beans-list em{grid-column:1;font-style:normal;font-weight:400;font-size:13px;color:var(--mute);letter-spacing:.04em}
-.beans-list .p{grid-row:1;grid-column:2;font-family:var(--en);font-size:17px;letter-spacing:.06em}
-.beans-fig{margin:56px 0 0 96px}
-.beans-fig img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.beans-fig .cap{padding-left:0}
-
-/* ---------- desktop: B hero + coffee ---------- */
-@media (min-width:900px){
-  :root{--pad:56px}
-  .mark{flex-direction:column;align-items:flex-start;gap:2px}
-  .mark span{display:block}
-  .mast{padding:0;height:104px}
-  .hero-copy{order:0;padding:0 0 64px;margin-top:auto}
-  .hero h1{font-size:40px;line-height:1.66;letter-spacing:.14em}
-  .hero figcaption{right:22px;bottom:28px;font-size:12px}
-  .hero picture img{height:100%;min-height:0}
-
-  /* A: kept for parity, unused with body.hero-b */
-  .hero-a .hero{position:relative;display:block;height:max(760px,100svh)}
-  .hero-a .hero figure{position:absolute;inset:0}
-  .hero-a .hero picture img{object-position:50% 50%}
-  .hero-a .hero-side{position:relative;z-index:1;display:flex;flex-direction:column;width:520px;height:100%;padding-left:var(--pad)}
-  .hero-a .facts,.hero-a .facts li{border-color:rgba(36,33,29,.28)}
-
-  /* B: narrower text column, photo bleeds right/top/bottom */
-  .hero-b .hero{display:grid;grid-template-columns:repeat(12,1fr);min-height:max(760px,100svh)}
-  .hero-b .hero-side{grid-column:1/span 3;display:flex;flex-direction:column;padding:0 32px 0 var(--pad)}
-  .hero-b .hero figure{grid-column:4/span 9;grid-row:1}
-  .hero-b .hero picture img{object-position:30% 50%}
-
-  /* 2: photos locked to the text grid */
-  .coffee{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto 1fr;padding:160px 0 0}
-  .coffee .lead{display:block;grid-column:2/span 4;grid-row:1}
-  .sec-no,.coffee h2,.coffee .body,.beans-list{margin-left:0;margin-right:0}
-  .sec-no{margin-top:0;line-height:1}
-  .coffee h2{font-size:30px;letter-spacing:.14em}
-  .coffee .lead .beans-list{max-width:none}
-  .pour{grid-column:7/-1;grid-row:1/span 2;margin:0;display:flex;flex-direction:column}
-  .pour img{flex:1 1 0;aspect-ratio:auto;height:0;min-height:0;object-position:40% 55%}
-  .beans-fig{grid-column:2/span 4;grid-row:2;margin:96px 0 0;align-self:end}
-  .pour .cap,.beans-fig .cap{padding-left:0;height:44px;margin:0;display:flex;align-items:center}
-}
-@media (min-width:1600px){ .hero h1{font-size:44px} }
-
-/* ---------- 3. menu (from index.html r4) ---------- */
-.menu{padding:0 0 104px;background:var(--espresso);color:var(--ivory)}
-.menu .sec-no{color:#D8C2A2}
-.menu-photo{margin:0;position:relative}
-.menu-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:56% 60%}
-.menu-body{padding:56px var(--pad) 0}
-.menu-body h2,.visit h2{margin:0;font-weight:200;font-size:24px;line-height:1.7;letter-spacing:.12em}
-.menu-body .sec-no,.visit .sec-no{margin:0 0 20px}
-.sheet{margin:40px 0 0}
-.sheet h3{margin:0 0 4px;font-weight:500;font-size:15px;letter-spacing:.24em;color:var(--ivory-2)}
-.sheet ul{margin:0 0 40px;padding:0;list-style:none}
-.sheet li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(239,232,220,.2);font-size:16px;font-weight:500;letter-spacing:.08em}
-.sheet li small{display:block;font-size:15px;font-weight:400;color:var(--ivory-2);letter-spacing:.04em;margin-top:2px}
-.sheet .p{font-family:var(--en);font-weight:500;font-size:19px;letter-spacing:.06em;white-space:nowrap}
-.fine{margin:0;font-size:14px;font-weight:400;color:var(--mute);letter-spacing:.04em;max-width:34em}
-.menu .fine{color:var(--ivory-2)}
-
-/* ---------- 4. visit (from index.html r4) ---------- */
-.visit{padding:0 0 88px}
-.visit-photo{margin:0}
-.visit-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 60%}
-.visit-body{padding:56px var(--pad) 0}
-.status{margin:28px 0 0;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--walnut);min-height:1.9em}
-.hours{margin:20px 0 0;padding:0;border-top:1px solid var(--rule)}
-.hours div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);font-weight:400;font-size:15px;letter-spacing:.08em;color:var(--body)}
-.hours dt{color:var(--body)}.hours dd{margin:0}
-.hours div.today dt,.hours div.today dd{color:var(--ink);font-weight:500}
-.addr{margin:40px 0 0;font-style:normal;font-size:16px;font-weight:500;letter-spacing:.06em;color:var(--ink)}
-.addr span{display:block;font-size:15px;font-weight:400;color:var(--body);letter-spacing:.04em;margin-top:4px}
-.links{display:flex;flex-wrap:wrap;column-gap:28px;margin:14px 0 0;padding:0;list-style:none}
-.links a,.call a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:500;letter-spacing:.16em;color:var(--ink);
-  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:9px;text-decoration-color:rgba(28,25,22,.45)}
-.links a:hover,.call a:hover{text-decoration-color:currentColor}
-.call{margin:40px 0 0;padding:24px 0 0;border-top:1px solid var(--rule)}
-.call p{margin:0;font-weight:400;font-size:15px;letter-spacing:.06em;color:var(--body)}
-.call .num{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-family:var(--en);font-size:22px;letter-spacing:.1em;text-decoration:none}
-.call .fine{margin-top:12px}
-
-/* ---------- footer ---------- */
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:28px var(--pad) 32px;border-top:1px solid var(--rule);font-size:12px;font-weight:400;letter-spacing:.14em;color:var(--mute)}
-.foot b{font-weight:600;letter-spacing:.42em;color:var(--ink)}
-.foot a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-underline-offset:6px}
-
-@media (min-width:900px){
-  .menu{margin-top:168px;padding:0}
-  .menu-photo img{aspect-ratio:auto;height:min(72svh,680px);object-position:50% 55%}
-  .menu-body{display:grid;grid-template-columns:repeat(12,1fr);padding:96px 0 120px}
-  .menu-body .head{grid-column:2/span 4}
-  .menu-body h2,.visit h2{font-size:30px;letter-spacing:.14em}
-  .sheet{grid-column:7/span 5;margin:0;display:grid;grid-template-columns:1fr 1fr;column-gap:64px}
-  .sheet .fine{grid-column:1/-1}
-  .visit{display:grid;grid-template-columns:repeat(12,1fr);padding:0}
-  .visit-photo{grid-column:1/span 6;grid-row:1;position:relative}
-  .visit-photo img{position:absolute;inset:0;height:100%;aspect-ratio:auto}
-  .visit-body{grid-column:8/span 4;padding:168px 0 168px}
-}
-/* ---------- motion v2: 카페 = 김이 오르듯 느리고 따뜻하게 ----------
-   .js/.mo는 <head>의 짧은 스크립트가 붙임. .mo는 동작 줄이기 설정이 아닐 때만, 3.5초 안에 모션이 시작 안 되면 스스로 풀림 → JS·라이브러리가 없어도 내용은 보임.
-   움직임은 transform/opacity, 사진 열림만 clip-path(inset). */
-.m-clip{display:block;overflow:hidden;position:relative}
-@media (min-width:900px){
-  .pour .m-clip{flex:1 1 0;min-height:0}
-  .pour .m-clip img{position:absolute;inset:0;width:100%;height:100%}
-  .visit-photo .m-clip{position:absolute;inset:0}
-}
-.hero figure{overflow:hidden}
-.hero picture{display:block;height:100%}.hero figure{overflow:hidden}
-.mo .hero picture img,.mo .hero-copy>*,.mo .mast,.mo .hero figcaption{opacity:0}
-/* 인트로: 종이색 막 위로 상호가 올라오고 갈색 선이 그어진 뒤 막이 걷힘 (CSS로 바로 시작) */
-.intro{position:fixed;inset:0;z-index:70;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;pointer-events:none}
-.intro .w{overflow:hidden;padding:0 0 .1em}
-.intro b{display:block;font-weight:500;font-size:clamp(26px,3.4vw,40px);letter-spacing:.5em;margin-right:-.5em;color:var(--ink);animation:k-up 1.1s cubic-bezier(.16,1,.3,1) .05s both}
-.intro i{display:block;width:96px;height:1px;background:var(--walnut);transform-origin:left center;animation:k-line 1.1s cubic-bezier(.65,0,.35,1) .25s both}
-.intro span{font-family:var(--en);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);animation:k-fade 1s ease-out .45s both}
-@keyframes k-up{from{transform:translateY(105%)}to{transform:none}}
-@keyframes k-line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes k-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-/* 메뉴 버튼 + 오버레이 (JS가 만듦) */
-.js .nav-wrap{margin-right:104px}
-@media (min-width:900px){.js .nav-wrap{margin-right:0}}
-.mbtn{position:fixed;top:10px;right:12px;z-index:65;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 18px;border:1px solid var(--rule);border-radius:999px;
-  background:rgba(236,231,222,.94);color:var(--ink);font:inherit;font-size:12px;font-weight:400;letter-spacing:.26em;cursor:pointer;transition:background-color .5s,color .5s,border-color .5s}
-.mbtn i{position:relative;display:block;width:18px;height:7px}
-.mbtn i::before,.mbtn i::after{content:"";position:absolute;left:0;right:0;height:1px;background:currentColor;transition:transform .7s cubic-bezier(.16,1,.3,1)}
-.mbtn i::before{top:0}.mbtn i::after{bottom:0}
-.menu-open .mbtn{background:transparent;color:var(--ivory);border-color:rgba(239,232,220,.35)}
-.menu-open .mbtn i::before{transform:translateY(3px) rotate(45deg)}.menu-open .mbtn i::after{transform:translateY(-3px) rotate(-45deg)}
-@media (min-width:900px){.mbtn{top:28px;right:32px}}
-.ov{position:fixed;inset:0;z-index:60;background:var(--espresso);color:var(--ivory);display:flex;flex-direction:column;justify-content:center;padding:88px var(--pad) 40px}
-.ov[hidden]{display:none}
-.ov ul{list-style:none;margin:0;padding:0}
-.ov li{overflow:hidden;border-bottom:1px solid rgba(239,232,220,.14)}
-.ov a{display:flex;align-items:baseline;justify-content:space-between;gap:18px;min-height:64px;padding:10px 0;text-decoration:none;color:var(--ivory)}
-.ov a b{font-weight:300;font-size:clamp(36px,7.4vw,112px);line-height:1.05;letter-spacing:.06em;transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .5s cubic-bezier(.16,1,.3,1)}
-.ov a small{font-family:var(--en);font-style:italic;font-size:15px;letter-spacing:.12em;color:var(--ivory-2)}
-.ov .of{margin:36px 0 0;font-size:13px;letter-spacing:.06em;color:var(--ivory-2)}
-.ov .of a{display:inline-flex;min-height:44px;font-size:13px;color:var(--ivory);text-decoration:underline;text-underline-offset:6px}
-@media (min-width:900px){.ov{padding:110px 10vw 56px}.ov a:hover b{transform:translateX(24px)}.ov ul:hover a b{opacity:.32}.ov ul:hover a:hover b{opacity:1}}
-/* 호버(마우스 있는 데스크톱만) */
-@media (hover:hover) and (min-width:900px){
-  .m-clip img{transition:scale 1.4s cubic-bezier(.16,1,.3,1)}
-  figure:hover>.m-clip img{scale:1.04}
-  .quiet{position:relative;border-bottom-color:transparent}
-  .quiet::before,.quiet::after{content:"";position:absolute;left:2px;right:2px;bottom:-1px;height:1px;background:currentColor;transition:transform .9s cubic-bezier(.16,1,.3,1)}
-  .quiet::before{transform-origin:right center}
-  .quiet::after{transform-origin:left center;transform:scaleX(0)}
-  .quiet:hover::before{transform:scaleX(0)}
-  .quiet:hover::after{transform:scaleX(1);transition-delay:.25s}
-}
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-stopped{overflow:clip}
-/* r6 글꼴: 제목 Sodam Serif(마루 부리 서브셋) + 본문 Pretendard. 넓은 자간을 걷어냄 */
-@font-face{font-family:"Sodam Serif";src:url(fonts/SodamSerif-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Sodam Serif";src:url(fonts/SodamSerif-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Regular.subset.woff2) format("woff2");font-weight:300 400;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Medium.subset.woff2) format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-SemiBold.subset.woff2) format("woff2");font-weight:600 700;font-display:swap}
-html{background:var(--paper)}
-body{font-weight:400;letter-spacing:-.003em;line-height:1.8}
-.hero h1,.coffee h2,.menu-body h2,.visit h2{font-family:var(--hd);font-weight:400;letter-spacing:-.01em;line-height:1.5}
-.hero h1{font-size:31px}
-.coffee h2,.menu-body h2,.visit h2{font-size:25px}
-@media (min-width:900px){.hero h1{font-size:42px;letter-spacing:-.015em;line-height:1.45}.coffee h2,.menu-body h2,.visit h2{font-size:32px;letter-spacing:-.012em}}
-.mark b,.foot b,.intro b{font-family:var(--hd);font-weight:600;letter-spacing:.12em}
-.intro b{letter-spacing:.2em;margin-right:-.2em}
-.mark b{font-size:18px}
-.eyebrow,.intro span,.mark span{font-weight:500;font-size:11px;letter-spacing:.16em}
-.sec-no,.ov a small{font-style:normal;font-weight:500;font-size:12px;letter-spacing:.12em}
-.hero .lede,.facts li,.beans-list b,.beans-list em,.sheet li,.sheet li small,.fine,.status,.hours div,.addr,.addr span,.call p,.coffee .body{letter-spacing:0}
-.nav a,.quiet,.links a,.call a,.cap,.foot,.hero figcaption{letter-spacing:.06em}
-.sheet h3{letter-spacing:.08em;font-weight:600}
-.beans-list .p,.sheet .p,.call .num{font-weight:500;letter-spacing:.01em;font-variant-numeric:tabular-nums}
-.beans-list .p{font-size:15px}.sheet .p{font-size:16px}.call .num{font-size:20px}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-400.r7.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-500.r7.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-600.r7.woff2) format("woff2");font-weight:600;font-display:swap}
 </style>
+<link rel="stylesheet" href="site.css">
+<style>:root{--accent:#7A5232;--display:"Sodam Serif","Noto Serif KR",serif;--display-w:600;--display-ls:-0.02em;--ls-h2:-0.015em;--hero-ar-m:4/5;--hero-pos:50% 60%}</style>
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('mo');setTimeout(function(){if(!window.dnh)d.classList.remove('mo')},2500)}})(document.documentElement)</script>
 </head>
-<body class="hero-b">
+<body>
 <a class="skip" href="#main">본문 바로가기</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="./" aria-label="소담별 커피 처음으로">소담별 커피</a>
+    <nav class="menu" aria-label="주요 메뉴"><a href="#coffee">원두</a><a href="#menu">메뉴</a><a href="#visit">오시는 길</a></nav>
+    <a class="btn btn-primary btn-sm hd-cta" href="tel:+8220000000">전화하기</a>
+  </div>
+</header>
 <main id="main">
-  <section class="hero" aria-label="소담별 커피">
-    <div class="hero-side">
-      <header class="mast">
-        <a class="mark" href="./" aria-label="소담별 커피 처음으로"><b>소담별</b><span>Sodambyeol Coffee</span></a>
-        <div class="nav-wrap">
-        </div>
-      </header>
-      <div class="hero-copy">
-        <p class="eyebrow">Mangwon · Hand drip roastery</p>
-        <h1>창가 한 자리에서<br>한 잔씩 내립니다</h1>
-        <p class="lede">망원동 골목의 작은 로스터리. 여섯 자리와 넓은 창가 테이블, 그리고 천천히 내리는 핸드드립이 전부입니다.</p>
-        <ul class="facts">
-          <li><span>여는 시간</span><span>화–일 10:00 – 18:00</span></li>
-          <li><span>쉬는 날</span><span>매주 월요일</span></li>
-        </ul>
-        <a class="quiet" href="#coffee">이번 주 원두 보기</a>
-      </div>
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap grid">
+    <div class="hero-copy">
+      <p class="eyebrow rv">망원동 · 핸드드립 로스터리</p>
+      <h1 class="display rv" id="h1">창가 한 자리에서<br>한 잔씩 내립니다.</h1>
+      <p class="lead rv">망원동 골목의 작은 로스터리. 여섯 자리와 넓은 창가 테이블, 그리고 천천히 내리는 핸드드립이 전부입니다.</p>
+      <p class="actions rv"><a class="btn btn-primary" href="#coffee">이번 주 원두</a><a class="btn btn-secondary" href="#visit">오시는 길</a></p>
+      <p class="hero-meta rv">화–일 10:00 – 18:00 · 월요일 휴무</p>
     </div>
-    <figure>
-      <picture>
-        <source media="(min-width: 900px)" srcset="img/01_window.jpg">
-        <img src="img/05_cup.jpg" width="1400" height="1866" alt="회벽과 나무 창가 테이블, 그 위의 커피 한 잔">
-      </picture>
-      <figcaption>창가 테이블, 오전 열 시</figcaption>
-    </figure>
-  </section>
-
-  <section class="coffee" id="coffee" aria-labelledby="coffee-h">
-    <div class="lead">
-      <p class="sec-no">No. 01 — 커피</p>
-      <h2 id="coffee-h">화요일마다<br>조금씩만 볶습니다</h2>
-      <p class="body">한 번에 볶는 양은 사흘 치. 원두는 세 가지만 두고, 계절이 바뀌면 바꿉니다. 주문을 받으면 그때 갈아 한 잔씩 손으로 내립니다.</p>
-      <ul class="beans-list" aria-label="이번 주 원두">
-        <li><b>에티오피아 구지</b><em>살구, 홍차, 맑은 산미</em><span class="p">6,500</span></li>
-        <li><b>콜롬비아 우일라</b><em>밀크초콜릿, 붉은 사과</em><span class="p">6,000</span></li>
-        <li><b>소담 블렌드</b><em>구운 견과, 묵직한 단맛</em><span class="p">5,000</span></li>
-      </ul>
-    </div>
-    <figure class="pour">
-      <img src="img/stock_pour.jpg" width="1400" height="1866" loading="lazy" alt="주전자로 흰 드리퍼에 물을 천천히 붓는 손">
-      <span class="cap">한 잔에 약 사 분</span>
-    </figure>
-    <figure class="beans-fig">
-      <img src="img/stock_beans.jpg" width="1600" height="1200" loading="lazy" alt="돌 바닥 위 나무 스쿱에 담긴 원두와 흩어진 원두 몇 알">
-      <span class="cap">한 잔에 원두 15그램</span>
-    </figure>
-  </section>
-
-  <section class="menu" id="menu" aria-labelledby="menu-h">
-    <figure class="menu-photo reveal">
-      <img src="img/stock_serve.jpg" width="2560" height="1440" loading="lazy" alt="커피 머신 옆 바에서 회색 잔을 건네는 손">
-    </figure>
-    <div class="menu-body">
-      <div class="head">
-        <p class="sec-no">No. 02 — 메뉴</p>
-        <h2 id="menu-h">메뉴는<br>짧게 두었습니다</h2>
-      </div>
-      <div class="sheet">
-        <div>
-          <h3>커피</h3>
-          <ul>
-            <li><span>핸드드립<small>이번 주 원두 중에서</small></span><span class="p">5,000 –</span></li>
-            <li><span>아이스 핸드드립<small>급랭으로 한 잔씩</small></span><span class="p">5,500 –</span></li>
-            <li><span>드립 라테</span><span class="p">6,000</span></li>
-          </ul>
-        </div>
-        <div>
-          <h3>곁들임 · 원두</h3>
-          <ul>
-            <li><span>버터 파운드케이크</span><span class="p">4,000</span></li>
-            <li><span>무화과 스콘</span><span class="p">4,500</span></li>
-            <li><span>원두 200g<small>홀빈 또는 분쇄</small></span><span class="p">16,000 –</span></li>
-          </ul>
-        </div>
-        <p class="fine">디저트는 오후에 떨어지는 날이 많습니다.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="visit" id="visit" aria-labelledby="visit-h">
-    <figure class="visit-photo">
-      <img src="img/stock_door.jpg" width="1728" height="2304" loading="lazy" alt="담쟁이가 덮인 작은 건물 창 아래 긴 나무 벤치">
-    </figure>
-    <div class="visit-body">
-      <p class="sec-no">No. 03 — 오시는 길</p>
-      <h2 id="visit-h">망원시장에서<br>골목 하나 안쪽</h2>
-      <p class="status" id="status" aria-live="polite">화–일 10:00 – 18:00</p>
-      <dl class="hours" id="hours">
-        <div data-days="2,3,4,5,6,0"><dt>화 – 일</dt><dd>10:00 – 18:00</dd></div>
-        <div data-days="1"><dt>월</dt><dd>쉽니다</dd></div>
-        <div><dt>마지막 주문</dt><dd>17:30</dd></div>
-      </dl>
-      <address class="addr">서울 마포구 망원동, 망원시장 북쪽 골목<span>망원역 2번 출구에서 걸어서 약 8분</span></address>
-      <ul class="links">
-        <li><a href="https://map.naver.com/p/search/%EB%A7%9D%EC%9B%90%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">네이버 지도에서 열기</a></li>
-        <li><a href="https://map.kakao.com/?q=%EB%A7%9D%EC%9B%90%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">카카오맵에서 열기</a></li>
-      </ul>
-      <div class="call">
-        <p>자리·원두 문의는 전화나 문자로 받습니다.</p>
-        <a class="num" href="tel:+8220000000">02 · 000 · 0000</a>
-        <ul class="links"><li><a href="tel:+8220000000">전화하기</a></li><li><a href="sms:+8220000000">문자 보내기</a></li></ul>
-      </div>
-    </div>
-  </section>
+    <figure class="hero-media"><picture><source media="(min-width: 1024px)" srcset="img/01_window.jpg"><img src="img/05_cup.jpg" width="1728" height="2304" alt="회벽과 나무 창가 테이블, 그 위의 커피 한 잔" decoding="async" fetchpriority="high"></picture></figure>
+  </div>
+</section>
+<section class="section" id="coffee" aria-labelledby="h-coffee"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">원두</p><h2 class="h2 rv" id="h-coffee">화요일마다 조금씩만 볶습니다</h2><p class="lead rv">한 번에 볶는 양은 사흘 치. 원두는 세 가지만 두고, 계절이 바뀌면 바꿉니다. 주문을 받으면 그때 갈아 한 잔씩 손으로 내립니다.</p></div>
+<div class="in4 rv"><div class="rows-group"><h3 class="rows-title">이번 주 원두 · 핸드드립 한 잔</h3><ul class="rows"><li><span class="r-name">에티오피아 구지</span><span class="r-desc">살구, 홍차, 맑은 산미</span><span class="r-price">6,500</span></li><li><span class="r-name">콜롬비아 우일라</span><span class="r-desc">밀크초콜릿, 붉은 사과</span><span class="r-price">6,000</span></li><li><span class="r-name">소담 블렌드</span><span class="r-desc">구운 견과, 묵직한 단맛</span><span class="r-price">5,000</span></li></ul></div></div>
+<div class="grid ph-pair"><figure class="rv"><div class="ph"><img src="img/stock_pour.jpg" width="1400" height="1866" alt="주전자로 흰 드리퍼에 물을 천천히 붓는 손" loading="lazy" decoding="async"></div><figcaption class="cap">한 잔에 약 사 분</figcaption></figure><figure class="rv"><div class="ph"><img src="img/stock_beans.jpg" width="1600" height="1200" alt="돌 바닥 위 나무 스쿱에 담긴 원두와 흩어진 원두 몇 알" loading="lazy" decoding="async"></div><figcaption class="cap">한 잔에 원두 15그램</figcaption></figure></div>
+</div></section>
+<section class="section" id="menu" aria-labelledby="h-menu"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">메뉴</p><h2 class="h2 rv" id="h-menu">메뉴는 짧게 두었습니다</h2><p class="lead rv">커피 세 가지와 곁들임 몇 가지. 디저트는 오후에 떨어지는 날이 많습니다.</p></div>
+<div class="in4 rows-pair rv"><div class="rows-group"><h3 class="rows-title">커피</h3><ul class="rows"><li><span class="r-name">핸드드립</span><span class="r-desc">이번 주 원두 중에서</span><span class="r-price">5,000 –</span></li><li><span class="r-name">아이스 핸드드립</span><span class="r-desc">급랭으로 한 잔씩</span><span class="r-price">5,500 –</span></li><li><span class="r-name">드립 라테</span><span class="r-desc"></span><span class="r-price">6,000</span></li></ul></div><div class="rows-group"><h3 class="rows-title">곁들임 · 원두</h3><ul class="rows"><li><span class="r-name">버터 파운드케이크</span><span class="r-desc"></span><span class="r-price">4,000</span></li><li><span class="r-name">무화과 스콘</span><span class="r-desc"></span><span class="r-price">4,500</span></li><li><span class="r-name">원두 200g</span><span class="r-desc">홀빈 또는 분쇄</span><span class="r-price">16,000 –</span></li></ul></div></div>
+<p class="note in4" style="margin-top:var(--s-4)">가격 단위는 원입니다.</p>
+<div class="ph-wide rv"><div class="ph"><img src="img/stock_serve.jpg" width="2560" height="1440" alt="커피 머신 옆 바에서 회색 잔을 건네는 손" loading="lazy" decoding="async"></div></div>
+</div></section>
+<section class="section" id="visit" aria-labelledby="h-visit"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">오시는 길</p><h2 class="h2 rv" id="h-visit">망원시장에서 골목 하나 안쪽</h2><p class="lead rv">망원역 2번 출구에서 걸어서 약 8분. 자리와 원두 문의는 전화나 문자로 받습니다.</p></div>
+<div class="grid visit-grid">
+ <div class="v-photo rv"><div class="ph"><img src="img/stock_door.jpg" width="1728" height="2304" alt="담쟁이가 덮인 작은 건물 창 아래 긴 나무 벤치" loading="lazy" decoding="async"></div></div>
+ <div class="v-info">
+  <div class="v-block rv"><h3 class="h3">영업시간</h3><p class="status" data-hours='[[[2,3,4,5,6,0],"10:00","18:00"]]'>화–일 10:00 – 18:00</p><dl class="hours"><div data-days="2,3,4,5,6,0"><dt>화 – 일</dt><dd>10:00 – 18:00</dd></div><div data-days="1"><dt>월</dt><dd>쉽니다</dd></div><div><dt>마지막 주문</dt><dd>17:30</dd></div></dl></div>
+  <div class="v-block rv"><h3 class="h3">주소</h3><address>서울 마포구 망원동, 망원시장 북쪽 골목</address><p class="links"><a class="link" href="https://map.naver.com/p/search/%EB%A7%9D%EC%9B%90%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">네이버 지도</a><a class="link" href="https://map.kakao.com/?q=%EB%A7%9D%EC%9B%90%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">카카오맵</a></p><p class="note">지도는 망원시장을 엽니다.</p></div>
+  <div class="v-block rv"><h3 class="h3">문의 02-000-0000</h3><p class="actions"><a class="btn btn-primary" href="tel:+8220000000">전화하기</a><a class="btn btn-secondary" href="sms:+8220000000">문자 보내기</a></p></div>
+ </div>
+</div>
+</div></section>
 </main>
-<footer class="foot">
-  <span><b>소담별</b> 커피 · 망원동</span>
-  <span>가상 매장 샘플입니다. 가게 이름·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지와 일부 AI 생성 이미지입니다.</span>
-  <a href="#main">맨 위로</a>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <p class="ft-name">소담별 커피</p>
+    <p>가상 매장 샘플입니다. 가게 이름·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지와 일부 AI 생성 이미지입니다.</p>
+    <p>디자인·제작 <a href="../">동네홈</a> · 글꼴 Sodam Serif(MaruBuri 수정본), Pretendard (SIL OFL 1.1) · <a href="PHOTO_CREDITS.md">사진 출처</a></p>
+  </div>
 </footer>
-<script>
-(function(){
-  // open-now, Asia/Seoul
-  var el=document.getElementById('status'); if(!el) return;
-  var f=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
-  var names=['일','월','화','수','목','금','토'], map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
-  function now(){var p={};f.formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return {d:map[p.weekday],m:(+p.hour)*60+(+p.minute)}}
-  function render(){
-    var t=now(), open=t.d!==1&&t.m>=600&&t.m<1080, msg;
-    if(open){msg='지금 열려 있습니다 · 오늘 18:00까지'}
-    else{
-      var d=t.d, today=(d!==1&&t.m<600);
-      if(today){msg='지금은 닫혀 있습니다 · 오늘 10:00에 엽니다'}
-      else{var n=(d+1)%7; if(n===1) n=2; var lbl=(n===(d+1)%7)?'내일':names[n]+'요일'; msg='지금은 닫혀 있습니다 · '+lbl+' 10:00에 엽니다'}
-    }
-    el.textContent=msg;
-    document.querySelectorAll('#hours [data-days]').forEach(function(r){r.classList.toggle('today',r.dataset.days.split(',').indexOf(String(t.d))>-1)});
-  }
-  render(); setInterval(render,60000);
-})();
-</script>
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="vendor/SplitText.min.js"></script>
-<script src="vendor/lenis.min.js"></script>
-<script>
-/* 동네홈 모션 키트 v2 — 직접 작성(외부 코드 복사 없음). GSAP 3.15 + ScrollTrigger + SplitText(표준 무료 라이선스), Lenis(MIT) */
-var K=(function(){
-  var d=document.documentElement, G=window.gsap;
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DESK=matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches;
-  var OK=!RM&&!!G&&!!window.ScrollTrigger&&!!window.SplitText;
-  function $(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))}
-  function clip(img){var c=document.createElement('span');c.className='m-clip';img.parentNode.insertBefore(c,img);c.appendChild(img);return c}
-  var lenis=null;
-  function smooth(opt){
-    if(!OK||!DESK||!window.Lenis) return null;
-    try{lenis=new Lenis(Object.assign({lerp:.085,wheelMultiplier:1},opt||{}));lenis.on('scroll',ScrollTrigger.update);
-      G.ticker.add(function(t){lenis.raf(t*1000)});G.ticker.lagSmoothing(0)}catch(e){lenis=null}
-    return lenis;
-  }
-  // 앵커 이동(“페이지 전환” 대신): Lenis가 있으면 Lenis, 없으면 GSAP로 창 스크롤
-  function goTo(el,off,dur,ease){
-    off=off||0; var y=el.getBoundingClientRect().top+scrollY-off;
-    if(RM||!G){scrollTo(0,y);return}
-    if(lenis){lenis.scrollTo(y,{duration:dur||1.5,easing:function(t){return t===1?1:1-Math.pow(2,-10*t)}});return}
-    var o={y:scrollY}; G.to(o,{y:y,duration:dur||1,ease:ease||'power3.inOut',onUpdate:function(){scrollTo(0,o.y)}});
-  }
-  function anchors(off,dur,ease,before){
-    $('a[href^="#"]').forEach(function(a){var id=a.getAttribute('href').slice(1); if(!id) return;
-      a.addEventListener('click',function(e){var t=document.getElementById(id); if(!t) return; e.preventDefault();
-        var w=before?before():0; setTimeout(function(){goTo(t,typeof off=='function'?off():off,dur,ease); if(t.tabIndex<0&&!/^(A|BUTTON|INPUT)$/.test(t.tagName)) t.setAttribute('tabindex','-1'); t.focus({preventScroll:true})},w||0)})});
-  }
-  // 메뉴: 버튼+오버레이를 JS로 만든다(JS 없으면 안 보임). anim(open)으로 열고 닫는 타임라인을 받는다
-  function menu(cfg){
-    var btn=document.createElement('button'); btn.type='button'; btn.className='mbtn'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-controls','m-ov');
-    btn.innerHTML=cfg.btn; btn.setAttribute('aria-label','메뉴 열기');
-    var ov=document.createElement('nav'); ov.id='m-ov'; ov.className='ov'; ov.setAttribute('aria-label','전체 메뉴'); ov.innerHTML=cfg.html; ov.hidden=true;
-    (cfg.btnParent||document.body).appendChild(btn); document.body.appendChild(ov);
-    var open=false, busy=null;
-    function set(o){open=o; btn.setAttribute('aria-expanded',o?'true':'false'); btn.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기'); d.classList.toggle('menu-open',o);
-      if(lenis){o?lenis.stop():lenis.start()} document.body.style.overflow=o&&!lenis?'hidden':'';
-      if(busy) busy.kill();
-      if(o){ov.hidden=false; busy=OK?cfg.open(ov):null; var f=ov.querySelector('a'); f&&f.focus({preventScroll:true})}
-      else{ if(OK){busy=cfg.close(ov); busy.eventCallback('onComplete',function(){ov.hidden=true})} else ov.hidden=true; }
-    }
-    btn.addEventListener('click',function(){set(!open)});
-    addEventListener('keydown',function(e){if(e.key==='Escape'&&open){set(false);btn.focus()}});
-    $('a',ov).forEach(function(a){a.addEventListener('click',function(){if(open) set(false)})});
-    return {btn:btn,ov:ov,close:function(){if(open)set(false)},isOpen:function(){return open},closeDelay:function(){return open?(cfg.closeWait||350):0}};
-  }
-  // 자석 버튼(데스크톱)
-  function magnet(els,s){ if(!OK||!DESK) return; s=s||.3;
-    els.forEach(function(el){var qx=G.quickTo(el,'x',{duration:.6,ease:'power3'}),qy=G.quickTo(el,'y',{duration:.6,ease:'power3'});
-      el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();qx((e.clientX-r.left-r.width/2)*s);qy((e.clientY-r.top-r.height/2)*s)});
-      el.addEventListener('pointerleave',function(){G.to(el,{x:0,y:0,duration:1,ease:'elastic.out(1,.45)',overwrite:'auto'})})});
-  }
-  function fontsReady(cap){return Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),new Promise(function(r){setTimeout(r,cap||1400)})])}
-  return {d:d,G:G,RM:RM,DESK:DESK,OK:OK,$:$,clip:clip,smooth:smooth,goTo:goTo,anchors:anchors,menu:menu,magnet:magnet,fontsReady:fontsReady,lenis:function(){return lenis}};
-})();
-(function(){
-  var d=K.d,G=K.G,$=K.$;
-  var mm=K.menu({btn:'<span>메뉴</span><i></i>',closeWait:420,
-    html:'<ul><li><a href="#main"><b>처음</b><small>Top</small></a></li><li><a href="#coffee"><b>커피</b><small>No. 01</small></a></li><li><a href="#menu"><b>메뉴</b><small>No. 02</small></a></li><li><a href="#visit"><b>오시는 길</b><small>No. 03</small></a></li></ul>'+
-      '<p class="of">화–일 10:00 – 18:00 · 월요일 쉼 · <a href="tel:+8220000000">02 · 000 · 0000</a></p>',
-    open:function(ov){return G.timeline().fromTo(ov,{yPercent:-100},{yPercent:0,duration:.95,ease:'expo.inOut'})
-      .fromTo($('li a',ov),{yPercent:110},{yPercent:0,duration:1.1,ease:'expo.out',stagger:.07},.45).fromTo($('.of',ov),{opacity:0,y:10},{opacity:1,y:0,duration:.9,ease:'power3.out'},.75)},
-    close:function(ov){return G.timeline().to($('li a',ov),{yPercent:-110,duration:.45,ease:'power3.in',stagger:.03}).to($('.of',ov),{opacity:0,duration:.3},0).to(ov,{yPercent:-100,duration:.8,ease:'expo.inOut'},.2)}});
-  if(!K.OK){d.classList.remove('mo');K.anchors(0,0,0,mm.closeDelay);return}
-  G.registerPlugin(ScrollTrigger,SplitText);
-  var clips=$('.pour>img,.beans-fig>img,.menu-photo>img,.visit-photo>img').map(K.clip);
-  var lenis=K.smooth({lerp:.08}); K.anchors(0,1.6,'power3.inOut',mm.closeDelay); K.magnet([$('.quiet')[0],mm.btn],.28);
-  d.classList.add('mo-ok');
-  var seen=false; try{seen=sessionStorage.getItem('sd-intro')==='1';sessionStorage.setItem('sd-intro','1')}catch(e){}
-  var intro=null;
-  if(!seen){intro=document.createElement('div');intro.className='intro';intro.setAttribute('aria-hidden','true');intro.innerHTML='<div class="w"><b>소담별</b></div><i></i><span>Mangwon · Hand drip</span>';document.body.appendChild(intro);lenis&&lenis.stop()}
-  var t0=performance.now();
-  K.fontsReady(1400).then(function(){
-    var wait=intro?Math.max(0,1050-(performance.now()-t0))/1000:0;
-    var img=$('.hero picture img')[0], h1=$('.hero h1')[0];
-    G.set(h1,{opacity:1}); var sp=SplitText.create(h1,{type:'lines',mask:'lines'});
-    var tl=G.timeline({delay:wait,defaults:{ease:'expo.out'},onComplete:function(){intro&&intro.remove();lenis&&lenis.start()}});
-    var at=0;
-    if(intro){tl.to(intro,{yPercent:-100,duration:1.1,ease:'power4.inOut'},0); at=.55}
-    tl.fromTo(img,{opacity:1,scale:1.16,clipPath:'inset(12% 14% 12% 14%)'},{scale:1,clipPath:'inset(0% 0% 0% 0%)',duration:2.2,ease:'expo.out'},at)
-      .fromTo(sp.lines,{yPercent:108},{yPercent:0,duration:1.4,stagger:.13},at+.35)
-      .fromTo($('.hero-copy>*:not(h1)'),{opacity:0,y:18},{opacity:1,y:0,duration:1.3,stagger:.09,ease:'power3.out'},at+.6)
-      .fromTo('.mast',{opacity:0},{opacity:1,duration:1.2,ease:'power2.out'},at+.5)
-      .fromTo('.hero figcaption',{opacity:0,y:10},{opacity:1,y:0,duration:1.2,ease:'power3.out'},at+1.1);
-    // 첫 스크롤: 사진은 천천히 가라앉고(패럴랙스), 글은 조금 빨리 올라감
-    G.to('.hero picture',{yPercent:9,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-    if(K.DESK) G.to('.hero-copy',{y:-70,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-    // 제목: 줄 단위 마스크
-    $('.coffee h2,.menu-body h2,.visit h2').forEach(function(h){var s=SplitText.create(h,{type:'lines',mask:'lines'});
-      G.fromTo(s.lines,{yPercent:108},{yPercent:0,duration:1.4,ease:'expo.out',stagger:.13,scrollTrigger:{trigger:h,start:'top 84%'}})});
-    $('.sec-no').forEach(function(n){G.fromTo(n,{opacity:0,x:-14},{opacity:1,x:0,duration:1.3,ease:'power3.out',scrollTrigger:{trigger:n,start:'top 88%'}})});
-    // 본문: 줄마다 살짝 늦게
-    $('.coffee .body,.sheet .fine,.call>p:first-child').forEach(function(p){var s=SplitText.create(p,{type:'lines'});
-      G.fromTo(s.lines,{opacity:0,y:14},{opacity:1,y:0,duration:1.2,ease:'power3.out',stagger:.07,scrollTrigger:{trigger:p,start:'top 88%'}})});
-    [['.beans-list li','.beans-list'],['.sheet>div','.sheet'],['.hours>div','.hours'],['.visit-body .status,.visit-body .addr,.visit-body .links,.call .num,.call .links','.visit-body']].forEach(function(x){
-      G.fromTo(x[0],{opacity:0,y:18},{opacity:1,y:0,duration:1.2,ease:'power3.out',stagger:.09,scrollTrigger:{trigger:x[1],start:'top 84%'}})});
-    // 사진: 안쪽에서 바깥으로 천천히 열리고(inset), 스크롤에 따라 아주 조금 흐름
-    clips.forEach(function(c){var im=c.firstElementChild;
-      G.fromTo(c,{clipPath:'inset(10% 12% 10% 12%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.8,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 86%'}});
-      G.fromTo(im,{scale:1.28},{scale:1.1,duration:2.4,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 86%'}});
-      G.fromTo(im,{yPercent:-4},{yPercent:4,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}});
-      var cap=c.parentNode.querySelector('.cap'); cap&&G.fromTo(cap,{opacity:0,y:8},{opacity:1,y:0,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 70%'}});
-    });
-    // 마우스(데스크톱): 히어로 사진이 손끝을 아주 느리게 따라옴
-    if(K.DESK){var pic=$('.hero picture')[0]; G.set(pic,{scale:1.03}); var qx=G.quickTo(pic,'x',{duration:1.6,ease:'power3'}),qy=G.quickTo(pic,'y',{duration:1.6,ease:'power3'});
-      $('.hero')[0].addEventListener('pointermove',function(e){qx((e.clientX/innerWidth-.5)*-18);qy((e.clientY/innerHeight-.5)*-12)});}
-    ScrollTrigger.refresh();
-  });
-})();
-
-</script>
-
+<script src="site.js" defer></script>
 </body>
 </html>

@@ -3,595 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GYEOL 결 헤어 — 성수동 1인 살롱 (가상 매장 샘플)</title>
-<meta name="description" content="성수동의 1인 헤어 살롱, 결. 하루 여섯 분, 상담부터 마무리까지 한 디자이너가 맡습니다. 가상 매장 샘플입니다.">
-<meta name="robots" content="noindex">
+<title>결 헤어 · 성수동 1인 미용실</title>
+<meta name="description" content="성수동 1인 미용실 결 헤어. 상담부터 마무리까지 한 사람이 합니다. 시술과 가격, 예약, 오시는 길.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0B0B" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:,">
-<link rel="preload" href="fonts/NotoSerifKR-Light.sub.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/01_back_dark.jpg">
-<script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('mo');setTimeout(function(){if(!d.classList.contains('mo-ok'))d.classList.remove('mo')},3500)}})(document.documentElement)</script>
+<link rel="preload" href="fonts/Pretendard-400.r7.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/NotoSerifKR-500.r7.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{
-  --black:#1A1B1C;
-  --ink:#F2F0EB;
-  --steel:#C4C0B8;
-  --beige:#EDEAE3;
-  --beige-ink:#1A1B1C;
-  --beige-mute:#5A5852;
-  --line:rgba(242,240,235,.22);
-  --line-d:rgba(26,27,28,.18);
-  --kr:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --serif-kr:"Noto Serif KR","Nanum Myeongjo",serif;
-  --dd:"Noto Serif KR","AppleMyungjo",serif;
-  --g:20px;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--black);color:var(--ink);font-family:var(--kr);font-weight:400;font-size:16px;line-height:1.8;
-  letter-spacing:.01em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-:focus-visible{outline:1px solid currentColor;outline-offset:4px}
-.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:20;min-height:44px;display:inline-flex;align-items:center;padding:0 12px;background:var(--black)}
-.demo{font-size:11px;letter-spacing:.16em;color:var(--steel);white-space:nowrap}
-
-/* ---------- header ---------- */
-.top{position:absolute;top:0;left:0;right:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;padding:0 var(--g)}
-.top .l{justify-self:start}
-.word{justify-self:center;display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-family:var(--dd);font-size:20px;letter-spacing:.42em;margin-right:-.42em;color:var(--ink)}
-.top .r{justify-self:end}
-.pill{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;font-size:12px;font-weight:500;letter-spacing:.14em;text-decoration:none;white-space:nowrap}
-.pill.fill{background:var(--ink);color:var(--black);border:1px solid var(--ink)}
-.pill.ghost{background:transparent;color:var(--ink);border:1px solid rgba(242,240,235,.7)}
-.pill.fill:hover{background:transparent;color:var(--ink)}
-.pill.ghost:hover{background:rgba(242,240,235,.1)}
-.top .pill{min-height:44px;padding:0 18px;font-size:11px}
-
-/* ---------- 1. hero ---------- */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--ink)}
-.hero-photo{position:absolute;inset:0;margin:0}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
-/* local solid darkening behind copy only — not a page-wide gradient */
-.hero-photo::after{content:"";position:absolute;inset:0;background:rgba(8,8,9,.38);pointer-events:none}
-.hero-copy{position:relative;z-index:2;padding:110px var(--g) 96px;max-width:44em;margin:0 auto}
-.eyebrow{margin:0 0 22px;font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--ink)}
-.hero h1{margin:0;font-family:var(--serif-kr);font-weight:300;font-size:clamp(30px,4.6vw,54px);line-height:1.28;letter-spacing:-.01em}
-.hero h1 em{font-family:var(--dd);font-style:italic;font-weight:400;letter-spacing:.01em}
-.hero-services{margin:22px 0 0;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--steel)}
-.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
-.hero-ctas .pill{min-height:44px;padding:0 22px;font-size:12px}
-.hero-ctas .pill.fill{background:#E8E4DC;color:#1A1B1C;border-color:#E8E4DC}
-.sample{margin:22px 0 0;font-size:11px;letter-spacing:.08em;color:var(--steel)}
-
-/* ---------- 2. marquee ---------- */
-.ticker{background:var(--beige);color:var(--beige-ink);overflow:hidden;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
-.ticker-track{display:flex;width:max-content;gap:0;padding:18px 0}
-.ticker-track span{display:inline-flex;align-items:baseline;padding:0 32px;font-family:var(--dd);font-style:italic;font-weight:400;font-size:22px;letter-spacing:.03em;white-space:nowrap}
-.ticker-track span.kr{font-family:var(--serif-kr);font-style:normal;font-weight:300;letter-spacing:.08em}
-.ticker-track span::after{content:"◆";margin-left:32px;font-style:normal;font-size:9px;color:#B08A5A;transform:translateY(-2px)}
-@media (prefers-reduced-motion:no-preference){
-  .ticker-track{animation:marquee 36s linear infinite}
-}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){
-  .ticker{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .ticker-track{animation:none}
-}
-
-/* ---------- shared section chrome ---------- */
-.sec{padding:72px var(--g)}
-.lab{display:block;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--steel)}
-.beige{background:var(--beige);color:var(--beige-ink)}
-.beige .lab{color:var(--beige-mute)}
-.beige .lab.tan{color:#76603F}
-
-/* ---------- 3. mission ---------- */
-.mission{padding:64px var(--g) 56px}
-.mission-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line-d);margin-bottom:28px}
-.mission-grid{display:grid;gap:28px}
-.mission h2{margin:0;font-family:var(--serif-kr);font-weight:300;font-size:clamp(28px,3.6vw,44px);line-height:1.4;letter-spacing:-.01em;max-width:15em}
-.mission h2 em{font-family:var(--dd);font-style:italic;font-weight:400}
-.mission .body{margin:0;max-width:32em;font-size:15px;line-height:1.85;color:var(--beige-mute)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;padding-top:28px;border-top:1px solid var(--line-d)}
-.stats li{list-style:none;text-align:center;padding:0}
-.stats{padding-left:0;margin-left:0}
-.stats .n{display:block;font-family:var(--dd);font-size:clamp(36px,5vw,56px);line-height:1;letter-spacing:.02em;color:#8A6F4E}
-.stats b{display:block;margin-top:10px;font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
-.stats small{display:block;margin-top:4px;font-size:13px;color:var(--beige-mute);letter-spacing:.02em}
-
-/* ---------- 4. principles ---------- */
-.principles{padding:56px var(--g) 72px}
-.principles .lab{margin-bottom:24px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line-d)}
-.grid li{padding:26px 16px 26px 0;border-bottom:1px solid var(--line-d);font-family:var(--serif-kr);font-weight:400;font-size:18px;letter-spacing:.03em}
-.grid li:nth-child(even){padding-left:16px;padding-right:0}
-
-/* ---------- 5. designer ---------- */
-.designer{padding:88px var(--g);text-align:center}
-.designer .lab{margin-bottom:28px}
-.designer-fig{margin:0 auto 28px;max-width:320px}
-.designer-fig img{width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 22%;border-radius:50%}
-.designer h2{margin:0;font-family:var(--serif-kr);font-weight:300;font-size:clamp(24px,3vw,34px);line-height:1.4}
-.designer h2 em{font-family:var(--dd);font-style:italic;font-weight:400;display:block;font-size:.72em;letter-spacing:.08em;color:var(--steel);margin-bottom:8px}
-.designer p{margin:18px auto 0;max-width:28em;color:var(--steel);font-size:15px}
-.designer .pills{margin-top:28px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-
-/* ---------- 6. services ---------- */
-.services{padding:72px var(--g) 88px;border-top:1px solid var(--line)}
-.services .head{text-align:center;margin:0 auto 40px;max-width:30em}
-.services h2{margin:12px 0 0;font-family:var(--serif-kr);font-weight:300;font-size:clamp(26px,3vw,36px);line-height:1.35}
-.services .head p{margin:14px auto 0;color:var(--steel);max-width:26em;font-size:15px}
-.room{max-width:1100px;margin:0 auto 48px}
-.room img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 60%}
-.price{max-width:640px;margin:0 auto;padding:0;list-style:none}
-.price li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:18px 0;border-top:1px solid var(--line)}
-.price li:last-child{border-bottom:1px solid var(--line)}
-.price b{font-weight:500;font-size:17px}
-.price .w{font-family:var(--dd);font-size:18px;letter-spacing:.02em;white-space:nowrap}
-.price small{grid-column:1/-1;font-size:14px;color:var(--steel)}
-.note{max-width:640px;margin:20px auto 0;font-size:13px;color:var(--steel);text-align:center}
-
-/* ---------- 7. work ---------- */
-.work{padding:72px var(--g) 88px;background:#141516}
-.work .head{text-align:center;margin:0 auto 40px;max-width:30em}
-.work h2{margin:12px 0 0;font-family:var(--serif-kr);font-weight:300;font-size:clamp(26px,3vw,36px)}
-.work .head p{margin:14px auto 0;color:var(--steel);max-width:28em;font-size:15px}
-.wk{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px;max-width:1100px;margin:0 auto}
-.wk .big{grid-column:1/-1}
-.wk img{width:100%;aspect-ratio:3/4;object-fit:cover}
-.wk .big img{aspect-ratio:4/3}
-.wk figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:13px;color:var(--steel)}
-.wk figcaption i{font-family:var(--dd);font-style:italic}
-
-/* ---------- booking ---------- */
-.booking{padding:0 0 88px;background:var(--beige);color:var(--beige-ink)}
-.booking .consult{margin:0}
-.booking .consult img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 55%}
-.booking .inner{padding:56px var(--g) 0;text-align:center}
-.booking .lab{color:var(--beige-mute)}
-.booking h2{margin:12px 0 0;font-family:var(--serif-kr);font-weight:300;font-size:clamp(26px,3vw,36px)}
-.steps{display:grid;gap:0;max-width:960px;margin:36px auto 0;padding:0;list-style:none}
-.steps li{padding:20px 0;border-top:1px solid var(--line-d)}
-.steps li i{display:block;font-family:var(--dd);font-style:italic;font-size:24px;color:#8A6F4E;margin-bottom:8px}
-.steps li b{display:block;font-weight:500;font-size:16px;margin-bottom:4px}
-.steps li p{margin:0 auto;max-width:22em;color:var(--beige-mute);font-size:15px}
-.bk{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:36px}
-.bk .pill.fill{background:var(--beige-ink);color:var(--beige);border-color:var(--beige-ink);min-height:48px}
-.bk .pill.ghost{color:var(--beige-ink);border-color:rgba(26,27,28,.45);min-height:44px}
-.bk small{font-size:13px;color:var(--beige-mute)}
-
-/* ---------- visit ---------- */
-.visit{padding:72px var(--g) 88px}
-.visit .head{text-align:center;margin:0 auto 40px}
-.visit h2{margin:12px 0 0;font-family:var(--serif-kr);font-weight:300;font-size:clamp(26px,3vw,36px)}
-.vz{display:grid;gap:40px;max-width:960px;margin:0 auto}
-.vz h3{margin:0 0 14px;font-weight:500;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
-.now{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:16px}
-.now::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--steel);flex:0 0 auto}
-.now.open::before{background:#9FC2A0}
-.hours{margin:0;padding:0;list-style:none}
-.hours li{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
-.hours li.today{font-weight:500}
-.hours li.today span:first-child::after{content:" · 오늘";color:var(--steel);font-weight:400}
-.addr{margin:0 0 12px;font-size:15px}
-.links{display:flex;flex-wrap:wrap;gap:0 20px}
-.tl{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;font-size:14px}
-.visit .note{text-align:left;margin:8px 0 0}
-
-/* ---------- footer ---------- */
-footer{padding:48px var(--g) 56px;text-align:center;border-top:1px solid var(--line)}
-footer .word{font-size:18px}
-footer p{margin:12px auto 0;font-size:13px;color:var(--steel);max-width:36em;line-height:1.7}
-
-@media (min-width:900px){
-  :root{--g:48px}
-  .top{height:80px}
-  .word{font-size:24px;letter-spacing:.46em;margin-right:-.46em}
-  .hero-copy{padding:120px var(--g) 100px}
-  .ticker-track span{font-size:28px;padding:0 40px}
-  .ticker-track span::after{margin-left:40px;font-size:10px}
-  .mission{padding:88px var(--g) 72px}
-  .mission-grid{grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}
-  .principles{padding:64px var(--g) 96px}
-  .grid{grid-template-columns:repeat(4,1fr)}
-  .grid li{padding:28px 20px 28px 0}
-  .grid li:nth-child(even){padding-left:0}
-  .grid li:not(:nth-child(4n)){border-right:1px solid var(--line-d);padding-right:20px}
-  .designer{padding:120px var(--g)}
-  .designer-fig{max-width:360px}
-  .services{padding:96px var(--g) 120px}
-  .room img{aspect-ratio:21/9}
-  .work{padding:96px var(--g) 120px}
-  .wk{grid-template-columns:minmax(0,1fr) minmax(0,2.4fr) minmax(0,1fr);gap:28px;align-items:start}
-  .wk .big{grid-column:2;grid-row:1}
-  .wk .s1{grid-column:1;grid-row:1;align-self:end}
-  .wk .s2{grid-column:3;grid-row:1}
-  .booking .consult img{aspect-ratio:21/9}
-  .booking .inner{padding:72px var(--g) 0}
-  .steps{grid-template-columns:repeat(3,1fr);gap:0 40px}
-  .steps li{border-top:0;border-top:1px solid var(--line-d)}
-  .vz{grid-template-columns:1fr 1px 1fr;gap:0 56px}
-  .vz::before{content:"";grid-column:2;grid-row:1;background:var(--line)}
-  .vz .h{grid-column:1;grid-row:1;text-align:right}
-  .vz .h .now{justify-content:flex-end}
-  .vz .ad{grid-column:3;grid-row:1}
-}
-/* ---------- motion v2: 살롱 = 절제된 마스크와 커튼, 느린 확대 ----------
-   .js/.mo는 <head>의 짧은 스크립트가 붙임(.mo는 3.5초 안에 모션이 시작 안 되면 풀림) → JS 없이도 내용은 보임.
-   transform/opacity 중심, 사진 열림과 메뉴 커튼만 clip-path(inset). */
-.m-clip{display:block;overflow:hidden;position:relative}
-.hero{overflow:hidden}
-.hero-photo{overflow:hidden}
-.mo .hero-photo img,.mo .eyebrow,.mo .hero h1,.mo .hero-services,.mo .hero-ctas,.mo .sample,.mo .top{opacity:0}
-.js .top{position:fixed}
-.top::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(20,21,22,.94);opacity:0;transition:opacity .6s}
-.top.solid::before{opacity:1}
-.top .r{display:flex;align-items:center;gap:8px}
-@media (max-width:599px){.js .top .r .pill{display:none}}
-/* 인트로: 검은 막 위로 GYEOL 글자가 하나씩 올라오고, 막이 가운데로 닫히며 사진이 열림 */
-.intro{position:fixed;inset:0;z-index:70;background:#0E0F10;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.intro .w{display:flex;overflow:hidden;padding:.06em 0 .12em}
-.intro .w span{display:block;font-family:var(--dd);font-size:clamp(44px,9vw,120px);letter-spacing:.18em;color:var(--ink);animation:k-up 1.15s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(.05s + var(--i)*.075s)}
-.intro small{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--steel);animation:k-fade 1s ease-out .5s both}
-@keyframes k-up{from{transform:translateY(110%)}to{transform:none}}
-@keyframes k-fade{from{opacity:0}to{opacity:1}}
-/* 메뉴 버튼 + 오버레이 */
-.mbtn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid rgba(242,240,235,.7);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
-.mbtn i{position:relative;display:block;width:16px;height:7px}
-.mbtn i::before,.mbtn i::after{content:"";position:absolute;left:0;right:0;height:1px;background:currentColor;transition:transform .7s cubic-bezier(.16,1,.3,1)}
-.mbtn i::before{top:0}.mbtn i::after{bottom:0}
-.menu-open .mbtn i::before{transform:translateY(3px) rotate(45deg)}.menu-open .mbtn i::after{transform:translateY(-3px) rotate(-45deg)}
-.menu-open .top{z-index:62}
-.ov{position:fixed;inset:0;z-index:61;background:#0E0F10;display:flex;flex-direction:column;justify-content:center;padding:96px var(--g) 40px}
-.ov[hidden]{display:none}
-.ov ul{list-style:none;margin:0 auto;padding:0;width:100%;max-width:1120px}
-.ov li{overflow:hidden;border-bottom:1px solid var(--line)}
-.ov a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;min-height:64px;padding:12px 0;text-decoration:none;color:var(--ink)}
-.ov a b{font-family:var(--serif-kr);font-weight:300;font-size:clamp(32px,6vw,88px);line-height:1.08;transition:transform 1s cubic-bezier(.16,1,.3,1),opacity .5s cubic-bezier(.16,1,.3,1)}
-.ov a i{font-family:var(--dd);font-size:clamp(16px,2vw,22px);color:var(--steel);transition:transform 1s cubic-bezier(.16,1,.3,1)}
-.ov .of{margin:32px auto 0;width:100%;max-width:1120px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:13px;color:var(--steel)}
-@media (hover:hover) and (min-width:900px){.ov ul:hover a b{opacity:.3}.ov ul:hover a:hover b{opacity:1}.ov a:hover b{transform:translateX(24px)}.ov a:hover i{transform:translateX(-10px)}}
-/* 커서: 데스크톱만, 사진 위에서 커짐 */
-.cur{position:fixed;left:0;top:0;z-index:80;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#F2F0EB;mix-blend-mode:difference;pointer-events:none;opacity:0}
-.cur.on{opacity:1}
-/* 호버 */
-@media (hover:hover){ .ticker:hover .ticker-track{animation-play-state:paused} }
-@media (hover:hover) and (min-width:900px){
-  .m-clip>img{transition:scale 1.6s cubic-bezier(.16,1,.3,1)}
-  figure:hover>.m-clip>img{scale:1.06}
-  .wk figcaption span{transition:transform .9s cubic-bezier(.16,1,.3,1)}
-  .wk figure:hover figcaption span{transform:translateX(-8px)}
-  .tl{position:relative;text-decoration:none}
-  .tl::before,.tl::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:1px;background:currentColor;transition:transform .7s cubic-bezier(.16,1,.3,1)}
-  .tl::before{transform-origin:right center}
-  .tl::after{transform-origin:left center;transform:scaleX(0)}
-  .tl:hover::before{transform:scaleX(0)}
-  .tl:hover::after{transform:scaleX(1);transition-delay:.2s}
-}
-.mo-ok .ticker-track{animation:none}
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-stopped{overflow:clip}
-/* r6 글꼴: 제목 Noto Serif KR Light + 본문 Pretendard. 영문 이탤릭(Bodoni) 제거 */
-@font-face{font-family:"Noto Serif KR";src:url(fonts/NotoSerifKR-Light.sub.woff2) format("woff2");font-weight:200 300;font-display:swap}
-@font-face{font-family:"Noto Serif KR";src:url(fonts/NotoSerifKR-Regular.sub.woff2) format("woff2");font-weight:400 500;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Regular.subset.woff2) format("woff2");font-weight:300 400;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Medium.subset.woff2) format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-SemiBold.subset.woff2) format("woff2");font-weight:600 700;font-display:swap}
-em,i,.hero h1 em,.ticker-track span,.wk figcaption i,.steps li i,.ov a i{font-style:normal}
-.ticker-track span{font-family:var(--serif-kr);font-weight:300;letter-spacing:.04em}
-.word,.intro .w span{font-family:var(--serif-kr);font-weight:400}
-.word{font-size:19px;letter-spacing:.36em;margin-right:-.36em}
-.stats .n,.price .w{font-family:var(--kr);font-weight:400;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-.price .w{font-size:16px}
-.steps li i{font-family:var(--kr);font-size:13px;font-weight:500;letter-spacing:.12em;color:#6B5434}
-.wk figcaption i,.ov a i{font-family:var(--kr);font-size:12px;font-weight:500;letter-spacing:.12em}
-.ov a i{font-size:13px}
-.eyebrow{letter-spacing:.18em}
+@font-face{font-family:"Noto Serif KR";src:url(fonts/NotoSerifKR-500.r7.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-400.r7.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-500.r7.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-600.r7.woff2) format("woff2");font-weight:600;font-display:swap}
 </style>
+<link rel="stylesheet" href="site.css">
+<style>:root{--accent:#4E5B63;--display:"Noto Serif KR",serif;--display-w:500;--display-ls:-0.03em;--ls-h2:-0.025em;--hero-ar-m:4/5;--hero-pos:50% 40%}</style>
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('mo');setTimeout(function(){if(!window.dnh)d.classList.remove('mo')},2500)}})(document.documentElement)</script>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
-<header class="top">
-  <span class="l" aria-hidden="true"></span>
-  <a class="word" href="./" aria-label="GYEOL 결 헤어 처음으로">GYEOL</a>
-  <span class="r"><a class="pill ghost" href="#booking">예약 문의</a></span>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="./" aria-label="결 헤어 처음으로">결 헤어</a>
+    <nav class="menu" aria-label="주요 메뉴"><a href="#service">시술</a><a href="#booking">예약</a><a href="#visit">오시는 길</a></nav>
+    <a class="btn btn-primary btn-sm hd-cta" href="sms:+8220000000">예약 문의</a>
+  </div>
 </header>
 <main id="main">
-  <section class="hero" aria-label="결 헤어">
-    <figure class="hero-photo">
-      <img src="img/01_back_dark.jpg" width="2048" height="1152" alt="어두운 방, 창빛을 받은 긴 머리를 뒤에서 본 모습">
-    </figure>
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap grid">
     <div class="hero-copy">
-      <p class="eyebrow">성수동 1인 살롱</p>
-      <h1>상담부터 마무리까지,<br>한 사람이 합니다</h1>
-      <p class="hero-services">커트 · 펌 · 컬러 · 클리닉</p>
-      <div class="hero-ctas">
-        <a class="pill fill" href="sms:+8220000000">예약 문의하기</a>
-        <a class="pill ghost" href="#service">시술 보기</a>
-      </div>
+      <p class="eyebrow rv">성수동 1인 미용실</p>
+      <h1 class="display rv" id="h1">상담부터 마무리까지,<br>한 사람이 합니다.</h1>
+      <p class="lead rv">커트, 펌, 컬러, 클리닉. 하루 여섯 분만 예약으로 모시고, 처음 이야기를 나눈 디자이너가 마지막 손질까지 함께합니다.</p>
+      <p class="actions rv"><a class="btn btn-primary" href="sms:+8220000000">문자로 예약 문의</a><a class="btn btn-secondary" href="#service">시술과 가격</a></p>
+      <p class="hero-meta rv">화–토 10:00 – 19:00 · 일·월 휴무</p>
     </div>
-  </section>
-
-  <div class="ticker" aria-label="시술과 동네">
-    <div class="ticker-track">
-      <span class="kr">커트</span><span class="kr">펌</span><span class="kr">컬러</span><span class="kr">클리닉</span><span class="kr">성수동</span><span class="kr">하루 여섯 분</span><span class="kr">1인 살롱</span><span class="kr">예약제</span>
-      <span class="kr">커트</span><span class="kr">펌</span><span class="kr">컬러</span><span class="kr">클리닉</span><span class="kr">성수동</span><span class="kr">하루 여섯 분</span><span class="kr">1인 살롱</span><span class="kr">예약제</span>
-    </div>
+    <figure class="hero-media"><img src="img/01_back_dark.jpg" width="2560" height="1440" alt="어두운 방, 창빛을 받은 긴 머리를 뒤에서 본 모습" decoding="async" fetchpriority="high"></figure>
   </div>
-
-  <section class="mission beige" aria-labelledby="h-mission">
-    <div class="mission-top">
-      <span class="lab">자르는 방식</span>
-      <span class="lab tan">의자 하나 · 하루 여섯 분</span>
-    </div>
-    <div class="mission-grid">
-      <h2 id="h-mission">머리카락의 결을 먼저 보고,<br>집에서 말려도 남게 자릅니다.</h2>
-      <p class="body">성수동의 1인 살롱. 하루 여섯 분만 모시고, 처음 이야기를 나눈 디자이너가 마지막 손질까지 함께합니다. 예약 사이에는 30분을 비워 앞사람과 겹치지 않습니다.</p>
-    </div>
-    <ul class="stats" aria-label="운영 숫자">
-      <li><span class="n">1</span><b>Seat</b><small>의자 하나, 한 번에 한 분</small></li>
-      <li><span class="n">6</span><b>Bookings</b><small>하루 예약 여섯 분</small></li>
-      <li><span class="n">10</span><b>Minutes</b><small>방문 후 상담부터</small></li>
-    </ul>
-  </section>
-
-  <section class="principles beige" aria-labelledby="h-principles">
-    <span class="lab" id="h-principles">Principles</span>
-    <ul class="grid">
-      <li>한 번에 한 분</li>
-      <li>예약제만</li>
-      <li>상담을 먼저</li>
-      <li>평소 손질부터</li>
-      <li>같은 사람</li>
-      <li>사이 30분</li>
-      <li>집에서 말리기</li>
-      <li>짧게 안내</li>
-    </ul>
-  </section>
-
-  <section class="designer" id="designer" aria-labelledby="h-designer">
-    <span class="lab">Designer</span>
-    <figure class="designer-fig rv">
-      <img src="img/stock_designer.jpg" width="1728" height="1914" alt="어두운 옷차림으로 가위와 빗을 함께 쥔 디자이너의 손" loading="lazy">
-    </figure>
-    <h2 id="h-designer">예약을 받는 사람이 가위를 듭니다</h2>
-    <p class="rv">결은 디자이너 한 명이 운영합니다. 문자로 예약을 받고, 상담하고, 자르고, 말리는 일까지 같은 사람이 합니다. 처음에 나눈 이야기가 마지막 모양까지 이어집니다.</p>
-    <div class="pills rv"><a class="pill ghost" href="#booking">예약 문의하기</a></div>
-  </section>
-
-  <section class="services" id="service" aria-labelledby="h-service">
-    <div class="head rv">
-      <span class="lab">Services</span>
-      <h2 id="h-service">시술과 가격</h2>
-      <p>모든 시술에 상담과 샴푸, 마무리 스타일링이 들어갑니다.</p>
-    </div>
-    <figure class="room rv"><img src="img/stock_room.jpg" width="2304" height="1728" alt="둥근 거울에 비친, 큰 창 옆의 검은 가죽 미용 의자" loading="lazy"></figure>
-    <ul class="price rv">
-      <li><b>커트</b><span class="w">45,000</span><small>상담 · 샴푸 · 드라이 포함, 약 60분</small></li>
-      <li><b>앞머리 · 기장 정리</b><span class="w">15,000</span><small>석 달 안에 커트하신 분, 약 20분</small></li>
-      <li><b>펌</b><span class="w">150,000~</span><small>커트 포함, 길이와 모량에 따라 상담 후 안내, 약 150분</small></li>
-      <li><b>염색</b><span class="w">110,000~</span><small>뿌리 염색은 80,000부터, 약 120분</small></li>
-      <li><b>두피 · 모발 클리닉</b><span class="w">60,000</span><small>단독 또는 다른 시술과 함께, 약 40분</small></li>
-    </ul>
-    <p class="note">가격 단위는 원입니다.</p>
-  </section>
-
-  <section class="work" id="work" aria-labelledby="h-work">
-    <div class="head rv">
-      <span class="lab">Style examples</span>
-      <h2 id="h-work">말린 뒤의 모양</h2>
-      <p>커트 선, 웨이브의 결, 컬러가 어떻게 보이는지 보여 드리는 스타일 예시입니다. 실제 고객 사진이 아닌 예시 이미지입니다.</p>
-    </div>
-    <div class="wk">
-      <figure class="big rv"><img src="img/stock_bob.jpg" width="2304" height="1728" alt="스타일 예시: 어깨 위에서 일자로 떨어지는 단발을 뒤에서 본 모습" loading="lazy"><figcaption><i>커트</i><span>턱선 일자 단발 · 예시</span></figcaption></figure>
-      <figure class="s1 rv"><img src="img/stock_wave.jpg" width="1728" height="2304" alt="스타일 예시: 결이 드러나는 긴 웨이브를 뒤에서 본 모습" loading="lazy"><figcaption><i>웨이브</i><span>예시</span></figcaption></figure>
-      <figure class="s2 rv"><img src="img/stock_color.jpg" width="1728" height="2304" alt="스타일 예시: 어두운 배경 앞, 밝은 브라운 컬러의 긴 머리를 뒤에서 본 모습" loading="lazy"><figcaption><i>컬러</i><span>예시</span></figcaption></figure>
-    </div>
-  </section>
-
-  <section class="booking" id="booking" aria-labelledby="h-booking">
-    <figure class="consult rv"><img src="img/stock_consult.jpg" width="2560" height="1440" alt="흰 테이블에 컵을 두고 마주 앉은 두 사람의 손" loading="lazy"></figure>
-    <div class="inner">
-      <span class="lab">Booking</span>
-      <h2 id="h-booking">예약은 문자로 받습니다</h2>
-      <ol class="steps rv">
-        <li><i>01</i><b>문자 보내기</b><p>원하는 날짜와 시술, 지금 머리 길이를 적어 주세요.</p></li>
-        <li><i>02</i><b>시간 확정</b><p>영업일 하루 안에 가능한 시간을 답장으로 드립니다.</p></li>
-        <li><i>03</i><b>방문</b><p>도착하면 10분 정도 상담부터 하고 시작합니다.</p></li>
-      </ol>
-      <div class="bk rv">
-        <a class="pill fill" href="sms:+8220000000">문자로 예약 문의</a>
-        <a class="pill ghost" href="tel:+8220000000">전화 02-000-0000</a>
-        <small>시술 중에는 전화를 받지 못할 수 있습니다</small>
-      </div>
-    </div>
-  </section>
-
-  <section class="visit" id="visit" aria-labelledby="h-visit">
-    <div class="head rv"><span class="lab">Visit</span><h2 id="h-visit">오시는 길과 시간</h2></div>
-    <div class="vz rv">
-      <div class="h">
-        <h3>영업시간</h3>
-        <p class="now" id="now" aria-live="polite">화–토 10:00 – 19:00</p>
-        <ul class="hours" id="hours">
-          <li data-d="2"><span>화–토</span><span>10:00 – 19:00</span></li>
-          <li data-d="0"><span>일 · 월</span><span>쉽니다</span></li>
-          <li><span>마지막 시술 시작</span><span>17:00</span></li>
-        </ul>
-      </div>
-      <div class="ad">
-        <h3>주소</h3>
-        <p class="addr">서울 성동구 성수동2가<br>성수역 3번 출구에서 걸어서 6분, 2층</p>
-        <div class="links">
-          <a class="tl" href="https://map.naver.com/p/search/%EC%84%B1%EC%88%98%EC%97%AD" target="_blank" rel="noopener">네이버 지도</a>
-          <a class="tl" href="https://map.kakao.com/?q=%EC%84%B1%EC%88%98%EC%97%AD" target="_blank" rel="noopener">카카오맵</a>
-          <a class="tl" href="tel:+8220000000">전화</a>
-          <a class="tl" href="sms:+8220000000">문자</a>
-        </div>
-        <p class="note">지도는 성수역을 엽니다. 주차 공간은 없습니다.</p>
-      </div>
-    </div>
-  </section>
+</section>
+<section class="section" id="about" aria-labelledby="h-about"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">자르는 방식</p><h2 class="h2 rv" id="h-about">머리카락의 결을 먼저 보고,<br>집에서 말려도 남게 자릅니다.</h2><p class="lead rv">문자로 예약을 받고, 상담하고, 자르고, 말리는 일까지 같은 사람이 합니다. 예약 사이에는 30분을 비워 앞사람과 겹치지 않습니다.</p></div>
+<div class="grid ph-pair"><figure class="rv"><div class="ph"><img src="img/stock_designer.jpg" width="1728" height="1914" alt="어두운 옷차림으로 가위와 빗을 함께 쥔 디자이너의 손" loading="lazy" decoding="async"></div><figcaption class="cap">가위와 빗, 한 사람의 손</figcaption></figure><figure class="rv"><div class="ph"><img src="img/stock_room.jpg" width="2304" height="1728" alt="둥근 거울에 비친, 큰 창 옆의 검은 가죽 미용 의자" loading="lazy" decoding="async"></div><figcaption class="cap">큰 창 옆의 의자 하나</figcaption></figure></div>
+</div></section>
+<section class="section" id="service" aria-labelledby="h-service"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">시술과 가격</p><h2 class="h2 rv" id="h-service">모든 시술에 상담과 샴푸,<br>마무리 스타일링이 들어갑니다.</h2></div>
+<div class="in4 rv"><ul class="rows"><li><span class="r-name">커트</span><span class="r-desc">상담 · 샴푸 · 드라이 포함, 약 60분</span><span class="r-price">45,000</span></li><li><span class="r-name">앞머리 · 기장 정리</span><span class="r-desc">석 달 안에 커트하신 분, 약 20분</span><span class="r-price">15,000</span></li><li><span class="r-name">펌</span><span class="r-desc">커트 포함, 길이와 모량에 따라 상담 후 안내, 약 150분</span><span class="r-price">150,000 –</span></li><li><span class="r-name">염색</span><span class="r-desc">뿌리 염색은 80,000부터, 약 120분</span><span class="r-price">110,000 –</span></li><li><span class="r-name">두피 · 모발 클리닉</span><span class="r-desc">단독 또는 다른 시술과 함께, 약 40분</span><span class="r-price">60,000</span></li></ul><p class="note" style="margin-top:var(--s-4)">가격 단위는 원입니다.</p></div>
+</div></section>
+<section class="section" id="work" aria-labelledby="h-work"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">스타일 예시</p><h2 class="h2 rv" id="h-work">말린 뒤의 모양</h2><p class="lead rv">커트 선, 웨이브의 결, 컬러가 어떻게 보이는지 보여 드리는 예시 이미지입니다. 실제 고객 사진이 아닙니다.</p></div>
+<div class="grid ph-three"><figure class="rv"><div class="ph"><img src="img/stock_bob.jpg" width="2304" height="1728" alt="스타일 예시: 어깨 위에서 일자로 떨어지는 단발을 뒤에서 본 모습" loading="lazy" decoding="async"></div><figcaption class="cap">커트 · 턱선 일자 단발</figcaption></figure><figure class="rv"><div class="ph"><img src="img/stock_wave.jpg" width="1728" height="2304" alt="스타일 예시: 결이 드러나는 긴 웨이브를 뒤에서 본 모습" loading="lazy" decoding="async"></div><figcaption class="cap">펌 · 긴 웨이브</figcaption></figure><figure class="rv"><div class="ph"><img src="img/stock_color.jpg" width="1728" height="2304" alt="스타일 예시: 어두운 배경 앞, 밝은 브라운 컬러의 긴 머리를 뒤에서 본 모습" loading="lazy" decoding="async"></div><figcaption class="cap">컬러 · 밝은 브라운</figcaption></figure></div>
+</div></section>
+<section class="section" id="booking" aria-labelledby="h-booking"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">예약</p><h2 class="h2 rv" id="h-booking">예약은 문자로 받습니다</h2><p class="lead rv">시술 중에는 전화를 받지 못할 수 있어 문자가 가장 빠릅니다.</p></div>
+<ol class="cols3 in4"><li class="rv"><span class="num">01</span><h3 class="h3">문자 보내기</h3><p>원하는 날짜와 시술, 지금 머리 길이를 적어 주세요.</p></li><li class="rv"><span class="num">02</span><h3 class="h3">시간 확정</h3><p>영업일 하루 안에 가능한 시간을 답장으로 드립니다.</p></li><li class="rv"><span class="num">03</span><h3 class="h3">방문</h3><p>도착하면 10분 정도 상담부터 하고 시작합니다.</p></li></ol>
+<p class="actions in4 rv"><a class="btn btn-primary" href="sms:+8220000000">문자로 예약 문의</a><a class="btn btn-secondary" href="tel:+8220000000">전화 02-000-0000</a></p>
+</div></section>
+<section class="section" id="visit" aria-labelledby="h-visit"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">오시는 길</p><h2 class="h2 rv" id="h-visit">성수역 3번 출구에서 걸어서 6분</h2></div>
+<div class="grid visit-grid no-photo"><div class="v-info">
+  <div class="v-block rv"><h3 class="h3">영업시간</h3><p class="status" data-hours='[[[2,3,4,5,6],"10:00","19:00"]]'>화–토 10:00 – 19:00</p><dl class="hours"><div data-days="2,3,4,5,6"><dt>화 – 토</dt><dd>10:00 – 19:00</dd></div><div data-days="0,1"><dt>일 · 월</dt><dd>쉽니다</dd></div><div><dt>마지막 시술 시작</dt><dd>17:00</dd></div></dl></div>
+  <div class="v-block rv"><h3 class="h3">주소</h3><address>서울 성동구 성수동2가, 2층</address><p class="links"><a class="link" href="https://map.naver.com/p/search/%EC%84%B1%EC%88%98%EC%97%AD" target="_blank" rel="noopener">네이버 지도</a><a class="link" href="https://map.kakao.com/?q=%EC%84%B1%EC%88%98%EC%97%AD" target="_blank" rel="noopener">카카오맵</a></p><p class="note">지도는 성수역을 엽니다. 주차 공간은 없습니다.</p></div>
+</div></div>
+</div></section>
 </main>
-<footer>
-  <a class="word" href="./" aria-label="GYEOL 결 헤어 처음으로">GYEOL</a>
-  <p>가상 매장 샘플입니다. 가게 이름·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지와 일부 AI 생성 이미지입니다.</p>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <p class="ft-name">결 헤어</p>
+    <p>가상 매장 샘플입니다. 가게 이름·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지와 일부 AI 생성 이미지입니다.</p>
+    <p>디자인·제작 <a href="../">동네홈</a> · 글꼴 Noto Serif KR, Pretendard (SIL OFL 1.1) · <a href="PHOTO_CREDITS.md">사진 출처</a></p>
+  </div>
 </footer>
-<script>
-(function(){
-  var p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).map(function(x){return[x.type,x.value]}));
-  var d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday), m=(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10);
-  var work=d>=2&&d<=6, open=work&&m>=600&&m<1140, el=document.getElementById('now'), t;
-  if(open) t='지금 영업 중 · 19:00까지';
-  else if(work&&m<600) t='지금은 닫혀 있습니다 · 오늘 10:00에 엽니다';
-  else { var nd=(d===6||d===0||d===1)?'화요일':'내일'; t='지금은 닫혀 있습니다 · '+nd+' 10:00에 엽니다'; }
-  el.textContent=t; if(open) el.classList.add('open');
-  var rows=document.querySelectorAll('#hours li[data-d]'); (work?rows[0]:rows[1]).classList.add('today');
-})();
-</script>
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="vendor/SplitText.min.js"></script>
-<script src="vendor/lenis.min.js"></script>
-<script>
-/* 동네홈 모션 키트 v2 — 직접 작성(외부 코드 복사 없음). GSAP 3.15 + ScrollTrigger + SplitText(표준 무료 라이선스), Lenis(MIT) */
-var K=(function(){
-  var d=document.documentElement, G=window.gsap;
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DESK=matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches;
-  var OK=!RM&&!!G&&!!window.ScrollTrigger&&!!window.SplitText;
-  function $(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))}
-  function clip(img){var c=document.createElement('span');c.className='m-clip';img.parentNode.insertBefore(c,img);c.appendChild(img);return c}
-  var lenis=null;
-  function smooth(opt){
-    if(!OK||!DESK||!window.Lenis) return null;
-    try{lenis=new Lenis(Object.assign({lerp:.085,wheelMultiplier:1},opt||{}));lenis.on('scroll',ScrollTrigger.update);
-      G.ticker.add(function(t){lenis.raf(t*1000)});G.ticker.lagSmoothing(0)}catch(e){lenis=null}
-    return lenis;
-  }
-  // 앵커 이동(“페이지 전환” 대신): Lenis가 있으면 Lenis, 없으면 GSAP로 창 스크롤
-  function goTo(el,off,dur,ease){
-    off=off||0; var y=el.getBoundingClientRect().top+scrollY-off;
-    if(RM||!G){scrollTo(0,y);return}
-    if(lenis){lenis.scrollTo(y,{duration:dur||1.5,easing:function(t){return t===1?1:1-Math.pow(2,-10*t)}});return}
-    var o={y:scrollY}; G.to(o,{y:y,duration:dur||1,ease:ease||'power3.inOut',onUpdate:function(){scrollTo(0,o.y)}});
-  }
-  function anchors(off,dur,ease,before){
-    $('a[href^="#"]').forEach(function(a){var id=a.getAttribute('href').slice(1); if(!id) return;
-      a.addEventListener('click',function(e){var t=document.getElementById(id); if(!t) return; e.preventDefault();
-        var w=before?before():0; setTimeout(function(){goTo(t,typeof off=='function'?off():off,dur,ease); if(t.tabIndex<0&&!/^(A|BUTTON|INPUT)$/.test(t.tagName)) t.setAttribute('tabindex','-1'); t.focus({preventScroll:true})},w||0)})});
-  }
-  // 메뉴: 버튼+오버레이를 JS로 만든다(JS 없으면 안 보임). anim(open)으로 열고 닫는 타임라인을 받는다
-  function menu(cfg){
-    var btn=document.createElement('button'); btn.type='button'; btn.className='mbtn'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-controls','m-ov');
-    btn.innerHTML=cfg.btn; btn.setAttribute('aria-label','메뉴 열기');
-    var ov=document.createElement('nav'); ov.id='m-ov'; ov.className='ov'; ov.setAttribute('aria-label','전체 메뉴'); ov.innerHTML=cfg.html; ov.hidden=true;
-    (cfg.btnParent||document.body).appendChild(btn); document.body.appendChild(ov);
-    var open=false, busy=null;
-    function set(o){open=o; btn.setAttribute('aria-expanded',o?'true':'false'); btn.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기'); d.classList.toggle('menu-open',o);
-      if(lenis){o?lenis.stop():lenis.start()} document.body.style.overflow=o&&!lenis?'hidden':'';
-      if(busy) busy.kill();
-      if(o){ov.hidden=false; busy=OK?cfg.open(ov):null; var f=ov.querySelector('a'); f&&f.focus({preventScroll:true})}
-      else{ if(OK){busy=cfg.close(ov); busy.eventCallback('onComplete',function(){ov.hidden=true})} else ov.hidden=true; }
-    }
-    btn.addEventListener('click',function(){set(!open)});
-    addEventListener('keydown',function(e){if(e.key==='Escape'&&open){set(false);btn.focus()}});
-    $('a',ov).forEach(function(a){a.addEventListener('click',function(){if(open) set(false)})});
-    return {btn:btn,ov:ov,close:function(){if(open)set(false)},isOpen:function(){return open},closeDelay:function(){return open?(cfg.closeWait||350):0}};
-  }
-  // 자석 버튼(데스크톱)
-  function magnet(els,s){ if(!OK||!DESK) return; s=s||.3;
-    els.forEach(function(el){var qx=G.quickTo(el,'x',{duration:.6,ease:'power3'}),qy=G.quickTo(el,'y',{duration:.6,ease:'power3'});
-      el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();qx((e.clientX-r.left-r.width/2)*s);qy((e.clientY-r.top-r.height/2)*s)});
-      el.addEventListener('pointerleave',function(){G.to(el,{x:0,y:0,duration:1,ease:'elastic.out(1,.45)',overwrite:'auto'})})});
-  }
-  function fontsReady(cap){return Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),new Promise(function(r){setTimeout(r,cap||1400)})])}
-  return {d:d,G:G,RM:RM,DESK:DESK,OK:OK,$:$,clip:clip,smooth:smooth,goTo:goTo,anchors:anchors,menu:menu,magnet:magnet,fontsReady:fontsReady,lenis:function(){return lenis}};
-})();
-(function(){
-  var d=K.d,G=K.G,$=K.$,top=$('.top')[0];
-  var mm=K.menu({btn:'<i></i>',btnParent:$('.top .r')[0],closeWait:450,
-    html:'<ul><li><a href="#designer"><b>디자이너</b><i>01</i></a></li><li><a href="#service"><b>시술과 가격</b><i>02</i></a></li><li><a href="#work"><b>스타일 예시</b><i>03</i></a></li><li><a href="#booking"><b>예약 문의</b><i>04</i></a></li><li><a href="#visit"><b>오시는 길</b><i>05</i></a></li></ul>'+
-      '<p class="of"><span>화–토 10:00 – 19:00</span><a class="pill ghost" href="sms:+8220000000">문자로 예약 문의</a></p>',
-    open:function(ov){return G.timeline().fromTo(ov,{clipPath:'inset(0% 0% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1,ease:'expo.inOut'})
-      .fromTo($('li a',ov),{yPercent:105},{yPercent:0,duration:1.2,ease:'expo.out',stagger:.06},.45).fromTo($('.of',ov),{opacity:0},{opacity:1,duration:.8},.8)},
-    close:function(ov){return G.timeline().to($('li a',ov),{yPercent:-105,duration:.45,ease:'power3.in',stagger:.025}).to($('.of',ov),{opacity:0,duration:.3},0).to(ov,{clipPath:'inset(100% 0% 0% 0%)',duration:.85,ease:'expo.inOut'},.2)}});
-  // 위로 스크롤하면 머리말이 다시 내려옴(사진 아래로 내려가면 배경을 깔고)
-  var lastY=0; addEventListener('scroll',function(){var y=scrollY; top.classList.toggle('solid',y>innerHeight*.6);
-    if(K.OK&&!mm.isOpen()){ if(y>innerHeight&&y>lastY+4) G.to(top,{yPercent:-100,duration:.5,ease:'power3.in',overwrite:'auto'}); else if(y<lastY-4||y<innerHeight) G.to(top,{yPercent:0,duration:.7,ease:'expo.out',overwrite:'auto'}); }
-    lastY=y},{passive:true});
-  if(!K.OK){d.classList.remove('mo');K.anchors(0,0,0,mm.closeDelay);return}
-  G.registerPlugin(ScrollTrigger,SplitText);
-  var clips=$('.room>img,.wk figure>img,.consult>img').map(K.clip);
-  var lenis=K.smooth({lerp:.075}); K.anchors(0,1.6,'power3.inOut',mm.closeDelay); K.magnet($('.hero-ctas .pill,.bk .pill,.top .pill').concat([mm.btn]),.3);
-  d.classList.add('mo-ok');
-  var seen=false; try{seen=sessionStorage.getItem('gy-intro')==='1';sessionStorage.setItem('gy-intro','1')}catch(e){}
-  var intro=null;
-  if(!seen){intro=document.createElement('div');intro.className='intro';intro.setAttribute('aria-hidden','true');
-    intro.innerHTML='<div class="w">'+'GYEOL'.split('').map(function(c,i){return '<span style="--i:'+i+'">'+c+'</span>'}).join('')+'</div><small>성수동 1인 살롱</small>';document.body.appendChild(intro);lenis&&lenis.stop()}
-  var t0=performance.now();
-  K.fontsReady(1400).then(function(){
-    var wait=intro?Math.max(0,1150-(performance.now()-t0))/1000:0;
-    var img=$('.hero-photo img')[0], h1=$('.hero h1')[0];
-    G.set(h1,{opacity:1}); var sp=SplitText.create(h1,{type:'lines',mask:'lines'});
-    var tl=G.timeline({delay:wait,defaults:{ease:'expo.out'},onComplete:function(){intro&&intro.remove();lenis&&lenis.start();
-      G.to(img,{scale:1.05,duration:14,ease:'sine.inOut'})}});
-    var at=0;
-    if(intro){tl.to($('.w span',intro),{yPercent:-110,duration:.6,ease:'power3.in',stagger:.04},0).to($('small',intro),{opacity:0,duration:.3},0)
-      .to(intro,{clipPath:'inset(50% 0% 50% 0%)',duration:1.25,ease:'expo.inOut'},.35); at=.75}
-    tl.fromTo(img,{opacity:1,scale:1.22},{scale:1,duration:2.4},intro?0.35:0)
-      .fromTo('.eyebrow',{opacity:0,y:10},{opacity:1,y:0,duration:1.2,ease:'power3.out'},at+.1)
-      .fromTo(sp.lines,{yPercent:110},{yPercent:0,duration:1.4,stagger:.14},at+.2)
-      .fromTo('.hero-services,.hero-ctas,.sample',{opacity:0,y:14},{opacity:1,y:0,duration:1.2,ease:'power3.out',stagger:.1},at+.65)
-      .fromTo(top,{opacity:0,y:-12},{opacity:1,y:0,duration:1.2,ease:'power3.out'},at+.8);
-    // 첫 스크롤: 사진이 느리게 가라앉고 글은 빨리 떠남
-    G.to('.hero-photo',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-    G.to('.hero-copy',{yPercent:-12,opacity:.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-    // 띠: 스크롤 속도에 따라 빨라지고 방향도 따라감
-    var tr=$('.ticker-track')[0], loop=G.to(tr,{xPercent:-50,duration:38,ease:'none',repeat:-1});
-    ScrollTrigger.create({trigger:'.ticker',start:'top bottom',end:'bottom top',onUpdate:function(s){var v=s.getVelocity()/300;
-      G.to(loop,{timeScale:(s.direction<0?-1:1)*Math.min(5,1+Math.abs(v)),duration:.25,overwrite:true});G.to(loop,{timeScale:s.direction<0?-1:1,duration:1.4,delay:.3,ease:'power2.out'})}});
-    $('.ticker')[0].addEventListener('pointerenter',function(){G.to(loop,{timeScale:.15,duration:.8})});$('.ticker')[0].addEventListener('pointerleave',function(){G.to(loop,{timeScale:1,duration:.8})});
-    // 미션 제목: 스크롤하는 만큼 단어가 밝아짐
-    var mh=$('.mission h2')[0], ms=SplitText.create(mh,{type:'words'});
-    G.fromTo(ms.words,{opacity:.16},{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:mh,start:'top 82%',end:'bottom 48%',scrub:.6}});
-    // 다른 제목: 줄 마스크
-    $('.designer h2,.services h2,.work h2,.booking h2,.visit h2').forEach(function(h){var s=SplitText.create(h,{type:'lines',mask:'lines'});
-      G.fromTo(s.lines,{yPercent:110},{yPercent:0,duration:1.4,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:h,start:'top 86%'}})});
-    $('.lab').forEach(function(l){if(l.closest('.hero')) return; G.fromTo(l,{opacity:0,y:8},{opacity:1,y:0,duration:1.1,ease:'power3.out',scrollTrigger:{trigger:l,start:'top 90%'}})});
-    $('.mission .body,.designer p,.services .head p,.work .head p').forEach(function(p){var s=SplitText.create(p,{type:'lines'});
-      G.fromTo(s.lines,{opacity:0,y:12},{opacity:1,y:0,duration:1.1,ease:'power3.out',stagger:.07,scrollTrigger:{trigger:p,start:'top 88%'}})});
-    // 숫자: 올라가며 세기
-    $('.stats .n').forEach(function(n){var v=+n.textContent,o={v:0};G.fromTo(n.parentNode,{opacity:0,y:20},{opacity:1,y:0,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.stats',start:'top 86%'}});
-      G.to(o,{v:v,duration:1.6,ease:'power2.out',scrollTrigger:{trigger:'.stats',start:'top 86%'},onUpdate:function(){n.textContent=Math.round(o.v)}})});
-    [['.grid li','.grid',.05],['.price li','.price',.07],['.steps li','.steps',.1],['.vz>div','.vz',.12],['.note','.note',0],['.designer .pills,.bk','.designer .pills',0]].forEach(function(x){
-      $(x[0]).length&&G.fromTo(x[0],{opacity:0,y:16},{opacity:1,y:0,duration:1.1,ease:'power3.out',stagger:x[2],scrollTrigger:{trigger:x[1],start:'top 88%'}})});
-    // 디자이너 사진: 원으로 열림
-    var df=$('.designer-fig img')[0]; G.fromTo(df,{clipPath:'circle(0% at 50% 50%)',scale:1.2},{clipPath:'circle(50% at 50% 50%)',scale:1,duration:1.8,ease:'expo.inOut',scrollTrigger:{trigger:df,start:'top 84%'}});
-    // 사진: 아래에서 위로 커튼이 걷히고, 안쪽 사진은 확대에서 제자리로, 스크롤에 따라 조금 흐름
-    clips.forEach(function(c,i){var im=c.firstElementChild, delay=c.closest('.wk')?($('.wk figure').indexOf(c.parentNode)*.12):0;
-      G.fromTo(c,{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,delay:delay,ease:'expo.inOut',scrollTrigger:{trigger:c,start:'top 88%'}});
-      G.fromTo(im,{scale:1.35},{scale:1.1,duration:2.2,delay:delay,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 88%'}});
-      G.fromTo(im,{yPercent:-4},{yPercent:4,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}});
-      var cap=c.parentNode.querySelector('figcaption'); cap&&G.fromTo(cap,{opacity:0,y:10},{opacity:1,y:0,duration:1.1,delay:delay+.4,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 88%'}});
-    });
-    // 커서와 사진(데스크톱)
-    if(K.DESK){var cur=document.createElement('div');cur.className='cur';cur.setAttribute('aria-hidden','true');document.body.appendChild(cur);
-      var cx=G.quickTo(cur,'x',{duration:.45,ease:'power3'}),cy=G.quickTo(cur,'y',{duration:.45,ease:'power3'});
-      addEventListener('pointermove',function(e){cur.classList.add('on');cx(e.clientX);cy(e.clientY)},{passive:true});
-      document.addEventListener('pointerleave',function(){cur.classList.remove('on')});
-      $('a,button').forEach(function(a){a.addEventListener('pointerenter',function(){G.to(cur,{scale:3.2,duration:.5,ease:'expo.out'})});a.addEventListener('pointerleave',function(){G.to(cur,{scale:1,duration:.5,ease:'expo.out'})})});
-      $('figure').forEach(function(f){f.addEventListener('pointerenter',function(){G.to(cur,{scale:6,duration:.7,ease:'expo.out'})});f.addEventListener('pointerleave',function(){G.to(cur,{scale:1,duration:.6,ease:'expo.out'})})});
-      var hp=$('.hero-photo img')[0], qx=G.quickTo('.hero-photo','x',{duration:1.8,ease:'power3'});
-      $('.hero')[0].addEventListener('pointermove',function(e){qx((e.clientX/innerWidth-.5)*-24)});
-      G.set('.hero-photo',{scale:1.04});
-    }
-    ScrollTrigger.refresh();
-  });
-})();
-
-</script>
+<script src="site.js" defer></script>
 </body>
 </html>

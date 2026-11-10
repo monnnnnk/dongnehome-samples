@@ -17,3 +17,9 @@
 - stock_door 원본의 왼쪽에 다른 가게 간판이 있어서 오른쪽(창과 벤치)만 잘라 썼습니다.
 - 사진은 가게 입구가 아니라 건물 창과 벤치입니다.
 - stock_serve 오른쪽에는 커피 머신 일부가 흐리게 보입니다. 확인한 범위에서 로고는 보이지 않았습니다.
+
+
+## r7 프리미엄 (2026-11-10)
+- 같은 사진을 그대로 씁니다. 새 사진은 없습니다. 페이지 구성만 동네홈 디자인 시스템으로 바꿨습니다.
+- 제목: Sodam Serif SemiBold(네이버 마루 부리 수정본), SIL OFL 1.1, 원문 `fonts/SodamSerif_OFL.txt`
+- 본문: Pretendard 400/500/600 하위 집합 `fonts/Pretendard-*.r7.woff2`, SIL OFL 1.1, 원문 `fonts/PRETENDARD_LICENSE.txt`

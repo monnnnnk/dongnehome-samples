@@ -3,480 +3,72 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>라멘 소라 — 합정 닭 육수 라멘 (가상 매장 샘플)</title>
-<meta name="description" content="합정역 7번 출구 근처 카운터 열 석짜리 라멘집. 토리 파이탄, 쇼유 라멘, 츠케멘. 가상 매장 샘플이며 사진은 무료 스톡 이미지(Unsplash·Pexels)입니다.">
-<meta name="robots" content="noindex">
+<title>라멘 소라 · 합정 토리 파이탄</title>
+<meta name="description" content="합정역 7번 출구, 카운터 열 석의 라멘집 라멘 소라. 메뉴와 가격, 영업시간, 오시는 길.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0B0B" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:,">
-<link rel="preload" href="fonts/Hahmlet-SemiBold.sub.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/s_hero_bowl_red.jpg">
-<script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('mo');setTimeout(function(){if(!d.classList.contains('mo-ok'))d.classList.remove('mo')},3500)}})(document.documentElement)</script>
+<link rel="preload" href="fonts/Pretendard-400.r7.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Hahmlet-600.r7.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--red:#9C191B;--red-d:#6F1013;--ink:#111;--soft:#555;--grey:#F3F3F3;--line:#DDD;--g:20px;--w:1200px;
-  --kr:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--en:var(--kr);--hd:"Hahmlet","AppleMyungjo","Batang",serif}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#FFF;color:var(--ink);font-family:var(--kr);font-size:16px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-:focus-visible{outline:3px solid #111;outline-offset:2px}
-.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;min-height:44px;padding:10px 12px;background:#FFF;z-index:9}
-.in{max-width:var(--w);margin:0 auto;padding:0 var(--g)}
-.en{font-family:var(--en);font-weight:600;letter-spacing:.24em;text-transform:uppercase}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;min-width:220px;padding:0 28px;background:var(--red);color:#FFF;text-decoration:none;font-size:16px;font-weight:700;white-space:nowrap}
-.btn:hover{background:var(--red-d)}
-.btn.w{background:#FFF;color:var(--red)}
-.btn.w:hover{background:#111;color:#FFF}
-.tl{display:inline-flex;align-items:center;min-height:44px;font-weight:500;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
-
-/* 맨 위 짙은 빨강 메뉴 막대: 선으로 나눈 칸 */
-.top{background:var(--red-d);color:#FFF}
-.top .row{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid rgba(255,255,255,.28)}
-.word{display:flex;align-items:center;min-height:56px;padding:0 var(--g);font-weight:900;font-size:21px;text-decoration:none;letter-spacing:-.01em}
-.word small{font-family:var(--en);font-weight:600;font-size:11px;letter-spacing:.22em;margin-left:10px;opacity:.9}
-.top .call{display:flex;align-items:center;justify-content:center;min-height:56px;min-width:56px;padding:0 18px;border-left:1px solid rgba(255,255,255,.28);font-weight:700;font-size:15px;text-decoration:none}
-.navg{display:grid;grid-template-columns:repeat(4,1fr)}
-.navg a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:56px;padding:6px 4px;border-right:1px solid rgba(255,255,255,.28);text-decoration:none;font-size:14px;font-weight:700;line-height:1.3;text-align:center}
-.navg a:last-child{border-right:0}
-.navg a span{font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.18em;opacity:.85}
-.navg a:hover,.top .call:hover{background:var(--red)}
-
-/* 첫 화면: 꽉 찬 빨강 포스터, 글과 그릇은 겹치지 않음 */
-.hero{background:var(--red);background-color:#9C191B;color:#FFF;overflow:hidden}
-.hero .in{display:grid;padding-top:32px;padding-bottom:40px}
-.kick{margin:0 0 14px;font-size:14px;font-weight:700;letter-spacing:.02em}
-h1{margin:0;font-weight:900;font-size:min(64px,16.4vw);line-height:1.06;letter-spacing:-.045em}
-h1 span{display:block}
-.lede{margin:20px 0 0;font-size:17px;max-width:24em}
-.cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:24px}
-.label{margin:18px 0 0;font-size:13px;font-weight:500}
-.bowl{margin:28px calc(-1 * var(--g)) 0}
-.bowl img{width:100%;aspect-ratio:1/1;object-fit:cover}
-
-/* 사진 띠 */
-.band{position:relative;color:var(--ink)}
-.band .ph img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.band .cap{padding:40px var(--g) 36px;text-align:center}
-.band .en{display:block;font-size:13px;margin-bottom:8px}
-.band h2{margin:0;font-weight:900;font-size:40px;line-height:1.15;letter-spacing:-.03em}
-.band p{margin:12px auto 22px;max-width:28em}
-.band.dark{color:#FFF;background:#111}
-.band.dark .ph{position:absolute;inset:0}
-.band.dark .ph img{height:100%;aspect-ratio:auto}
-.band.dark .ph::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.58)}
-.band.dark .cap{position:relative;padding:96px var(--g)}
-.band.light .cap{background:#FFF}
-
-/* 띠 아래 내용 */
-.below{padding:40px 0 64px}
-.below.grey{background:var(--grey)}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0;padding:0;list-style:none}
-.card{background:#FFF}
-.card img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.card .bd{padding:12px 12px 16px}
-.card h3{margin:0;font-size:17px;font-weight:700;line-height:1.35}
-.price{display:block;margin-top:2px;font-family:var(--en);font-weight:800;font-size:20px;color:var(--red)}
-.price small{font-family:var(--kr);font-size:13px;font-weight:700;margin-left:2px}
-.adds{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:14px 0 0;padding:0;list-style:none;background:var(--line);border:1px solid var(--line)}
-.adds li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:12px 14px;background:#FFF;font-size:15px}
-.adds b{font-family:var(--en);font-weight:600}
-.note{margin:14px 0 0;font-size:14px;color:var(--soft)}
-.steps{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;padding:0;list-style:none;border-top:3px solid var(--ink)}
-.steps li{padding:16px 12px 18px 0;border-bottom:1px solid var(--line)}
-.steps time{display:block;font-family:var(--en);font-weight:800;font-size:28px;line-height:1.1;color:var(--red)}
-.steps b{display:block;margin-top:6px;font-size:17px}
-.steps p{margin:4px 0 0;font-size:15px;color:var(--soft)}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;padding:0;list-style:none;border-top:3px solid var(--ink)}
-.facts li{padding:16px 12px 18px 0;border-bottom:1px solid var(--line)}
-.facts b{display:block;font-family:var(--en);font-weight:800;font-size:28px;line-height:1.1}
-.facts span{font-size:15px}
-.vz{display:grid;gap:14px}
-.vz > div{background:#FFF;padding:22px 20px 24px}
-.vz h3{margin:0 0 12px;font-size:19px;font-weight:700}
-.now{display:inline-flex;align-items:center;gap:10px;margin:0 0 12px;padding:6px 12px;background:var(--ink);color:#FFF;font-weight:700;font-size:15px}
-.now::before{content:"";width:8px;height:8px;border-radius:50%;background:#AAA}
-.now.open{background:var(--red)}.now.open::before{background:#FFF}
-.hours{margin:0;padding:0;list-style:none}
-.hours li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)}
-.hours .t{font-family:var(--en);font-weight:500}
-.hours li.today{font-weight:700}.hours li.today .t{font-weight:600}
-.vz p{margin:0 0 10px}
-.links{display:flex;flex-wrap:wrap;gap:0 22px}
-.vz .btn{margin:4px 0 10px}
-footer{background:#000;color:#FFF;padding:40px 0 48px;font-size:14px}
-footer .w{display:block;font-weight:900;font-size:22px;margin-bottom:10px}
-footer p{margin:0 0 6px;color:#D0D0D0}
-
-@media (min-width:900px){
-  :root{--g:40px}
-  .top{display:grid;grid-template-columns:auto 1fr auto;border-bottom:0}
-  .top .row{display:contents}
-  .word{min-height:76px;font-size:26px;border-right:1px solid rgba(255,255,255,.28)}
-  .top .call{order:3;min-height:76px;padding:0 32px;font-size:16px}
-  .navg{order:2;grid-template-columns:repeat(4,minmax(0,1fr))}
-  .navg a{min-height:76px;font-size:16px;border-left:0}
-  .navg a:last-child{border-right:0}
-  .navg a span{font-size:11px;margin-top:2px}
-  .hero .in{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:center;min-height:calc(100svh - 76px);max-height:880px;padding-top:40px;padding-bottom:40px}
-  .hero .txt{grid-column:1/7;position:relative;z-index:1}
-  h1{font-size:clamp(64px,6vw,88px);line-height:1.04}
-  h1 span{white-space:nowrap}
-  .lede{font-size:19px;margin-top:28px}
-  .bowl{grid-column:7/13;margin:0 min(-40px,calc((1200px - 100vw)/2 - 40px)) 0 -24px}
-  .bowl img{max-height:calc(100svh - 120px);width:auto;max-width:100%;margin:0 auto}
-  .band h2{font-size:64px}
-  .band .en{font-size:14px}
-  .band.light{min-height:0}
-  .band.light .ph img{aspect-ratio:auto;height:min(56.25vw,820px)}
-  .band.light .cap{padding:64px var(--g) 52px}
-  .band.dark .cap{padding:150px var(--g)}
-  .below{padding:56px 0 96px}
-  .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-  .card .bd{padding:16px 18px 20px}
-  .card h3{font-size:19px}
-  .price{font-size:24px}
-  .adds{grid-template-columns:repeat(4,1fr)}
-  .steps,.facts{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:24px;border-top:0}
-  .steps li,.facts li{border-top:3px solid var(--ink);border-bottom:0;padding:18px 0 0}
-  .steps time,.facts b{font-size:40px}
-  .vz{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-  .vz > div{padding:28px 26px 30px}
-  footer{padding:56px 0 64px}
-}
-/* ---------- motion v2: 라멘 = 포스터처럼 또렷하게 (짧고 분명한 타이밍, 큰 거리) ----------
-   빨간 배경은 CSS로 처음부터 칠해져 있고 안의 내용만 들어옴. .js/.mo는 <head>의 짧은 스크립트가 붙임(3.5초 안에 모션이 시작 안 되면 풀림).
-   transform/opacity만 움직임. 스무스 스크롤 없음. */
-.m-clip{display:block;overflow:hidden}
-.band .ph{overflow:hidden}
-.band.light .ph{position:relative}
-.wipe{position:absolute;inset:0;z-index:1;background:var(--red);transform-origin:right center;pointer-events:none}
-.top{position:relative;z-index:3}
-.mo .top,.mo .hero .txt>*,.mo .bowl img{opacity:0}
-/* 따라붙는 메뉴 막대: 첫 화면을 지나면 위에서 내려오고, 지금 구역 아래에 흰 막대가 붙음 (JS가 만듦) */
-.stick{position:fixed;top:0;left:0;right:0;z-index:20;display:grid;grid-template-columns:1fr;background:var(--red-d);color:#FFF;box-shadow:0 1px 0 rgba(0,0,0,.2)}
-.stick .sw{display:none}
-.stick nav{position:relative;display:grid;grid-template-columns:repeat(4,1fr)}
-.stick nav a{display:flex;align-items:center;justify-content:center;min-height:48px;font-size:14px;font-weight:700;text-decoration:none;border-right:1px solid rgba(255,255,255,.22)}
-.stick nav a:last-child{border-right:0}
-.stick .bar{position:absolute;left:0;bottom:0;width:25%;height:4px;background:#FFF;transform-origin:left center;transform:scaleX(0)}
-@media (min-width:900px){
-  .stick{grid-template-columns:auto 1fr auto}
-  .stick .sw{display:flex;align-items:center;padding:0 var(--g);font-weight:900;font-size:20px;text-decoration:none;border-right:1px solid rgba(255,255,255,.22)}
-  .stick nav a{min-height:56px;font-size:15px}
-  .stick .sc{display:flex;align-items:center;padding:0 28px;font-weight:700;font-size:15px;text-decoration:none;border-left:1px solid rgba(255,255,255,.22)}
-}
-@media (max-width:899px){.stick .sc{display:none}}
-/* 사진 확대 장면 (JS가 .zm을 붙일 때만): 작은 사진 카드가 스크롤에 맞춰 화면 전체로 열림. 모양은 프레임 scaleX/Y, 사진은 반대로 보정해서 찌그러지지 않음 */
-.below.red{background:var(--red-d);color:#FFF}
-.below.red .note{color:#F3DADA}
-.below.red .card,.below.red .adds li{color:var(--ink)}
-.band.zm .btn{background:#FFF;color:var(--red)}
-.zt{display:none}
-.band.zm{height:200vh;height:200svh;background:var(--red);color:#FFF}
-.zm .zin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;overflow:clip}
-.band.zm.dark{background:var(--red-d)}
-.zm .zt{position:absolute;inset:clamp(76px,11vh,120px) var(--g) clamp(28px,6vh,64px);z-index:0;display:flex;flex-direction:column;justify-content:space-between;margin:0;font-family:var(--en);font-weight:800;font-size:clamp(56px,15vw,260px);line-height:.84;letter-spacing:-.045em;text-transform:uppercase;pointer-events:none}
-.zm .zt span{display:block;will-change:transform}
-.zm .zt span+span{align-self:flex-end}
-.band.zm .ph{position:absolute;inset:0;z-index:1;margin:0;overflow:hidden;transform-origin:50% 50%;will-change:transform}
-.band.zm .ph::after{display:none}
-.band.zm .ph img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;will-change:transform}
-.zm .zs{position:absolute;inset:0;background:rgba(0,0,0,.56);opacity:0}
-.band.zm .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;max-width:var(--w);margin:0 auto;padding:0 var(--g) clamp(40px,8vh,88px);text-align:left;background:none;color:#FFF}
-.band.zm .cap p{margin-left:0}
-@media (max-width:899px){
-  .band.zm{height:175vh;height:175svh}
-  .zm .zt{inset:74px var(--g) auto;justify-content:flex-start}
-  .band.zm .ph{inset:auto 0;top:clamp(170px,23vh,210px);height:min(104vw,48vh)}
-  .band.zm .ph img{object-position:62% 50%}
-  .zm .zs{display:none}
-  .band.zm .cap{padding-bottom:34px}.band.zm .cap p{margin:8px 0 16px}.band.zm .en{margin-bottom:4px}.band.zm h2{font-size:40px}
-}
-/* 호버 (마우스 있는 데스크톱만): 메뉴 밑줄, 버튼 채움, 사진 확대 */
-@media (hover:hover){
-  .navg a,.top .call,.stick nav a{position:relative}
-  .navg a::after,.top .call::after{content:"";position:absolute;left:14%;right:14%;bottom:12px;height:3px;background:#FFF;transform:scaleX(0);transform-origin:right center;transition:transform .35s cubic-bezier(.16,1,.3,1)}
-  .navg a:hover::after,.top .call:hover::after{transform:scaleX(1);transform-origin:left center}
-  .btn:not(.w){position:relative;isolation:isolate;overflow:hidden}
-  .btn:not(.w)::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--red-d);transform:scaleX(0);transform-origin:right center;transition:transform .4s cubic-bezier(.76,0,.24,1)}
-  .btn:not(.w):hover{background:var(--red)}
-  .btn:not(.w):hover::before{transform:scaleX(1);transform-origin:left center}
-  .card .m-clip>img{transition:scale .7s cubic-bezier(.16,1,.3,1)}
-  .card:hover .m-clip>img{scale:1.08}
-  .band.zm .btn:hover{background:#FFF;color:#FFF}
-}
-/* r6 글꼴: 제목 Hahmlet(함렛, 간판 같은 부리) + 본문 Pretendard. Noto Sans 900·Montserrat 제거 */
-@font-face{font-family:"Hahmlet";src:url(fonts/Hahmlet-SemiBold.sub.woff2) format("woff2");font-weight:500 900;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Regular.subset.woff2) format("woff2");font-weight:300 400;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Medium.subset.woff2) format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-SemiBold.subset.woff2) format("woff2");font-weight:600 900;font-display:swap}
-h1,.band h2,.word,footer .w,.stick .sw{font-family:var(--hd);font-weight:600}
-h1{letter-spacing:-.02em;line-height:1.14}
-.band h2{letter-spacing:-.015em;line-height:1.24}
-.word{letter-spacing:.02em}
-.en,.word small,.navg a span{font-weight:600;letter-spacing:.16em}
-.price,.steps time,.facts b{font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-.zm .zt{font-weight:700;letter-spacing:-.02em}
+@font-face{font-family:"Hahmlet";src:url(fonts/Hahmlet-600.r7.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-400.r7.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-500.r7.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-600.r7.woff2) format("woff2");font-weight:600;font-display:swap}
 </style>
+<link rel="stylesheet" href="site.css">
+<style>:root{--accent:#C02A1E;--display:"Hahmlet",serif;--display-w:600;--display-ls:-0.035em;--ls-h2:-0.03em;--hero-ar-m:5/4;--hero-pos:50% 50%}</style>
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('mo');setTimeout(function(){if(!window.dnh)d.classList.remove('mo')},2500)}})(document.documentElement)</script>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
-<header class="top">
-  <div class="row"><a class="word" href="./">라멘 소라<small>RAMEN SORA</small></a><a class="call" href="tel:+8220000000">전화 주문</a></div>
-  <nav class="navg" aria-label="주요 메뉴"><a href="#menu">메뉴<span>MENU</span></a><a href="#shop">가게<span>SHOP</span></a><a href="#kitchen">주방<span>KITCHEN</span></a><a href="#access">오시는 길<span>ACCESS</span></a></nav>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="./" aria-label="라멘 소라 처음으로">라멘 소라</a>
+    <nav class="menu" aria-label="주요 메뉴"><a href="#menu">메뉴</a><a href="#shop">가게</a><a href="#visit">오시는 길</a></nav>
+    <a class="btn btn-primary btn-sm hd-cta" href="tel:+8220000000">포장 주문</a>
+  </div>
 </header>
 <main id="main">
-  <section class="hero" aria-label="라멘 소라"><div class="in">
-    <div class="txt">
-      <p class="kick">합정역 7번 출구 · 11:30 오픈</p>
-      <h1><span>닭 뼈를</span><span>열 시간,</span><span>진한 한 그릇.</span></h1>
-      <p class="lede">뽀얀 토리 파이탄과 맑은 쇼유. 면은 전날 뽑아 하루 재우고, 카운터 열 석에서 한 그릇씩 냅니다.</p>
-      <div class="cta"><a class="btn w" href="#menu">메뉴 보기</a><a class="tl" href="tel:+8220000000">02-000-0000 · 포장 주문</a></div>
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap grid">
+    <div class="hero-copy">
+      <p class="eyebrow rv">합정역 7번 출구 · 11:30 오픈</p>
+      <h1 class="display rv" id="h1">닭 뼈를 열 시간,<br>진한 한 그릇.</h1>
+      <p class="lead rv">뽀얀 토리 파이탄과 맑은 쇼유. 면은 전날 뽑아 하루 재우고, 카운터 열 석에서 한 그릇씩 냅니다.</p>
+      <p class="actions rv"><a class="btn btn-primary" href="#menu">메뉴 보기</a><a class="btn btn-secondary" href="tel:+8220000000">전화로 포장 주문</a></p>
+      <p class="hero-meta rv">화–일 11:30 – 15:00, 17:00 – 21:00 · 월요일 휴무</p>
     </div>
-    <figure class="bowl"><img src="img/s_hero_bowl_red.jpg" width="1200" height="1200" alt="빨간 바탕 위, 위에서 내려다본 흰 그릇의 맑은 닭 육수 라멘 한 그릇. 차슈 두 장, 달걀, 죽순, 파"></figure>
-  </div></section>
-
-  <section class="band light menu" id="menu" aria-labelledby="h-menu">
-    <p class="zt" aria-hidden="true"><span>Tori</span><span>Paitan</span></p>
-    <div class="cap rv"><span class="en">Menu</span><h2 id="h-menu">메뉴</h2><p>국물은 두 가지, 면은 세 가지입니다.</p><a class="btn" href="#menu-list">메뉴와 가격 보기</a></div>
-    <figure class="ph" style="margin:0"><img src="img/s_band_menu.jpg" width="1600" height="900" alt="검은 그릇에 담긴 라멘. 반숙 맛달걀 두 개, 차슈, 시금치, 김" loading="lazy"></figure>
-  </section>
-  <div class="below red" id="menu-list"><div class="in">
-    <ul class="cards">
-      <li class="card rv"><img src="img/s_card_paitan.jpg" width="960" height="720" alt="위에서 본 뽀얀 국물 라멘. 두툼한 차슈와 파" loading="lazy"><div class="bd"><h3>토리 파이탄</h3><span class="price">11,000<small>원</small></span></div></li>
-      <li class="card rv"><img src="img/s_card_shoyu.jpg" width="960" height="720" alt="위에서 본 맑은 간장 국물 라멘. 차슈, 완탕, 나루토" loading="lazy"><div class="bd"><h3>쇼유 라멘</h3><span class="price">10,000<small>원</small></span></div></li>
-      <li class="card rv"><img src="img/s_card_tsukemen.jpg" width="960" height="720" alt="굵은 면과 차슈, 달걀을 담은 접시와 따로 낸 찍먹 국물" loading="lazy"><div class="bd"><h3>츠케멘</h3><span class="price">12,000<small>원</small></span></div></li>
-      <li class="card rv"><img src="img/s_card_gyoza.jpg" width="960" height="720" alt="양배추 위에 올린 노릇하게 구운 교자" loading="lazy"><div class="bd"><h3>차슈동 · 교자 5개</h3><span class="price">4,000 · 6,000<small>원</small></span></div></li>
-    </ul>
-    <ul class="adds"><li><span>맛달걀 추가</span><b>2,000</b></li><li><span>면 추가</span><b>1,500</b></li><li><span>차슈 추가</span><b>3,000</b></li><li><span>공깃밥</span><b>1,000</b></li></ul>
-    <p class="note">가격 단위는 원입니다. 주문은 입구 식권 발매기에서, 현금과 카드 모두 됩니다.</p>
-  </div></div>
-
-  <section class="band dark" id="shop" aria-labelledby="h-shop">
-    <p class="zt" aria-hidden="true"><span>10 Seats</span><span>Counter</span></p>
-    <figure class="ph" style="margin:0"><img src="img/s_band_shop.jpg" width="1600" height="900" alt="" loading="lazy"></figure>
-    <div class="cap rv"><span class="en">Shop</span><h2 id="h-shop">카운터 열 석</h2><p>주방이 바로 보이는 긴 카운터 하나뿐인 가게입니다.</p><a class="btn" href="tel:+8220000000">전화로 포장 주문</a></div>
-  </section>
-  <div class="below" id="shop-facts"><div class="in">
-    <ul class="facts">
-      <li><b>10</b><span>카운터 자리</span></li>
-      <li><b>2</b><span>국물 (파이탄 · 쇼유)</span></li>
-      <li><b>1</b><span>식권 발매기 (현금 · 카드)</span></li>
-      <li><b>OK</b><span>포장 (국물과 면 따로)</span></li>
-    </ul>
-  </div></div>
-
-  <section class="band dark" id="kitchen" aria-labelledby="h-kitchen">
-    <figure class="ph" style="margin:0"><img src="img/s_band_kitchen.jpg" width="1600" height="900" alt="" loading="lazy"></figure>
-    <div class="cap rv"><span class="en">Kitchen</span><h2 id="h-kitchen">주방의 하루</h2><p>새벽 다섯 시 반에 불을 올리고, 맑게 거른 국물을 한 그릇씩 붓습니다.</p><a class="btn" href="#steps">하루 순서 보기</a></div>
-  </section>
-  <div class="below" id="steps"><div class="in">
-    <ol class="steps">
-      <li><time>05:30</time><b>불 올리기</b><p>닭 뼈를 센 불에, 쇼유 육수는 약한 불에.</p></li>
-      <li><time>09:00</time><b>면 꺼내기</b><p>전날 뽑아 하루 재운 면을 나눕니다.</p></li>
-      <li><time>11:00</time><b>간 맞추기</b><p>간장 양념을 섞고 차슈를 썹니다.</p></li>
-      <li><time>11:30</time><b>문 열기</b><p>국물이 떨어지면 일찍 닫습니다.</p></li>
-    </ol>
-  </div></div>
-
-  <section class="band light access" id="access" aria-labelledby="h-access">
-    <div class="cap rv"><span class="en">Access</span><h2 id="h-access">시간과 길</h2><p>합정역 7번 출구에서 걸어서 3분, 흰 노렌이 걸린 1층.</p><a class="btn" href="https://map.naver.com/p/search/%ED%95%A9%EC%A0%95%EC%97%AD" target="_blank" rel="noopener">네이버 지도 열기</a></div>
-    <figure class="ph" style="margin:0"><img src="img/s_band_access.jpg" width="1600" height="900" alt="흰 노렌 아래로 주방과 카운터가 보이는 라멘집 입구" loading="lazy"></figure>
-  </section>
-  <div class="below grey" id="visit"><div class="in">
-    <div class="vz rv">
-      <div>
-        <h3>영업시간</h3>
-        <p class="now" id="now" aria-live="polite">화–일 11:30 – 21:00</p>
-        <ul class="hours" id="hours">
-          <li data-d="w"><span>화–일 점심</span><span class="t">11:30 – 15:00</span></li>
-          <li data-d="w2"><span>화–일 저녁</span><span class="t">17:00 – 21:00</span></li>
-          <li data-d="m"><span>월요일</span><span>쉽니다</span></li>
-          <li><span>마지막 주문</span><span class="t">14:30 · 20:30</span></li>
-        </ul>
-      </div>
-      <div>
-        <h3>오시는 길</h3>
-        <p>서울 마포구 합정역 7번 출구에서 걸어서 3분, 1층</p>
-        <div class="links"><a class="tl" href="https://map.naver.com/p/search/%ED%95%A9%EC%A0%95%EC%97%AD" target="_blank" rel="noopener">네이버 지도</a><a class="tl" href="https://map.kakao.com/?q=%ED%95%A9%EC%A0%95%EC%97%AD" target="_blank" rel="noopener">카카오맵</a></div>
-        <p class="note">지도는 합정역을 엽니다. 낮 12시 전후로 줄이 생깁니다.</p>
-      </div>
-      <div>
-        <h3>전화와 포장</h3>
-        <p>전화로 주문하고 오시면 줄을 서지 않고 받아 가실 수 있습니다.</p>
-        <a class="btn" href="tel:+8220000000">전화로 포장 주문</a>
-        <p class="note">02-000-0000</p>
-      </div>
-    </div>
-  </div></div>
+    <figure class="hero-media"><img src="img/p_hero.jpg" width="1800" height="1440" alt="나무 카운터 위, 위에서 내려다본 파란 테두리 그릇의 뽀얀 국물 라멘. 차슈와 송송 썬 파" decoding="async" fetchpriority="high"></figure>
+  </div>
+</section>
+<section class="section" id="menu" aria-labelledby="h-menu"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">메뉴</p><h2 class="h2 rv" id="h-menu">국물은 두 가지, 면은 세 가지</h2><p class="lead rv">주문은 입구 식권 발매기에서 합니다. 현금과 카드 모두 됩니다.</p></div>
+<div class="in4 rows-pair rv"><div class="rows-group"><h3 class="rows-title">라멘</h3><ul class="rows"><li><span class="r-name">토리 파이탄</span><span class="r-desc">뽀얀 닭 육수, 차슈와 파</span><span class="r-price">11,000</span></li><li><span class="r-name">쇼유 라멘</span><span class="r-desc">맑은 간장 국물, 완탕</span><span class="r-price">10,000</span></li><li><span class="r-name">츠케멘</span><span class="r-desc">굵은 면을 진한 국물에</span><span class="r-price">12,000</span></li></ul></div><div class="rows-group"><h3 class="rows-title">곁들임 · 추가</h3><ul class="rows"><li><span class="r-name">차슈동</span><span class="r-desc"></span><span class="r-price">4,000</span></li><li><span class="r-name">교자 5개</span><span class="r-desc"></span><span class="r-price">6,000</span></li><li><span class="r-name">맛달걀 · 면 · 차슈 추가</span><span class="r-desc"></span><span class="r-price">2,000 · 1,500 · 3,000</span></li><li><span class="r-name">공깃밥</span><span class="r-desc"></span><span class="r-price">1,000</span></li></ul></div></div>
+<p class="note in4" style="margin-top:var(--s-4)">가격 단위는 원입니다. 사진은 메뉴 예시입니다.</p>
+<div class="grid ph-three"><figure class="rv"><div class="ph"><img src="img/p_shoyu.jpg" width="1600" height="1024" alt="위에서 본 맑은 간장 국물 라멘. 차슈, 완탕, 나루토" loading="lazy" decoding="async"></div><figcaption class="cap">쇼유 라멘</figcaption></figure><figure class="rv"><div class="ph"><img src="img/p_tsukemen.jpg" width="1400" height="1750" alt="굵은 면과 차슈, 달걀을 담은 그릇과 따로 낸 찍먹 국물" loading="lazy" decoding="async"></div><figcaption class="cap">츠케멘</figcaption></figure><figure class="rv"><div class="ph"><img src="img/p_gyoza.jpg" width="1600" height="1067" alt="검은 접시에 올린 노릇하게 구운 교자" loading="lazy" decoding="async"></div><figcaption class="cap">교자</figcaption></figure></div>
+</div></section>
+<section class="section" id="shop" aria-labelledby="h-shop"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">가게</p><h2 class="h2 rv" id="h-shop">주방이 바로 보이는<br>카운터 열 석</h2><p class="lead rv">긴 카운터 하나뿐인 가게입니다. 국물이 떨어지면 일찍 닫습니다. 포장은 국물과 면을 따로 담아 드립니다.</p></div>
+<div class="ph-wide rv"><div class="ph"><img src="img/p_kitchen.jpg" width="1000" height="563" alt="김이 서린 유리창 너머, 선반에 놓인 라멘집 육수 냄비들" loading="lazy" decoding="async"></div></div>
+<ol class="cols3 c4 in4"><li class="rv"><span class="num">05:30</span><h3 class="h3">불 올리기</h3><p>닭 뼈를 센 불에, 쇼유 육수는 약한 불에.</p></li><li class="rv"><span class="num">09:00</span><h3 class="h3">면 꺼내기</h3><p>전날 뽑아 하루 재운 면을 나눕니다.</p></li><li class="rv"><span class="num">11:00</span><h3 class="h3">간 맞추기</h3><p>간장 양념을 섞고 차슈를 썹니다.</p></li><li class="rv"><span class="num">11:30</span><h3 class="h3">문 열기</h3><p>카운터 열 석을 엽니다.</p></li></ol>
+</div></section>
+<section class="section" id="visit" aria-labelledby="h-visit"><div class="wrap">
+<div class="sec-head"><p class="eyebrow rv">오시는 길</p><h2 class="h2 rv" id="h-visit">합정역 7번 출구에서 걸어서 3분</h2><p class="lead rv">1층, 흰 노렌이 걸린 문입니다. 낮 12시 전후로 줄이 생깁니다.</p></div>
+<div class="grid visit-grid no-photo"><div class="v-info">
+  <div class="v-block rv"><h3 class="h3">영업시간</h3><p class="status" data-hours='[[[2,3,4,5,6,0],"11:30","15:00"],[[2,3,4,5,6,0],"17:00","21:00"]]'>화–일 11:30 – 15:00, 17:00 – 21:00</p><dl class="hours"><div data-days="2,3,4,5,6,0"><dt>화 – 일 점심</dt><dd>11:30 – 15:00</dd></div><div data-days="2,3,4,5,6,0"><dt>화 – 일 저녁</dt><dd>17:00 – 21:00</dd></div><div data-days="1"><dt>월</dt><dd>쉽니다</dd></div><div><dt>마지막 주문</dt><dd>14:30 · 20:30</dd></div></dl></div>
+  <div class="v-block rv"><h3 class="h3">주소와 포장</h3><address>서울 마포구, 합정역 7번 출구 근처 1층</address><p class="links"><a class="link" href="https://map.naver.com/p/search/%ED%95%A9%EC%A0%95%EC%97%AD" target="_blank" rel="noopener">네이버 지도</a><a class="link" href="https://map.kakao.com/?q=%ED%95%A9%EC%A0%95%EC%97%AD" target="_blank" rel="noopener">카카오맵</a></p><p class="note">지도는 합정역을 엽니다. 전화로 주문하고 오시면 줄을 서지 않고 받아 가실 수 있습니다.</p><p class="actions"><a class="btn btn-primary" href="tel:+8220000000">전화로 포장 주문</a></p></div>
+</div></div>
+</div></section>
 </main>
-<footer><div class="in"><span class="w">라멘 소라</span><p>가상 매장 샘플입니다. 가게 이름·메뉴·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지(Unsplash·Pexels)입니다.</p></div></footer>
-<script>
-(function(){
-  var p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).map(function(x){return[x.type,x.value]}));
-  var d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday), m=(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10);
-  var work=d!==1, lunch=m>=690&&m<900, dinner=m>=1020&&m<1260, el=document.getElementById('now'), t;
-  if(work&&lunch) t='지금 영업 중 · 15:00까지';
-  else if(work&&dinner) t='지금 영업 중 · 21:00까지';
-  else if(work&&m>=900&&m<1020) t='쉬는 시간 · 17:00에 다시 엽니다';
-  else if(work&&m<690) t='지금은 준비 중 · 오늘 11:30에 엽니다';
-  else t='지금은 닫혀 있습니다 · '+((d===0||d===1)?'화요일':'내일')+' 11:30에 엽니다';
-  el.textContent=t; if(work&&(lunch||dinner)) el.classList.add('open');
-  var h=document.getElementById('hours');
-  if(!work) h.querySelector('[data-d="m"]').classList.add('today');
-  else h.querySelector('[data-d="'+(m>=900?'w2':'w')+'"]').classList.add('today');
-})();
-</script>
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="vendor/SplitText.min.js"></script>
-<script>
-/* 동네홈 모션 키트 v2 — 직접 작성(외부 코드 복사 없음). GSAP 3.15 + ScrollTrigger + SplitText(표준 무료 라이선스), Lenis(MIT) */
-var K=(function(){
-  var d=document.documentElement, G=window.gsap;
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DESK=matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches;
-  var OK=!RM&&!!G&&!!window.ScrollTrigger&&!!window.SplitText;
-  function $(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))}
-  function clip(img){var c=document.createElement('span');c.className='m-clip';img.parentNode.insertBefore(c,img);c.appendChild(img);return c}
-  var lenis=null;
-  function smooth(opt){
-    if(!OK||!DESK||!window.Lenis) return null;
-    try{lenis=new Lenis(Object.assign({lerp:.085,wheelMultiplier:1},opt||{}));lenis.on('scroll',ScrollTrigger.update);
-      G.ticker.add(function(t){lenis.raf(t*1000)});G.ticker.lagSmoothing(0)}catch(e){lenis=null}
-    return lenis;
-  }
-  // 앵커 이동(“페이지 전환” 대신): Lenis가 있으면 Lenis, 없으면 GSAP로 창 스크롤
-  function goTo(el,off,dur,ease){
-    off=off||0; var y=el.__zy?el.__zy():el.getBoundingClientRect().top+scrollY-off;
-    if(RM||!G){scrollTo(0,y);return}
-    if(lenis){lenis.scrollTo(y,{duration:dur||1.5,easing:function(t){return t===1?1:1-Math.pow(2,-10*t)}});return}
-    var o={y:scrollY}; G.to(o,{y:y,duration:dur||1,ease:ease||'power3.inOut',onUpdate:function(){scrollTo(0,o.y)}});
-  }
-  function anchors(off,dur,ease,before){
-    $('a[href^="#"]').forEach(function(a){var id=a.getAttribute('href').slice(1); if(!id) return;
-      a.addEventListener('click',function(e){var t=document.getElementById(id); if(!t) return; e.preventDefault();
-        var w=before?before():0; setTimeout(function(){goTo(t,typeof off=='function'?off():off,dur,ease); if(t.tabIndex<0&&!/^(A|BUTTON|INPUT)$/.test(t.tagName)) t.setAttribute('tabindex','-1'); t.focus({preventScroll:true})},w||0)})});
-  }
-  // 메뉴: 버튼+오버레이를 JS로 만든다(JS 없으면 안 보임). anim(open)으로 열고 닫는 타임라인을 받는다
-  function menu(cfg){
-    var btn=document.createElement('button'); btn.type='button'; btn.className='mbtn'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-controls','m-ov');
-    btn.innerHTML=cfg.btn; btn.setAttribute('aria-label','메뉴 열기');
-    var ov=document.createElement('nav'); ov.id='m-ov'; ov.className='ov'; ov.setAttribute('aria-label','전체 메뉴'); ov.innerHTML=cfg.html; ov.hidden=true;
-    (cfg.btnParent||document.body).appendChild(btn); document.body.appendChild(ov);
-    var open=false, busy=null;
-    function set(o){open=o; btn.setAttribute('aria-expanded',o?'true':'false'); btn.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기'); d.classList.toggle('menu-open',o);
-      if(lenis){o?lenis.stop():lenis.start()} document.body.style.overflow=o&&!lenis?'hidden':'';
-      if(busy) busy.kill();
-      if(o){ov.hidden=false; busy=OK?cfg.open(ov):null; var f=ov.querySelector('a'); f&&f.focus({preventScroll:true})}
-      else{ if(OK){busy=cfg.close(ov); busy.eventCallback('onComplete',function(){ov.hidden=true})} else ov.hidden=true; }
-    }
-    btn.addEventListener('click',function(){set(!open)});
-    addEventListener('keydown',function(e){if(e.key==='Escape'&&open){set(false);btn.focus()}});
-    $('a',ov).forEach(function(a){a.addEventListener('click',function(){if(open) set(false)})});
-    return {btn:btn,ov:ov,close:function(){if(open)set(false)},isOpen:function(){return open},closeDelay:function(){return open?(cfg.closeWait||350):0}};
-  }
-  // 자석 버튼(데스크톱)
-  function magnet(els,s){ if(!OK||!DESK) return; s=s||.3;
-    els.forEach(function(el){var qx=G.quickTo(el,'x',{duration:.6,ease:'power3'}),qy=G.quickTo(el,'y',{duration:.6,ease:'power3'});
-      el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();qx((e.clientX-r.left-r.width/2)*s);qy((e.clientY-r.top-r.height/2)*s)});
-      el.addEventListener('pointerleave',function(){G.to(el,{x:0,y:0,duration:1,ease:'elastic.out(1,.45)',overwrite:'auto'})})});
-  }
-  function fontsReady(cap){return Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),new Promise(function(r){setTimeout(r,cap||1400)})])}
-  return {d:d,G:G,RM:RM,DESK:DESK,OK:OK,$:$,clip:clip,smooth:smooth,goTo:goTo,anchors:anchors,menu:menu,magnet:magnet,fontsReady:fontsReady,lenis:function(){return lenis}};
-})();
-(function(){
-  var d=K.d,G=K.G,$=K.$;
-  // 따라붙는 메뉴 막대 (원래 메뉴를 복제해서 만듦; JS 없으면 없음)
-  var st=document.createElement('div'); st.className='stick';
-  st.innerHTML='<a class="sw" href="#main" tabindex="-1">라멘 소라</a><nav aria-label="빠른 메뉴">'+$('.navg a').map(function(a){return '<a href="'+a.getAttribute('href')+'">'+a.firstChild.textContent+'</a>'}).join('')+'<i class="bar"></i></nav><a class="sc" href="tel:+8220000000">전화 주문</a>';
-  document.body.appendChild(st); if(window.gsap) gsap.set(st,{yPercent:-101}); var bar=$('.bar',st)[0], links=$('nav a',st), secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
-  var stH=function(){return st.offsetHeight};
-  if(!K.OK){d.classList.remove('mo'); st.style.display='none'; K.anchors(0); return}
-  G.registerPlugin(ScrollTrigger,SplitText);
-  K.anchors(function(){return stH()-1},.9,'power3.inOut'); K.magnet($('.hero .btn,.vz .btn'),.25);
-  var cards=$('.card>img').map(K.clip);
-  // 사진 확대 장면: 메뉴(그릇)와 가게(카운터). JS가 켜질 때만 모양이 바뀜
-  // 고정은 CSS sticky로 함(스크롤은 브라우저가 처리해서 떨림·레이아웃 이동 없음), GSAP는 진행률만 씀
-  var ZM=$('#menu,#shop'); ZM.forEach(function(sec){var w=document.createElement('div'); w.className='zin'; while(sec.firstChild) w.appendChild(sec.firstChild); sec.appendChild(w); sec.classList.add('zm');
-    var z=document.createElement('span'); z.className='zs'; sec.querySelector('.ph').appendChild(z)});
-  d.classList.add('mo-ok');
-  K.fontsReady(1000).then(function(){
-    var h1=$('.hero h1')[0]; G.set(h1,{opacity:1}); var sp=SplitText.create(h1,{type:'lines,chars',mask:'lines'});
-    var bowl=$('.bowl img')[0];
-    var tl=G.timeline({defaults:{ease:'power4.out'}});
-    tl.fromTo('.top',{opacity:1,yPercent:-100},{yPercent:0,duration:.6,ease:'expo.out'},0)
-      .fromTo(bowl,{opacity:0,scale:.55,rotation:-150,xPercent:20},{opacity:1,scale:1,rotation:0,xPercent:0,duration:1.2,ease:'expo.out'},.1)
-      .fromTo('.kick',{opacity:0,x:-24},{opacity:1,x:0,duration:.6},.15)
-      .fromTo(sp.chars,{yPercent:118},{yPercent:0,duration:.7,stagger:.026},.2)
-      .fromTo('.lede,.cta,.label',{opacity:0,y:26},{opacity:1,y:0,duration:.7,stagger:.07},.6);
-    // 나머지 설정은 작은 작업 여러 개로 나눠 돌림(모바일에서 첫 로드 때 긴 작업이 생기지 않게)
-    var Q=[]; function step(f){Q.push(f)} function run(){var f=Q.shift(); if(f){f(); setTimeout(run,0)}}
-    step(function(){
-    // 사진 확대: 섹션을 화면에 고정하고, 작은 카드(그릇은 세로, 카운터는 가로 띠)가 화면 전체로 열린 뒤 글이 올라오고 다음 구역으로 넘어감
-    var MOB=innerWidth<900;
-    ZM.forEach(function(sec,n){
-      var ph=$('.ph',sec)[0], im=$('img',ph)[0], zs=$('.zs',ph)[0], wd=$('.zt span',sec), cap=$('.cap',sec)[0];
-      var A=n===0?(MOB?[.56,.72]:[.30,.62]):(MOB?[.9,.34]:[.64,.30]), p={v:0};
-      function draw(){var e=p.v, sx=A[0]+(1-A[0])*e, sy=A[1]+(1-A[1])*e, s=Math.max(sx,sy)*(1.22-.22*e);
-        ph.style.transform='scale('+sx.toFixed(4)+','+sy.toFixed(4)+')'; im.style.transform='scale('+(s/sx).toFixed(4)+','+(s/sy).toFixed(4)+')'}
-      draw();
-      var tl=G.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:MOB?.35:.6}});
-      tl.to(p,{v:1,duration:.66,ease:'power2.inOut',onUpdate:draw},0)
-        .fromTo(wd[0],{yPercent:0},{yPercent:-70,duration:.7},0).fromTo(wd[1],{yPercent:0},{yPercent:70,duration:.7},0)
-        .fromTo(zs,{opacity:0},{opacity:1,duration:.2},.48)
-        .fromTo($('.en,h2,p,.btn',cap),{opacity:0,y:56},{opacity:1,y:0,duration:.22,stagger:.04,ease:'power3.out'},.58)
-        .to({},{duration:.1});
-      sec.__zy=function(){return sec.getBoundingClientRect().bottom+scrollY-innerHeight};
-    });
-    });
-    step(function(){
-    // 첫 스크롤: 그릇이 굴러가듯 돌고, 글은 위로 빠짐
-    G.to('.bowl',{rotation:24,yPercent:10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.4}});
-    G.to('.hero .txt',{y:-80,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.4}});
-    // 따라붙는 막대: 첫 화면 끝에서 내려옴, 지금 구역 표시
-    ScrollTrigger.create({trigger:'.hero',start:'bottom top+=10',onEnter:function(){G.to(st,{yPercent:0,duration:.55,ease:'expo.out',overwrite:true})},onLeaveBack:function(){G.to(st,{yPercent:-101,duration:.35,ease:'power3.in',overwrite:true})}});
-    var cur=-1; function setBar(i){ if(i===cur) return; cur=i; links.forEach(function(a,k){a.toggleAttribute('aria-current',k===i)});
-      if(i<0) G.to(bar,{scaleX:0,duration:.35,ease:'power3.in'}); else G.to(bar,{x:links[i].offsetLeft,width:links[i].offsetWidth,scaleX:1,duration:.6,ease:'expo.out'}) }
-    secs.forEach(function(s,i){ var nx=secs[i+1]; ScrollTrigger.create({trigger:s,start:'top 40%',endTrigger:nx||'footer',end:nx?'top 40%':'top 40%',onToggle:function(self){if(self.isActive) setBar(i); else if(i===0&&self.direction<0) setBar(-1)}})});
-    });
-    step(function(){
-    // 사진 띠: 빨간 판이 오른쪽으로 걷히고, 사진은 크게에서 제자리로, 스크롤에 따라 흐름
-    $('.band:not(.zm) .ph').forEach(function(ph){var im=ph.querySelector('img'),w=document.createElement('span');w.className='wipe';ph.appendChild(w);
-      var t=G.timeline({scrollTrigger:{trigger:ph,start:'top 82%'}});
-      t.fromTo(w,{scaleX:1},{scaleX:0,duration:.9,ease:'expo.inOut'}).fromTo(im,{scale:1.38},{scale:1.12,duration:1.3,ease:'expo.out'},.15);
-      G.fromTo(im,{yPercent:-5},{yPercent:5,ease:'none',scrollTrigger:{trigger:ph,start:'top bottom',end:'bottom top',scrub:true}});
-    });
-    $('.band:not(.zm) .cap').forEach(function(c){var h=c.querySelector('h2'),s=SplitText.create(h,{type:'lines,chars',mask:'lines'});
-      var t=G.timeline({scrollTrigger:{trigger:c,start:'top 80%'},defaults:{ease:'power4.out'}});
-      t.fromTo(c.querySelector('.en'),{opacity:0,x:-30},{opacity:1,x:0,duration:.6},0).fromTo(s.chars,{yPercent:120},{yPercent:0,duration:.7,stagger:.04},.05)
-       .fromTo($('p,.btn',c),{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08},.3)});
-    });
-    step(function(){
-    // 카드: 그릇 장면이 올라가는 동안 처음부터 보이는 채로(투명 없음) 위쪽으로 당겨져 있다가 계단처럼 제자리로 내려앉음 → 그릇과 카드 사이에 빈 빨간 칸이 안 생김
-    var cl=$('.cards .card'), cm=innerWidth<900?[-24,-24,-56,-56]:[-36,-72,-108,-144];
-    G.timeline({scrollTrigger:{trigger:'#menu-list',start:'top bottom',end:innerWidth<900?'top 20%':'top 35%',scrub:.5}})
-      .fromTo(cl,{y:function(i){return cm[i]||0}},{y:0,ease:'none',duration:1},0)
-      .fromTo('.adds,#menu-list .note',{y:-64},{y:0,ease:'none',duration:1},0);
-    $('.steps,.facts').forEach(function(u){G.fromTo($('li',u),{opacity:0,x:-44},{opacity:1,x:0,duration:.7,ease:'power4.out',stagger:.08,scrollTrigger:{trigger:u,start:'top 86%'}})});
-    $('.facts b').forEach(function(b){var v=parseInt(b.textContent,10); if(isNaN(v)) return; var o={v:0};
-      G.to(o,{v:v,duration:.9,ease:'power2.out',scrollTrigger:{trigger:'.facts',start:'top 86%'},onUpdate:function(){b.textContent=Math.round(o.v)}})});
-    G.fromTo('.vz>div',{opacity:0,y:56},{opacity:1,y:0,duration:.8,ease:'power4.out',stagger:.1,scrollTrigger:{trigger:'.vz',start:'top 86%'}});
-    $('.below:not(#menu-list) .note').forEach(function(n){G.fromTo(n,{opacity:0},{opacity:1,duration:.6,scrollTrigger:{trigger:n,start:'top 92%'}})});
-    // 마우스(데스크톱): 그릇이 손을 따라 기울고, 카드가 손 쪽으로 기울어짐
-    if(K.DESK){var b=$('.bowl')[0],bx=G.quickTo(b,'x',{duration:.9,ease:'power3'}),by=G.quickTo(b,'y',{duration:.9,ease:'power3'});
-      $('.hero')[0].addEventListener('pointermove',function(e){var nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;bx(nx*36);by(ny*24)});
-      $('.card').forEach(function(c){var rx=G.quickTo(c,'rotationX',{duration:.5,ease:'power3'}),ry=G.quickTo(c,'rotationY',{duration:.5,ease:'power3'});G.set(c,{transformPerspective:800});
-        c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();ry(((e.clientX-r.left)/r.width-.5)*10);rx(-((e.clientY-r.top)/r.height-.5)*10)});
-        c.addEventListener('pointerleave',function(){rx(0);ry(0)})});
-    }
-    ScrollTrigger.refresh();
-    });
-    setTimeout(run,0);
-  });
-})();
-
-</script>
+<footer class="ft">
+  <div class="wrap ft-in">
+    <p class="ft-name">라멘 소라</p>
+    <p>가상 매장 샘플입니다. 가게 이름·메뉴·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지(Unsplash·Pexels)입니다.</p>
+    <p>디자인·제작 <a href="../">동네홈</a> · 글꼴 Hahmlet, Pretendard (SIL OFL 1.1) · <a href="PHOTO_CREDITS.md">사진 출처</a></p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
 </body>
 </html>
