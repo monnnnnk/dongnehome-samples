@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>라멘 소라 — 합정 닭 육수 라멘 (데모 프로젝트)</title>
+<title>라멘 소라 — 합정 닭 육수 라멘 (가상 매장 샘플)</title>
 <meta name="description" content="합정역 7번 출구 근처 카운터 열 석짜리 라멘집. 토리 파이탄, 쇼유 라멘, 츠케멘. 가상 매장 샘플이며 사진은 무료 스톡 이미지(Unsplash·Pexels)입니다.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Montserrat:wght@500;600;800&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Hahmlet-SemiBold.sub.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/s_hero_bowl_red.jpg">
 <script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('mo');setTimeout(function(){if(!d.classList.contains('mo-ok'))d.classList.remove('mo')},3500)}})(document.documentElement)</script>
 <style>
 :root{--red:#9C191B;--red-d:#6F1013;--ink:#111;--soft:#555;--grey:#F3F3F3;--line:#DDD;--g:20px;--w:1200px;
-  --kr:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;--en:"Montserrat",var(--kr)}
+  --kr:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--en:var(--kr);--hd:"Hahmlet","AppleMyungjo","Batang",serif}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#FFF;color:var(--ink);font-family:var(--kr);font-size:16px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
@@ -205,6 +206,18 @@ footer p{margin:0 0 6px;color:#D0D0D0}
   .card:hover .m-clip>img{scale:1.08}
   .band.zm .btn:hover{background:#FFF;color:#FFF}
 }
+/* r6 글꼴: 제목 Hahmlet(함렛, 간판 같은 부리) + 본문 Pretendard. Noto Sans 900·Montserrat 제거 */
+@font-face{font-family:"Hahmlet";src:url(fonts/Hahmlet-SemiBold.sub.woff2) format("woff2");font-weight:500 900;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Regular.subset.woff2) format("woff2");font-weight:300 400;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Medium.subset.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-SemiBold.subset.woff2) format("woff2");font-weight:600 900;font-display:swap}
+h1,.band h2,.word,footer .w,.stick .sw{font-family:var(--hd);font-weight:600}
+h1{letter-spacing:-.02em;line-height:1.14}
+.band h2{letter-spacing:-.015em;line-height:1.24}
+.word{letter-spacing:.02em}
+.en,.word small,.navg a span{font-weight:600;letter-spacing:.16em}
+.price,.steps time,.facts b{font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.zm .zt{font-weight:700;letter-spacing:-.02em}
 </style>
 </head>
 <body>
@@ -216,11 +229,10 @@ footer p{margin:0 0 6px;color:#D0D0D0}
 <main id="main">
   <section class="hero" aria-label="라멘 소라"><div class="in">
     <div class="txt">
-      <p class="kick">데모 프로젝트 · 합정역 7번 출구 · 11:30 오픈</p>
+      <p class="kick">합정역 7번 출구 · 11:30 오픈</p>
       <h1><span>닭 뼈를</span><span>열 시간,</span><span>진한 한 그릇.</span></h1>
       <p class="lede">뽀얀 토리 파이탄과 맑은 쇼유. 면은 전날 뽑아 하루 재우고, 카운터 열 석에서 한 그릇씩 냅니다.</p>
       <div class="cta"><a class="btn w" href="#menu">메뉴 보기</a><a class="tl" href="tel:+8220000000">02-000-0000 · 포장 주문</a></div>
-      <p class="label">가상 매장 샘플, 사진은 무료 스톡 이미지 · 번호와 주소는 데모용입니다</p>
     </div>
     <figure class="bowl"><img src="img/s_hero_bowl_red.jpg" width="1200" height="1200" alt="빨간 바탕 위, 위에서 내려다본 흰 그릇의 맑은 닭 육수 라멘 한 그릇. 차슈 두 장, 달걀, 죽순, 파"></figure>
   </div></section>
@@ -238,7 +250,7 @@ footer p{margin:0 0 6px;color:#D0D0D0}
       <li class="card rv"><img src="img/s_card_gyoza.jpg" width="960" height="720" alt="양배추 위에 올린 노릇하게 구운 교자" loading="lazy"><div class="bd"><h3>차슈동 · 교자 5개</h3><span class="price">4,000 · 6,000<small>원</small></span></div></li>
     </ul>
     <ul class="adds"><li><span>맛달걀 추가</span><b>2,000</b></li><li><span>면 추가</span><b>1,500</b></li><li><span>차슈 추가</span><b>3,000</b></li><li><span>공깃밥</span><b>1,000</b></li></ul>
-    <p class="note">가격은 데모용 예시입니다(단위 원). 주문은 입구 식권 발매기에서, 현금과 카드 모두 됩니다.</p>
+    <p class="note">가격 단위는 원입니다. 주문은 입구 식권 발매기에서, 현금과 카드 모두 됩니다.</p>
   </div></div>
 
   <section class="band dark" id="shop" aria-labelledby="h-shop">
@@ -286,20 +298,20 @@ footer p{margin:0 0 6px;color:#D0D0D0}
       </div>
       <div>
         <h3>오시는 길</h3>
-        <p>서울 마포구 합정역 7번 출구에서 걸어서 3분, 1층 (데모 주소)</p>
+        <p>서울 마포구 합정역 7번 출구에서 걸어서 3분, 1층</p>
         <div class="links"><a class="tl" href="https://map.naver.com/p/search/%ED%95%A9%EC%A0%95%EC%97%AD" target="_blank" rel="noopener">네이버 지도</a><a class="tl" href="https://map.kakao.com/?q=%ED%95%A9%EC%A0%95%EC%97%AD" target="_blank" rel="noopener">카카오맵</a></div>
-        <p class="note">데모 주소라 지도는 합정역을 엽니다. 낮 12시 전후로 줄이 생깁니다.</p>
+        <p class="note">지도는 합정역을 엽니다. 낮 12시 전후로 줄이 생깁니다.</p>
       </div>
       <div>
         <h3>전화와 포장</h3>
         <p>전화로 주문하고 오시면 줄을 서지 않고 받아 가실 수 있습니다.</p>
         <a class="btn" href="tel:+8220000000">전화로 포장 주문</a>
-        <p class="note">02-000-0000 · 데모 번호입니다</p>
+        <p class="note">02-000-0000</p>
       </div>
     </div>
   </div></div>
 </main>
-<footer><div class="in"><span class="w">라멘 소라</span><p>데모 프로젝트. 실제 영업하는 가게가 아니며, 메뉴·가격·전화번호·주소는 모두 예시입니다.</p><p>가상 매장 샘플, 사진은 무료 스톡 이미지(Unsplash·Pexels, 출처는 PHOTO_CREDITS.md)</p></div></footer>
+<footer><div class="in"><span class="w">라멘 소라</span><p>가상 매장 샘플입니다. 가게 이름·메뉴·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지(Unsplash·Pexels)입니다.</p></div></footer>
 <script>
 (function(){
   var p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Seoul',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).map(function(x){return[x.type,x.value]}));

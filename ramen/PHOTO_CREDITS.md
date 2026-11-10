@@ -27,3 +27,9 @@
 - 츠케멘 카드와 메뉴 띠는 라멘집 실제 사진이지만 우리 가상 메뉴와 토핑이 완전히 같지는 않습니다.
 
 이전 AI 이미지(00_*, 01~07_*, r2_band_*)는 img/에 남아 있지만 페이지에서는 쓰지 않습니다. 백업은 `_r2_backup/`에 있습니다.
+
+## 글꼴 (r6)
+
+- 제목: Hahmlet(함렛) SemiBold 서브셋, SIL OFL 1.1, 원문 `fonts/Hahmlet_OFL.txt` (https://github.com/hyper-type/hahmlet)
+- 본문: Pretendard 서브셋, SIL OFL 1.1, 원문 `fonts/PRETENDARD_LICENSE.txt` (https://github.com/orioncactus/pretendard)
+- 모두 `fonts/`에 직접 넣었고 외부 CDN을 부르지 않습니다. r5까지 쓰던 Noto Sans KR·Montserrat Google Fonts 링크는 뺐습니다.

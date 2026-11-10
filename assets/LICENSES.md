@@ -1,4 +1,4 @@
-# 동네홈(가칭) 메인 페이지에 쓴 외부 자료와 라이선스
+# 동네홈 메인 페이지에 쓴 외부 자료와 라이선스
 
 모두 무료이며, 가입이나 결제 없이 받았습니다. 파일은 이 저장소 안에 들어 있고 외부 CDN을 부르지 않습니다.
 
@@ -8,7 +8,6 @@
 | 클릭음 click_001 (Kenney Interface Sounds) | assets/sound/click.mp3 | https://github.com/Calinou/kenney-interface-sounds | CC0 1.0 (assets/sound/KENNEY_LICENSE.txt) |
 | Lenis 1.3.27 (부드러운 스크롤, 마우스 환경에서만) | assets/vendor/lenis.min.js | https://github.com/darkroomengineering/lenis | MIT (assets/vendor/LENIS_LICENSE.txt) |
 | Pretendard (Regular, Medium, SemiBold 서브셋) | assets/fonts/Pretendard-*.subset.woff2 | https://github.com/orioncactus/pretendard | SIL Open Font License 1.1 (assets/fonts/PRETENDARD_LICENSE.txt) |
-| 고운바탕 Gowun Batang Regular (이 페이지 글자만 남긴 서브셋) | assets/fonts/GowunBatang-Regular.sub.woff | Google Fonts, https://github.com/yangheeryu/Gowun-Batang | SIL Open Font License 1.1 |
 
 - 소리는 기본으로 꺼져 있습니다. 머리글의 '소리 꺼짐' 버튼을 눌렀을 때만 음악(음량 0.18)과 클릭음(0.25)이 납니다.
 - GSAP은 쓰지 않았습니다. 스크롤 모션은 직접 쓴 assets/home.js(transform, opacity만 사용)입니다.

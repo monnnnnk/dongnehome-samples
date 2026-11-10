@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GYEOL 결 헤어 — 성수동 1인 살롱 (데모 프로젝트)</title>
-<meta name="description" content="성수동의 1인 헤어 살롱, 결. 하루 여섯 분, 상담부터 마무리까지 한 디자이너가 맡습니다. 데모 프로젝트입니다.">
+<title>GYEOL 결 헤어 — 성수동 1인 살롱 (가상 매장 샘플)</title>
+<meta name="description" content="성수동의 1인 헤어 살롱, 결. 하루 여섯 분, 상담부터 마무리까지 한 디자이너가 맡습니다. 가상 매장 샘플입니다.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Noto+Serif+KR:wght@200;300;400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/NotoSerifKR-Light.sub.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/01_back_dark.jpg">
 <script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('mo');setTimeout(function(){if(!d.classList.contains('mo-ok'))d.classList.remove('mo')},3500)}})(document.documentElement)</script>
 <style>
@@ -21,9 +22,9 @@
   --beige-mute:#5A5852;
   --line:rgba(242,240,235,.22);
   --line-d:rgba(26,27,28,.18);
-  --kr:"IBM Plex Sans KR","Noto Sans KR",sans-serif;
+  --kr:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --serif-kr:"Noto Serif KR","Nanum Myeongjo",serif;
-  --dd:"Bodoni Moda","Didot",serif;
+  --dd:"Noto Serif KR","AppleMyungjo",serif;
   --g:20px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -272,12 +273,28 @@ footer p{margin:12px auto 0;font-size:13px;color:var(--steel);max-width:36em;lin
 .mo-ok .ticker-track{animation:none}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-stopped{overflow:clip}
+/* r6 글꼴: 제목 Noto Serif KR Light + 본문 Pretendard. 영문 이탤릭(Bodoni) 제거 */
+@font-face{font-family:"Noto Serif KR";src:url(fonts/NotoSerifKR-Light.sub.woff2) format("woff2");font-weight:200 300;font-display:swap}
+@font-face{font-family:"Noto Serif KR";src:url(fonts/NotoSerifKR-Regular.sub.woff2) format("woff2");font-weight:400 500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Regular.subset.woff2) format("woff2");font-weight:300 400;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Medium.subset.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-SemiBold.subset.woff2) format("woff2");font-weight:600 700;font-display:swap}
+em,i,.hero h1 em,.ticker-track span,.wk figcaption i,.steps li i,.ov a i{font-style:normal}
+.ticker-track span{font-family:var(--serif-kr);font-weight:300;letter-spacing:.04em}
+.word,.intro .w span{font-family:var(--serif-kr);font-weight:400}
+.word{font-size:19px;letter-spacing:.36em;margin-right:-.36em}
+.stats .n,.price .w{font-family:var(--kr);font-weight:400;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.price .w{font-size:16px}
+.steps li i{font-family:var(--kr);font-size:13px;font-weight:500;letter-spacing:.12em;color:#6B5434}
+.wk figcaption i,.ov a i{font-family:var(--kr);font-size:12px;font-weight:500;letter-spacing:.12em}
+.ov a i{font-size:13px}
+.eyebrow{letter-spacing:.18em}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
 <header class="top">
-  <span class="l demo">데모 프로젝트</span>
+  <span class="l" aria-hidden="true"></span>
   <a class="word" href="./" aria-label="GYEOL 결 헤어 처음으로">GYEOL</a>
   <span class="r"><a class="pill ghost" href="#booking">예약 문의</a></span>
 </header>
@@ -287,31 +304,30 @@ html.lenis,html.lenis body{height:auto}
       <img src="img/01_back_dark.jpg" width="2048" height="1152" alt="어두운 방, 창빛을 받은 긴 머리를 뒤에서 본 모습">
     </figure>
     <div class="hero-copy">
-      <p class="eyebrow">Private salon · Seongsu</p>
-      <h1>상담부터 마무리까지, <em>one designer</em></h1>
-      <p class="hero-services">Cut · Perm · Colour · Clinic</p>
+      <p class="eyebrow">성수동 1인 살롱</p>
+      <h1>상담부터 마무리까지,<br>한 사람이 합니다</h1>
+      <p class="hero-services">커트 · 펌 · 컬러 · 클리닉</p>
       <div class="hero-ctas">
         <a class="pill fill" href="sms:+8220000000">예약 문의하기</a>
         <a class="pill ghost" href="#service">시술 보기</a>
       </div>
-      <p class="sample">가상 매장 샘플, 사진은 무료 스톡 이미지와 일부 AI 생성</p>
     </div>
   </section>
 
   <div class="ticker" aria-label="시술과 동네">
     <div class="ticker-track">
-      <span>Cut</span><span>Perm</span><span>Colour</span><span>Clinic</span><span>Seongsu</span><span class="kr">하루 여섯 분</span><span class="kr">1인 살롱</span><span class="kr">예약제</span>
-      <span>Cut</span><span>Perm</span><span>Colour</span><span>Clinic</span><span>Seongsu</span><span class="kr">하루 여섯 분</span><span class="kr">1인 살롱</span><span class="kr">예약제</span>
+      <span class="kr">커트</span><span class="kr">펌</span><span class="kr">컬러</span><span class="kr">클리닉</span><span class="kr">성수동</span><span class="kr">하루 여섯 분</span><span class="kr">1인 살롱</span><span class="kr">예약제</span>
+      <span class="kr">커트</span><span class="kr">펌</span><span class="kr">컬러</span><span class="kr">클리닉</span><span class="kr">성수동</span><span class="kr">하루 여섯 분</span><span class="kr">1인 살롱</span><span class="kr">예약제</span>
     </div>
   </div>
 
   <section class="mission beige" aria-labelledby="h-mission">
     <div class="mission-top">
-      <span class="lab">Our approach</span>
-      <span class="lab tan">One chair · Six a day</span>
+      <span class="lab">자르는 방식</span>
+      <span class="lab tan">의자 하나 · 하루 여섯 분</span>
     </div>
     <div class="mission-grid">
-      <h2 id="h-mission">머리카락의 결을 먼저 보고,<br>집에서 말려도 남게 자릅니다. <em>Cut to last.</em></h2>
+      <h2 id="h-mission">머리카락의 결을 먼저 보고,<br>집에서 말려도 남게 자릅니다.</h2>
       <p class="body">성수동의 1인 살롱. 하루 여섯 분만 모시고, 처음 이야기를 나눈 디자이너가 마지막 손질까지 함께합니다. 예약 사이에는 30분을 비워 앞사람과 겹치지 않습니다.</p>
     </div>
     <ul class="stats" aria-label="운영 숫자">
@@ -340,7 +356,7 @@ html.lenis,html.lenis body{height:auto}
     <figure class="designer-fig rv">
       <img src="img/stock_designer.jpg" width="1728" height="1914" alt="어두운 옷차림으로 가위와 빗을 함께 쥔 디자이너의 손" loading="lazy">
     </figure>
-    <h2 id="h-designer"><em>Designer</em>예약을 받는 사람이 가위를 듭니다</h2>
+    <h2 id="h-designer">예약을 받는 사람이 가위를 듭니다</h2>
     <p class="rv">결은 디자이너 한 명이 운영합니다. 문자로 예약을 받고, 상담하고, 자르고, 말리는 일까지 같은 사람이 합니다. 처음에 나눈 이야기가 마지막 모양까지 이어집니다.</p>
     <div class="pills rv"><a class="pill ghost" href="#booking">예약 문의하기</a></div>
   </section>
@@ -359,19 +375,19 @@ html.lenis,html.lenis body{height:auto}
       <li><b>염색</b><span class="w">110,000~</span><small>뿌리 염색은 80,000부터, 약 120분</small></li>
       <li><b>두피 · 모발 클리닉</b><span class="w">60,000</span><small>단독 또는 다른 시술과 함께, 약 40분</small></li>
     </ul>
-    <p class="note">가격은 데모용 예시입니다. 단위는 원입니다.</p>
+    <p class="note">가격 단위는 원입니다.</p>
   </section>
 
   <section class="work" id="work" aria-labelledby="h-work">
     <div class="head rv">
       <span class="lab">Style examples</span>
       <h2 id="h-work">말린 뒤의 모양</h2>
-      <p>커트 선, 웨이브의 결, 컬러가 어떻게 보이는지 보여 드리는 스타일 예시입니다. 실제 고객 사진이 아닌 데모용 이미지입니다.</p>
+      <p>커트 선, 웨이브의 결, 컬러가 어떻게 보이는지 보여 드리는 스타일 예시입니다. 실제 고객 사진이 아닌 예시 이미지입니다.</p>
     </div>
     <div class="wk">
-      <figure class="big rv"><img src="img/stock_bob.jpg" width="2304" height="1728" alt="스타일 예시: 어깨 위에서 일자로 떨어지는 단발을 뒤에서 본 모습" loading="lazy"><figcaption><i>Cut</i><span>스타일 예시 · 턱선 일자 단발</span></figcaption></figure>
-      <figure class="s1 rv"><img src="img/stock_wave.jpg" width="1728" height="2304" alt="스타일 예시: 결이 드러나는 긴 웨이브를 뒤에서 본 모습" loading="lazy"><figcaption><i>Wave</i><span>스타일 예시 · 웨이브</span></figcaption></figure>
-      <figure class="s2 rv"><img src="img/stock_color.jpg" width="1728" height="2304" alt="스타일 예시: 어두운 배경 앞, 밝은 브라운 컬러의 긴 머리를 뒤에서 본 모습" loading="lazy"><figcaption><i>Colour</i><span>스타일 예시 · 컬러</span></figcaption></figure>
+      <figure class="big rv"><img src="img/stock_bob.jpg" width="2304" height="1728" alt="스타일 예시: 어깨 위에서 일자로 떨어지는 단발을 뒤에서 본 모습" loading="lazy"><figcaption><i>커트</i><span>턱선 일자 단발 · 예시</span></figcaption></figure>
+      <figure class="s1 rv"><img src="img/stock_wave.jpg" width="1728" height="2304" alt="스타일 예시: 결이 드러나는 긴 웨이브를 뒤에서 본 모습" loading="lazy"><figcaption><i>웨이브</i><span>예시</span></figcaption></figure>
+      <figure class="s2 rv"><img src="img/stock_color.jpg" width="1728" height="2304" alt="스타일 예시: 어두운 배경 앞, 밝은 브라운 컬러의 긴 머리를 뒤에서 본 모습" loading="lazy"><figcaption><i>컬러</i><span>예시</span></figcaption></figure>
     </div>
   </section>
 
@@ -381,14 +397,14 @@ html.lenis,html.lenis body{height:auto}
       <span class="lab">Booking</span>
       <h2 id="h-booking">예약은 문자로 받습니다</h2>
       <ol class="steps rv">
-        <li><i>I</i><b>문자 보내기</b><p>원하는 날짜와 시술, 지금 머리 길이를 적어 주세요.</p></li>
-        <li><i>II</i><b>시간 확정</b><p>영업일 하루 안에 가능한 시간을 답장으로 드립니다.</p></li>
-        <li><i>III</i><b>방문</b><p>도착하면 10분 정도 상담부터 하고 시작합니다.</p></li>
+        <li><i>01</i><b>문자 보내기</b><p>원하는 날짜와 시술, 지금 머리 길이를 적어 주세요.</p></li>
+        <li><i>02</i><b>시간 확정</b><p>영업일 하루 안에 가능한 시간을 답장으로 드립니다.</p></li>
+        <li><i>03</i><b>방문</b><p>도착하면 10분 정도 상담부터 하고 시작합니다.</p></li>
       </ol>
       <div class="bk rv">
         <a class="pill fill" href="sms:+8220000000">문자로 예약 문의</a>
         <a class="pill ghost" href="tel:+8220000000">전화 02-000-0000</a>
-        <small>데모 번호입니다 · 시술 중에는 전화를 받지 못할 수 있습니다</small>
+        <small>시술 중에는 전화를 받지 못할 수 있습니다</small>
       </div>
     </div>
   </section>
@@ -407,21 +423,21 @@ html.lenis,html.lenis body{height:auto}
       </div>
       <div class="ad">
         <h3>주소</h3>
-        <p class="addr">서울 성동구 성수동2가 (데모 주소)<br>성수역 3번 출구에서 걸어서 6분, 2층</p>
+        <p class="addr">서울 성동구 성수동2가<br>성수역 3번 출구에서 걸어서 6분, 2층</p>
         <div class="links">
           <a class="tl" href="https://map.naver.com/p/search/%EC%84%B1%EC%88%98%EC%97%AD" target="_blank" rel="noopener">네이버 지도</a>
           <a class="tl" href="https://map.kakao.com/?q=%EC%84%B1%EC%88%98%EC%97%AD" target="_blank" rel="noopener">카카오맵</a>
           <a class="tl" href="tel:+8220000000">전화</a>
           <a class="tl" href="sms:+8220000000">문자</a>
         </div>
-        <p class="note">데모 주소라 지도는 성수역을 엽니다. 주차 공간은 없습니다.</p>
+        <p class="note">지도는 성수역을 엽니다. 주차 공간은 없습니다.</p>
       </div>
     </div>
   </section>
 </main>
 <footer>
   <a class="word" href="./" aria-label="GYEOL 결 헤어 처음으로">GYEOL</a>
-  <p>데모 프로젝트 · 실제 영업하는 살롱이 아닙니다. 가격, 전화번호, 주소는 모두 예시입니다.<br>가상 매장 샘플, 사진은 무료 스톡 이미지와 일부 AI 생성 (출처 PHOTO_CREDITS.md)</p>
+  <p>가상 매장 샘플입니다. 가게 이름·가격·주소·번호는 예시이고, 사진은 무료 스톡 이미지와 일부 AI 생성 이미지입니다.</p>
 </footer>
 <script>
 (function(){
@@ -497,8 +513,8 @@ var K=(function(){
 (function(){
   var d=K.d,G=K.G,$=K.$,top=$('.top')[0];
   var mm=K.menu({btn:'<i></i>',btnParent:$('.top .r')[0],closeWait:450,
-    html:'<ul><li><a href="#designer"><b>디자이너</b><i>Designer</i></a></li><li><a href="#service"><b>시술과 가격</b><i>Services</i></a></li><li><a href="#work"><b>스타일 예시</b><i>Styles</i></a></li><li><a href="#booking"><b>예약 문의</b><i>Booking</i></a></li><li><a href="#visit"><b>오시는 길</b><i>Visit</i></a></li></ul>'+
-      '<p class="of"><span>화–토 10:00 – 19:00</span><a class="pill ghost" href="sms:+8220000000">문자로 예약 문의</a><span>데모 번호</span></p>',
+    html:'<ul><li><a href="#designer"><b>디자이너</b><i>01</i></a></li><li><a href="#service"><b>시술과 가격</b><i>02</i></a></li><li><a href="#work"><b>스타일 예시</b><i>03</i></a></li><li><a href="#booking"><b>예약 문의</b><i>04</i></a></li><li><a href="#visit"><b>오시는 길</b><i>05</i></a></li></ul>'+
+      '<p class="of"><span>화–토 10:00 – 19:00</span><a class="pill ghost" href="sms:+8220000000">문자로 예약 문의</a></p>',
     open:function(ov){return G.timeline().fromTo(ov,{clipPath:'inset(0% 0% 100% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1,ease:'expo.inOut'})
       .fromTo($('li a',ov),{yPercent:105},{yPercent:0,duration:1.2,ease:'expo.out',stagger:.06},.45).fromTo($('.of',ov),{opacity:0},{opacity:1,duration:.8},.8)},
     close:function(ov){return G.timeline().to($('li a',ov),{yPercent:-105,duration:.45,ease:'power3.in',stagger:.025}).to($('.of',ov),{opacity:0,duration:.3},0).to(ov,{clipPath:'inset(100% 0% 0% 0%)',duration:.85,ease:'expo.inOut'},.2)}});
@@ -514,7 +530,7 @@ var K=(function(){
   var seen=false; try{seen=sessionStorage.getItem('gy-intro')==='1';sessionStorage.setItem('gy-intro','1')}catch(e){}
   var intro=null;
   if(!seen){intro=document.createElement('div');intro.className='intro';intro.setAttribute('aria-hidden','true');
-    intro.innerHTML='<div class="w">'+'GYEOL'.split('').map(function(c,i){return '<span style="--i:'+i+'">'+c+'</span>'}).join('')+'</div><small>Private salon · Seongsu</small>';document.body.appendChild(intro);lenis&&lenis.stop()}
+    intro.innerHTML='<div class="w">'+'GYEOL'.split('').map(function(c,i){return '<span style="--i:'+i+'">'+c+'</span>'}).join('')+'</div><small>성수동 1인 살롱</small>';document.body.appendChild(intro);lenis&&lenis.stop()}
   var t0=performance.now();
   K.fontsReady(1400).then(function(){
     var wait=intro?Math.max(0,1150-(performance.now()-t0))/1000:0;

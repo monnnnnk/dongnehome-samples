@@ -81,9 +81,9 @@
     s0.style.clipPath = 'inset(0 0 100% 0)';
     root.classList.add('play');
     void strip.offsetWidth;
-    await wait(450);
+    await wait(desk ? 450 : 200);
     root.classList.remove('intro');                         // CSS delays: mark .0s, wordmark .45s, line 1.25s
-    await wait(1500);
+    await wait(desk ? 1500 : 1000);
     first.style.transition = 'transform .9s cubic-bezier(.19,1,.22,1), opacity .35s ease-out';
     first.style.opacity = '1'; first.style.transform = 'none';
     s0.style.transition = 'clip-path .6s cubic-bezier(.19,1,.22,1) .1s'; s0.style.clipPath = 'inset(0 0 0% 0)';
@@ -184,7 +184,7 @@
     if (reduce || !setW || !heroOn) return;
     const r = hero.getBoundingClientRect();
     drag += vel; vel *= 0.94; if (Math.abs(vel) < 0.05) vel = 0;
-    if (!desk && introDone && !document.hidden && t - hold > 1800) auto += dt * 0.028;   // phones: the three shops keep sliding past (~28px/s)
+    if (!desk && introDone && !document.hidden && t - hold > 1800) auto += dt * 0.02;   // phones: the three shops keep sliding past (~20px/s)
     off = clamp(-r.top, 0, pinD) * 2 + drag + auto;
     sOff += (off - sOff) * 0.12; if (Math.abs(off - sOff) < 0.05) sOff = off;
     const x = -(((sOff % setW) + setW) % setW);
